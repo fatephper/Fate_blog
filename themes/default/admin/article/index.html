@@ -1,0 +1,239 @@
+<{css:admin/form.css}>
+<div id="wpbody">
+  <div id="wpbody-content" aria-label="主内容" tabindex="0">
+    <div class="wrap">
+          <!--  统计 文章个数 start -->
+          <h2>文章 <a href="<{root:admin/article/add}>" class="add-new-h2">写文章</a></h2>
+          <ul class='subsubsub'>
+              <li class='all'>
+                  <a href='' class="current">全部<span class="count">（<{echo:count($articleData)}>）</span></a> |
+              </li>
+              <li class='publish'>
+                  <a href=''>已发布<span class="count">（<{echo:count($articleData)}>）</span></a>
+              </li>
+          </ul>
+          <!-- 文章列表 start -->
+          <form id="posts-filter" action="" method="get">
+              
+                <!-- 文章搜索框 start-->
+                <p class="search-box">
+                    <label class="screen-reader-text" for="post-search-input">搜索文章:</label>
+                    <input type="search" id="post-search-input" name="s" value="" />
+                    <input type="submit" name="" id="search-submit" class="button" value="搜索文章"  />
+                </p>
+                <!-- 文章搜索框 end-->
+                <input type="hidden" name="post_status" class="post_status_page" value="all" />
+                <input type="hidden" name="post_type" class="post_type_page" value="post" />
+                <input type="hidden" id="_wpnonce" name="_wpnonce" value="4e484eee32" />
+                <input type="hidden" name="_wp_http_referer" value="/wordpress/wp-admin/edit.php" />
+                
+                <div class="tablenav top">
+                    <div class="alignleft actions bulkactions">
+                        <!-- 操作框 start -->
+                        <label for='bulk-action-selector-top' class='screen-reader-text'>选择批量操作</label>
+                        <select name='action' id='bulk-action-selector-top'>
+                           <option value='-1' selected='selected'>批量操作</option>
+                           <!--<option value='edit' class="hide-if-no-js">编辑</option>-->
+                           <option value='trash'>移至回收站</option>
+                        </select>
+                        <input type="submit" name="" id="doaction" class="button action" value="应用"  />
+                    </div>
+                    
+                    <div class="alignleft actions">
+                        <!-- 日期 筛选 start -->
+                        <label for="filter-by-date" class="screen-reader-text">按日期筛选</label>
+                        <select name="m" id="filter-by-date">
+                                <option selected='selected' value="0">全部日期</option>
+                                <{foreach:items=$timeData item=$name key=$key}>
+                                <option  value='<{echo:$key}>'><{echo:$name}></option>
+                                <{/foreach}>
+                        </select>
+                        <!-- 分类 筛选 start -->
+                        <select name='parent' id='parent' class='postform' >
+                            <option value='-1'>无</option>
+                            <{foreach:items=$treeData item=$category key=$k}>
+                                 <option class='level-<{echo:$category["level"]}>' value='<{echo:$category["term_id"]}>'>
+                                     <{echo:$category['name']}>
+                                 </option>
+                            <{/foreach}>
+                        </select>
+                        <input type="submit" name="filter_action" id="post-query-submit" class="button" value="筛选"  />		
+                    </div>
+                    
+                    <!-- 分页 start -->
+                    <div class='tablenav-pages one-page'>
+                        <span class="displaying-num"><{echo:count($articleData)}>个项目</span>
+                        <span class='pagination-links'>
+                            <a class='first-page disabled' title='前往第一页' href=''>&laquo;</a>
+                            <a class='prev-page disabled' title='前往上一页' href=''>&lsaquo;</a>
+                            <span class="paging-input">
+                                第<label for="current-page-selector" class="screen-reader-text">选择页面</label>
+                                <input class='current-page' id='current-page-selector' title='当前页面' type='text' name='paged' value='1' size='1' />页，共<span class='total-pages'>1</span>页
+                            </span>
+                            <a class='next-page disabled' title='前往下一页' href=''>&rsaquo;</a>
+                            <a class='last-page disabled' title='前往最后一页' href=''>&raquo;</a>
+                        </span>
+                    </div>
+                    <!-- 分页 end-->
+                    <input type="hidden" name="mode" value="list" />
+                    <!-- 视图类别 start-->
+                    <div class="view-switch">
+                        <a href='javascript:void(0);' class='view-list current' id='view-switch-list'>
+                            <span class='screen-reader-text'>列表视图</span>
+                        </a>
+                        <a href='javascript:void(0);' class='view-excerpt' id='view-switch-excerpt'>
+                            <span class='screen-reader-text'>摘要视图</span>
+                        </a>
+                    </div>
+                    <!-- 视图类别 end -->
+                    <br class="clear" />
+              </div>
+ 
+            <!-- 主体 列表  start  -->
+            <table class="wp-list-table widefat fixed posts">
+                <thead>
+                     <tr>
+                       <th scope='col' id='cb' class='manage-column column-cb check-column'  style="">
+                           <label class="screen-reader-text" for="cb-select-all-1">全选</label>
+                           <input id="cb-select-all-1" type="checkbox" style="display:block;"/>
+                       </th>
+                       <th scope='col' id='title' class='manage-column column-title sortable desc'  style="">
+                           <a href="http://localhost/wordpress/wp-admin/edit.php?orderby=title&#038;order=asc">
+                               <span>标题</span><span class="sorting-indicator"></span>
+                           </a>
+                       </th>
+                       <th scope='col' id='author' class='manage-column column-author'  style="">作者</th>
+                       <th scope='col' id='categories' class='manage-column column-categories'  style="">分类目录</th>
+                       <th scope='col' id='tags' class='manage-column column-tags'  style="">标签</th>
+                       <th scope='col' id='comments' class='manage-column column-comments num sortable desc'  style="">
+                           <a href="http://localhost/wordpress/wp-admin/edit.php?orderby=comment_count&#038;order=asc">
+                               <span><span class="vers"><span title="评论" class="comment-grey-bubble"></span></span></span>
+                               <span class="sorting-indicator"></span>
+                           </a>
+                       </th>
+                       <th scope='col' id='date' class='manage-column column-date sortable asc'  style="">
+                           <a href="http://localhost/wordpress/wp-admin/edit.php?orderby=date&#038;order=desc">
+                               <span>日期</span>
+                               <span class="sorting-indicator"></span>
+                           </a>
+                       </th>	
+                     </tr>
+                </thead>
+
+                <tfoot>
+                    <tr>
+                        <th scope='col'  class='manage-column column-cb check-column'  style="">
+                            <label class="screen-reader-text" for="cb-select-all-2">全选</label>
+                            <input id="cb-select-all-2" type="checkbox" />
+                        </th>
+                        <th scope='col'  class='manage-column column-title sortable desc'  style="">
+                            <a href="http://localhost/wordpress/wp-admin/edit.php?orderby=title&#038;order=asc">
+                                <span>标题</span><span class="sorting-indicator"></span>
+                            </a>
+                        </th>
+                        <th scope='col'  class='manage-column column-author'  style="">作者</th>
+                        <th scope='col'  class='manage-column column-categories'  style="">分类目录</th>
+                        <th scope='col'  class='manage-column column-tags'  style="">标签</th>
+                        <th scope='col'  class='manage-column column-comments num sortable desc'  style="">
+                            <a href="http://localhost/wordpress/wp-admin/edit.php?orderby=comment_count&#038;order=asc">
+                                <span><span class="vers"><span title="评论" class="comment-grey-bubble"></span></span></span>
+                                <span class="sorting-indicator"></span>
+                            </a>
+                        </th>
+                        <th scope='col'  class='manage-column column-date sortable asc'  style="">
+                            <a href="http://localhost/wordpress/wp-admin/edit.php?orderby=date&#038;order=desc">
+                                <span>日期</span><span class="sorting-indicator"></span>
+                            </a>
+                        </th>	
+                    </tr>
+                </tfoot>
+
+                <tbody id="the-list">
+                    <{code:$i=0}>
+                    <{foreach:items=$articleData key=$ID item=$listData }>
+                        <tr id='post-<{echo:$ID}>' class="post-1 type-post status-publish format-standard hentry category-uncategorized <{if:$i%2==0}>alternate<{/if}> iedit author-self level-0">
+                            <!-- 选择框 -->
+                            <th class="check-column" scope="row">
+                                <label class="screen-reader-text" for="cb-select-1">选择世界，你好！</label>
+                                <input id='cb-select-<{echo:$ID}>' type='checkbox' name='article[]' value='<{echo:$ID}>'>
+                                 <div class="locked-indicator"></div>
+                            </th>
+                            <!-- 标题 -->
+                            <td class="post-title page-title column-title">
+                                <strong>
+                                    <a class="row-title" href="<{root:admin/article/edit/id/}><{echo:$ID}>" title="编辑"><{echo:$listData['post']['post_title']}></a>
+                                </strong>
+                                <div class="locked-info"><span class="locked-avatar"></span> <span class="locked-text"></span></div>
+                                <div class="row-actions">
+                                    <span class='edit'>
+                                        <a href="<{root:admin/article/edit/id/}><{echo:$ID}>" title="编辑此项目">编辑</a> | 
+                                    </span>
+                                    <span class='inline hide-if-no-js'>
+                                        <a href="#" class="editinline" title="实时编辑此项目">快速编辑</a> | 
+                                    </span>
+                                    <span class='trash'>
+                                        <a class='submitdelete' href='<{root:admin/article/recycle/id/}><{echo:$ID}>'>回收站</a> | 
+                                    </span>
+                                    <span class='view'><a href="<{root:admin/article/id/}><{echo:$ID}>" rel="permalink">查看</a></span>
+                                </div>
+                            </td>
+                            <!-- 作者 -->
+                            <td class="author column-author"><a href=""></a></td>
+                            <!-- 分类 目录 -->
+                            <td class="categories column-categories"><a href=""><{echo:$listData['cat']['name']}></a></td>
+                            <!-- 标签 -->
+                            <td class="tags column-tags">
+                                <{if:empty($listData['tag'])}>
+                                &#8212;
+                                <{else:}>
+                                    <{foreach: items=$listData['tag'] item=$tag}>
+                                    <a href='<{root:admin/article}>'><{echo:$tag['name']}></a>、
+                                    <{/foreach}>
+                                <{/if}>
+                            </td>
+                            <!-- 评论 -->
+                            <td class="comments column-comments">
+                                <div class="post-com-count-wrapper">
+                                    <a href='' class='post-com-count'>
+                                        <span class='comment-count'><{echo:$listData['post']['comment_count']}></span>
+                                    </a>		
+                                </div>
+                            </td>
+                            <!-- 日期 -->
+                            <td class="date column-date"><abbr title="<{echo:$listData['post']['post_date']}>"><{echo:$listData['post']['post_date']}></abbr><br />已发布</td>
+                        </tr>
+                    <{code:$i++}>
+                    <{/foreach}>
+                  </tbody>
+            </table>
+
+             <div class="tablenav bottom">
+                    <div class="alignleft actions bulkactions">
+                        <label for='bulk-action-selector-bottom' class='screen-reader-text'>选择批量操作</label>
+                        <select name='action2' id='bulk-action-selector-bottom'>
+                            <option value='-1' selected='selected'>批量操作</option>
+                            <option value='edit' class="hide-if-no-js">编辑</option>
+                            <option value='trash'>移至回收站</option>
+                        </select>
+                        <input type="submit" name="" id="doaction2" class="button action" value="应用"  />
+                     </div>
+                     <div class="alignleft actions"></div>
+                     <div class='tablenav-pages one-page'>
+                        <span class="displaying-num"><{echo:count($articleData)}>个项目</span>
+                        <span class='pagination-links'>
+                            <a class='first-page disabled' title='前往第一页' href=''>&laquo;</a>
+                            <a class='prev-page disabled' title='前往上一页' href=''>&lsaquo;</a>
+                            <span class="paging-input">第1页，共<span class='total-pages'>1</span>页</span>
+                            <a class='next-page disabled' title='前往下一页' href=''>&rsaquo;</a>
+                            <a class='last-page disabled' title='前往最后一页' href=''>&raquo;</a></span>
+                     </div>
+                     <br class="clear" />
+            </div>
+
+</form>
+<div id="ajax-response"></div>
+<br class="clear" />
+</div>
+<div class="clear"></div></div>
+<div class="clear"></div>
+

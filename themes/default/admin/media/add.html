@@ -1,0 +1,90 @@
+	<div id="wpbody">
+
+<div id="wpbody-content" aria-label="主内容" tabindex="0">
+		<div id="screen-meta" class="metabox-prefs">
+
+			<div id="contextual-help-wrap" class="hidden" tabindex="-1" aria-label="“上下文帮助”选项卡">
+				<div id="contextual-help-back"></div>
+				<div id="contextual-help-columns">
+					<div class="contextual-help-tabs">
+						<ul>
+						
+							<li id="tab-link-overview" class="active">
+								<a href="#tab-panel-overview" aria-controls="tab-panel-overview">
+									概述								</a>
+							</li>
+												</ul>
+					</div>
+
+										<div class="contextual-help-sidebar">
+						<p><strong>更多信息：</strong></p><p><a href="http://codex.wordpress.org/zh-cn:%E5%AA%92%E4%BD%93_%E6%B7%BB%E5%8A%A0%E5%A4%9A%E5%AA%92%E4%BD%93%E6%96%87%E4%BB%B6%E9%A1%B5%E9%9D%A2" target="_blank">关于添加多媒体文件的中文文档</a></p><p><a href="http://cn.forums.wordpress.org" target="_blank">中文支持论坛</a></p>					</div>
+					
+					<div class="contextual-help-tabs-wrap">
+						
+							<div id="tab-panel-overview" class="help-tab-content active">
+								<p>您可以不创建文章，直接上传多媒体文件。这样，您就可以得到一个用于分享的网络链接，当然，也可以在日后将这写媒体文件用在文章中。有如下三种上传文件的选择：</p><ul><li>将文件<strong>拖放到下方的区域</strong>。可以拖放多个文件。</li><li>点击<strong>选择文件</strong>后将弹出您操作系统的“选择文件...”窗口。选择您需要上传的文件，单击<strong>打开</strong>，文件开始上传。进度条会自动出现，指示上传状态。</li><li>点击拖拽框下方的链接可恢复使用<strong>浏览器上传工具</strong>。</li></ul>							</div>
+											</div>
+				</div>
+			</div>
+				</div>
+				<div id="screen-meta-links">
+					<div id="contextual-help-link-wrap" class="hide-if-no-js screen-meta-toggle">
+			<a href="#contextual-help-wrap" id="contextual-help-link" class="show-settings" aria-controls="contextual-help-wrap" aria-expanded="false">帮助</a>
+			</div>
+				</div>
+		<div class="wrap">
+	<h2>上传新媒体文件</h2>
+
+	<form enctype="multipart/form-data" method="post" action="http://localhost/wordpress/wp-admin/media-new.php" class="media-upload-form type-form validate" id="file-form">
+
+	
+<div id="media-upload-notice"></div>
+<div id="media-upload-error"></div>
+
+<script type="text/javascript">
+var resize_height = 1024, resize_width = 1024,
+wpUploaderInit = {"runtimes":"html5,flash,silverlight,html4","browse_button":"plupload-browse-button","container":"plupload-upload-ui","drop_element":"drag-drop-area","file_data_name":"async-upload","url":"http:\/\/localhost\/wordpress\/wp-admin\/async-upload.php","flash_swf_url":"http:\/\/localhost\/wordpress\/wp-includes\/js\/plupload\/plupload.flash.swf","silverlight_xap_url":"http:\/\/localhost\/wordpress\/wp-includes\/js\/plupload\/plupload.silverlight.xap","filters":{"max_file_size":"2097152b"},"multipart_params":{"post_id":0,"_wpnonce":"becb427236","type":"","tab":"","short":"1"}};
+</script>
+
+<div id="plupload-upload-ui" class="hide-if-no-js">
+<div id="drag-drop-area">
+	<div class="drag-drop-inside">
+	<p class="drag-drop-info">将文件拖到这里</p>
+	<p>或</p>
+	<p class="drag-drop-buttons"><input id="plupload-browse-button" type="button" value="选择文件" class="button" /></p>
+	</div>
+</div>
+	<p class="upload-flash-bypass">
+	您正在使用多文件上传工具。遇到问题？请尝试使用<a href="#">标准浏览器上传工具</a> 。	</p>
+	</div>
+
+<div id="html-upload-ui" class="hide-if-js">
+		<p id="async-upload-wrap">
+		<label class="screen-reader-text" for="async-upload">上传</label>
+		<input type="file" name="async-upload" id="async-upload" />
+		<input type="submit" name="html-upload" id="html-upload" class="button" value="上传"  />		<a href="#" onclick="try{top.tb_remove();}catch(e){}; return false;">取消</a>
+	</p>
+	<div class="clear"></div>
+	<p class="upload-html-bypass hide-if-no-js">
+	   您正在使用浏览器内置的标准上传工具。WordPress提供了全新的上传工具，支持多选、拖放上传功能。<a href="#">改用新的上传工具</a>。	</p>
+	</div>
+
+<p class="max-upload-size">最大上传文件大小：2 MB。</p>
+
+
+	<input type="hidden" name="post_id" id="post_id" value="0" />
+	<input type="hidden" id="_wpnonce" name="_wpnonce" value="becb427236" /><input type="hidden" name="_wp_http_referer" value="/wordpress/wp-admin/media-new.php" />	<div id="media-items" class="hide-if-no-js"></div>
+	</form>
+</div>
+
+
+<div class="clear"></div></div><!-- wpbody-content -->
+<div class="clear"></div>
+
+	
+
+
+<div class="clear"></div></div><!-- wpwrap -->
+
+</body>
+</html>

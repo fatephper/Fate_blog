@@ -1,0 +1,264 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <title>Fate的博客</title>
+    <link type="/image/x-icon" href="<?php echo Fate::app()->url->getWebDir()."themes/default/skin/image/favicon.ico";?>" rel="icon">
+    <?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/subscriptions.css\">";?>
+    <?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/widgets.css\">";?>
+    <?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/style.css\">";?>
+    <?php echo "<script src=\"/themes/default/skin/js/home/3D-Tags.js\"></script>";?>
+</head>
+<style>
+
+ </style>
+<body>
+
+   <div class="site-container">
+      <!-- 导航栏 start -->
+      <nav class="nav-primary" role="navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="wrap">
+          <ul id="menu-short" class="menu omega-nav-menu menu-primary">
+              <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home first menu-item-1708">
+                  <a href="<?php echo Fate::app()->url->getWebDir()."";?>">首页</a>
+	      </li>
+              <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1639">
+                  <a href="<?php echo Fate::app()->url->getWebDir()."teachnologic";?>">技术</a>
+                 <ul class="sub-menu">
+                        <li  class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1640">
+                            <a href="<?php echo Fate::app()->url->getWebDir()."program";?>">编程语言</a>
+                        </li>
+                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1640">
+                            <a href="<?php echo Fate::app()->url->getWebDir()."schema";?>">服务器架构</a>
+                        </li>
+                 </ul>
+              </li>
+              <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1719">
+                  <a href="<?php echo Fate::app()->url->getWebDir()."book";?>">书籍</a>
+                 <ul class="sub-menu">
+                            <li  class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1720">
+                                <a href="<?php echo Fate::app()->url->getWebDir()."encouragement ";?>">心理 / 励志</a>
+                            </li>
+                            <li  class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1721">
+                                <a href="<?php echo Fate::app()->url->getWebDir()."code";?>">编程 / 架构</a>
+                            </li>
+                            <li  class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1722">
+                                <a href="<?php echo Fate::app()->url->getWebDir()."relax";?>">搞笑 / 娱乐</a>
+                            </li>
+                 </ul>
+               </li>	
+               <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1638">
+                   <a href="<?php echo Fate::app()->url->getWebDir()."heart";?>">心灵小馆</a>
+               </li>
+               <li class="menu-item menu-item-type-custom menu-item-object-custom last menu-item-1707">
+                   <a target="_blank" href="<?php echo Fate::app()->url->getWebDir()."life";?>">生活</a>
+               </li>
+               <li class="menu-item menu-item-type-custom menu-item-object-custom last menu-item-1707">
+                   <a target="_blank" href="<?php echo Fate::app()->url->getWebDir()."about";?>">关于</a>
+               </li>
+	   </ul>
+	</div>	
+      </nav>
+      <!-- 导航栏 end -->
+
+      <!-- 介绍 start -->
+      <header id="header" class="site-header" role="banner" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+            <div class="wrap">
+                    <div class="title-area">
+                            <h2 class="site-title" itemprop="headline">
+                                    <a href="javascript:void(0);" title="OMEGA" rel="home">Fate</a>
+                            </h2>
+                            <h3 class="site-description"><span style="float:left;margin-left:550px;">一个PHPer的成长历程</span></h3>
+                    </div>
+            </div>
+      </header>
+      <!-- 介绍 end -->
+
+      <!-- 正文 start -->
+      <div class="site-inner">
+         <div class="wrap">
+            <!-- 左侧栏 start -->
+            <main  class="content" id="content" role="main" itemprop="mainContentOfPage" itemscope="itemscope" itemtype="http://schema.org/Blog">
+<?php foreach($articleAll as $key => $article){?>
+    <article id="post-1178" class="entry post publish author-hwijaya post-1178 format-standard has-post-thumbnail category-markup post_tag-content-2 post_tag-css post_tag-formatting-2 post_tag-html post_tag-markup-2" itemscope="itemscope" itemtype="http://schema.org/BlogPosting" itemprop="blogPost">	
+     <div class="entry-wrap">
+        <header class="entry-header">	
+            <h2 class="entry-title" itemprop="headline">
+               <a href="<?php echo Fate::app()->url->getWebDir()."";?><?php echo $article['year'].'/'.$article['month'].'/'.$article['day'].'/'.$article['ID'];?>.html">
+                    <?php echo $article['post_title'];?>
+               </a>
+            </h2>
+            <div class="entry-meta">
+                Posted by 
+                <span class="entry-author" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person">
+                    <a href="" class="entry-author-link">
+                        <span class="entry-author-name">Fate</span>
+                    </a>
+                </span> on 
+                <time class="entry-time"  itemprop="datePublished" ><?php echo $article['post_date'];?></time>  
+            </div>
+        </header>
+        <div class="entry-content">		
+		<?php echo $article['post_content'];?>
+        </div>
+        <!-- 文章标签相关信息 start-->
+	<footer class="entry-footer">
+            <div class="entry-meta">
+                 <span class="entry-terms post_tag" itemprop="keywords">标签: 
+                     <a href="" rel="tag">content</a>
+                 </span>		
+            </div>
+        </footer>
+        <!-- 文章标签相关信息 end -->
+     </div>
+   </article>
+<?php }?>
+</main>
+
+
+			
+
+	
+
+
+
+
+
+
+            <!-- 左侧栏 end -->
+
+            <!-- 右侧栏 start -->
+            <aside class="sidebar sidebar-primary widget-area" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+
+                <!-- 搜索栏 start -->
+                <section id="search-2" class="widget widget-1 even widget-first widget_search">
+                        <div class="widget-wrap">
+                                <form role="search" method="get" class="search-form" action="">
+                                        <input type="search" class="search-field" placeholder="Search ..." value="" name="s" title="Search for:">
+                                        <input type="submit" class="search-submit" value="Search">
+                                </form>
+                        </div>
+                </section>
+                <!-- 搜索栏 end -->
+                                
+                <!-- 日历 start -->
+                <section id="calendar-2" class="widget widget-2 odd widget_calendar">
+                        <div class="widget-wrap">
+                                <div id="calendar_wrap">
+                                <table id="wp-calendar">
+                                        <caption>January 2013</caption>
+                                        <thead>
+                                        <tr>
+                                                <th scope="col" title="Monday">M</th>
+                                                <th scope="col" title="Tuesday">T</th>
+                                                <th scope="col" title="Wednesday">W</th>
+                                                <th scope="col" title="Thursday">T</th>
+                                                <th scope="col" title="Friday">F</th>
+                                                <th scope="col" title="Saturday">S</th>
+                                                <th scope="col" title="Sunday">S</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tfoot>
+                                        <tr>
+                                                <td colspan="3" id="prev"><a href="" >&laquo; Mar</a></td>
+                                                <td class="pad">&nbsp;</td>
+                                                <td colspan="3" id="next" class="pad">&nbsp;</td>
+                                        </tr>
+                                        </tfoot>
+
+                                        <tbody>
+                                        <tr>
+                                                <td colspan="1" class="pad">&nbsp;</td>
+                                                <td>1</td>
+                                                <td>2</td>
+                                                <td>3</td>
+                                                <td>4</td>
+                                                <td><a href="">5</a></td>
+                                                <td>6</td>
+                                        </tr>
+                                        <tr>
+                                                <td>7</td><td>8</td><td><a href="" >9</a></td><td><a >10</a></td>
+                                                <td><a href="">11</a></td><td>12</td><td>13</td>
+                                        </tr>
+                                        <tr>
+                                                <td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td>
+                                        </tr>
+                                        <tr>
+                                                <td>21</td><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td>
+                                        </tr>
+                                        <tr>
+                                                <td>28</td><td>29</td><td>30</td><td>31</td>
+                                                <td class="pad" colspan="3">&nbsp;</td>
+                                        </tr>
+                                        </tbody>
+                                        </table>
+                                </div>
+                            </div>
+                     </section>
+                   <!-- 日历 end -->
+               <!-- 标签云 start -->
+                <section id="calendar-2" class="widget widget-2 odd widget_calendar">
+                        <div class="widget-wrap">
+                                <h4 class="widget-title">标签云</h4>		
+                                <div id="tags_wrap">
+                                    <?php foreach($articleTags as $key => $tag){?>
+                                          <a href="#" ><?php echo $tag['name'];?></a>
+                                    <?php }?>
+                                </div>
+                            </div>
+                 </section>
+                 <!-- 标签云 end -->
+                    <!-- 最新文章 start -->
+                    <section id="recent-posts-2" class="widget widget-3 even widget_recent_entries">
+                       <div class="widget-wrap">		
+                        <h4 class="widget-title">推荐文章</h4>		
+                        <ul>
+                            <?php foreach($articleRandom as $key => $random){?>
+                            <li>
+                                <a href="<?php echo Fate::app()->url->getWebDir()."";?><?php echo $random['year'].'/'.$random['month'].'/'.$random['day'].'/'.$random['ID'];?>.html">
+                                    <?php echo $random['post_title'];?>
+                                </a>
+                            </li>
+                            <?php }?>
+                        </ul>
+                       </div>
+                    </section>
+                    <!-- 最新文章 end -->
+
+                    <!-- 文章归档 start -->
+                    <section id="archives-2" class="widget widget-4 odd widget_archive">
+                        <div class="widget-wrap">
+                            <h4 class="widget-title">文章归档</h4>		
+                            <ul>
+                                <?php foreach($articleArchive as $key => $time){?>
+                                <li>
+                                    <a href='<?php echo Fate::app()->url->getWebDir()."";?><?php echo $time["year"]."/".$time["month"];?>'>
+                                        <?php echo $time['year'].'年'.$time['month'].'月';?>
+                                    </a>
+                                </li>
+                                <?php }?>
+                            </ul>
+                        </div>
+                    </section>
+                    <!-- 文章归档 end -->
+                 </aside>
+                 <!-- 右侧栏 end -->
+            </div>
+        </div>
+        <!-- 正文 end -->
+
+        <!-- 尾部 start -->
+      <footer id="footer" class="site-footer" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+                <div class="wrap" style="text-align:center;" >
+                        <div class="footer-content footer-insert">
+                                <p>Copyright &#169;</p>
+                                <p class="credit"></p>
+                        </div>
+                </div>
+      </footer>
+        <!-- 尾部 end -->
+
+</div>
+	</body>
+</html>

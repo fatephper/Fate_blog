@@ -1,0 +1,237 @@
+<div id="wpbody">
+  <div id="wpbody-content" aria-label="主内容" tabindex="0">	
+    <div class="wrap nosubsub">
+        <h2>分类目录</h2>
+        <div id="ajax-response"></div>
+        <form class="search-form" action="" method="get">
+            <input type="hidden" name="taxonomy" value="category" />
+            <input type="hidden" name="post_type" value="post" />
+            <p class="search-box">
+                <label class="screen-reader-text" for="tag-search-input">搜索分类目录:</label>
+                <input type="search" id="tag-search-input" name="s" value="" />
+                <input type="submit" name="" id="search-submit" class="button" value="搜索分类目录"  />
+            </p>
+        </form>
+        <br class="clear" />
+        <div id="col-container">
+          <!-- 分类列表 start -->
+          <div id="col-right">
+            <div class="col-wrap">
+                <form id="posts-filter" action="" method="post">
+                  <input type="hidden" name="taxonomy" value="category" />
+                  <input type="hidden" name="post_type" value="post" />
+                  <input type="hidden" id="_wpnonce" name="_wpnonce" value="fc6d69978e" />
+                  <input type="hidden" name="_wp_http_referer" value="/wordpress/wp-admin/edit-tags.php?taxonomy=category" />	
+                   <div class="tablenav top">
+                       <!-- 操作 start -->
+                       <div class="alignleft actions bulkactions">
+                           <label for='bulk-action-selector-top' class='screen-reader-text'>选择批量操作</label>
+                           <select name='action' id='bulk-action-selector-top'>
+                               <option value='-1' selected='selected'>批量操作</option>
+                               <option value='delete'>删除</option>
+                           </select>
+                           <input type="submit" name="" id="doaction" class="button action" value="应用"  />
+                       </div>
+                       <!-- 操作 end -->
+                       <!-- 分页 start -->
+                       <div class='tablenav-pages one-page'>
+                           <span class="displaying-num"><{echo:$total}>个项目</span>
+                           <span class='pagination-links'>
+                               <a class='first-page disabled' title='前往第一页' href=''>&laquo;</a>
+                               <a class='prev-page disabled' title='前往上一页' href=''>&lsaquo;</a>
+                               <span class="paging-input">
+                                   第<label for="current-page-selector" class="screen-reader-text">选择页面</label>
+                                   <input class='current-page' id='current-page-selector' title='当前页面' type='text' name='paged' value='1' size='1' />页，共                <span class='total-pages'>1</span>页</span>
+                                   <a class='next-page disabled' title='前往下一页' href=''>&rsaquo;</a>
+                                   <a class='last-page disabled' title='前往最后一页' href=''>&raquo;</a>
+                           </span>
+                       </div>
+                       <!-- 分页 end -->
+                       <br class="clear" />
+                   </div>
+                   <!-- 分类列表 start -->
+                   <table class="wp-list-table widefat fixed tags">
+                       <!-- 列表头 start -->
+                       <thead>
+                           <tr>
+                             <th scope='col' id='cb' class='manage-column column-cb check-column'  style="">
+                                 <label class="screen-reader-text" for="cb-select-all-1">全选</label>
+                                 <input id="cb-select-all-1" type="checkbox" />
+                             </th>
+                             <th scope='col' id='name' class='manage-column column-name sortable desc'  style="">
+                                 <a href="">
+                                     <span>名称</span><span class="sorting-indicator"></span>
+                                 </a>
+                             </th>
+                             <th scope='col' id='description' class='manage-column column-description sortable desc'  style="">
+                                 <a href="">
+                                     <span>图像描述</span>
+                                     <span class="sorting-indicator"></span>
+                                 </a>
+                             </th>
+                             <th scope='col' id='slug' class='manage-column column-slug sortable desc'  style="">
+                                 <a href="">
+                                     <span>别名</span>
+                                     <span class="sorting-indicator"></span>
+                                 </a>
+                             </th>
+                             <th scope='col' id='posts' class='manage-column column-posts num sortable desc'  style="">
+                                 <a href="">
+                                     <span>总数</span>
+                                     <span class="sorting-indicator"></span>
+                                 </a>
+                             </th>	
+                           </tr>
+                       </thead>
+                       <!-- 列表头 end -->
+                       <!-- 列表尾 start -->
+                       <tfoot>
+                           <tr>
+                             <th scope='col'  class='manage-column column-cb check-column'  style="">
+                                 <label class="screen-reader-text" for="cb-select-all-2">全选</label>
+                                 <input id="cb-select-all-2" type="checkbox" />
+                             </th>
+                             <th scope='col'  class='manage-column column-name sortable desc'  style="">
+                                 <a href="">
+                                     <span>名称</span>
+                                     <span class="sorting-indicator"></span>
+                                 </a>
+                             </th>
+                             <th scope='col'  class='manage-column column-description sortable desc'  style="">
+                                 <a href=""><span>图像描述</span><span class="sorting-indicator"></span></a>
+                             </th>
+                             <th scope='col'  class='manage-column column-slug sortable desc'  style="">
+                                 <a href=""><span>别名</span><span class="sorting-indicator"></span></a>
+                             </th>
+                             <th scope='col'  class='manage-column column-posts num sortable desc'  style="">
+                                 <a href=""><span>总数</span><span class="sorting-indicator"></span></a>
+                             </th>	
+                           </tr>
+                       </tfoot>
+                       <!-- 列表尾 end -->
+                       <!-- 列表主体 start -->
+                       <tbody id="the-list" data-wp-lists='list:tag'>
+                           <{foreach:items=$treeData item=$category}>
+                            <tr id="tag-1" class="alternate">
+                                <th scope="row" class="check-column">&nbsp;</th>
+                                <!--标题-->
+                                <td class='name column-name'>
+                                    <strong>
+                                        <a class="row-title" href=""><{echo:$category['name']}></a>
+                                    </strong>
+                                    <br />
+                                    <div class="row-actions">
+                                        <span class='edit'>
+                                            <a href="<{root:admin/category/edit/}><{echo:$category['term_id']}>">编辑</a> | 
+                                        </span>
+                                        <span class='inline hide-if-no-js'><a href="#" class="editinline">快速编辑</a> | </span>
+                                        <span class='view'><a href="<{root:}><{echo:$category['term_id']}>">查看</a> | </span>
+                                        <span class="delete"><a class="delete-tag" href="<{root:admin/category/del/}><{echo:$category['term_id']}>">删除</a> | </span>
+                                    </div>
+                                    <!--
+                                    <div class="hidden" id="inline_1">
+                                        <div class="name">未分类</div>
+                                        <div class="slug">uncategorized</div>
+                                        <div class="parent">0</div>
+                                    </div>
+                                    -->
+                                 </td>
+                                 <!--描述-->
+                                 <td class='description column-description'><{echo:$category['description']}></td>
+                                 <!--别名-->
+                                 <td class='slug column-slug'><{echo:$category['slug']}></td>
+                                 <!--文章数-->
+                                 <td class='posts column-posts'><{echo:$category['count']}></td>
+                            </tr>
+                            <{/foreach}>
+                       </tbody>
+                       <!-- 列表主体 end -->
+                   </table>
+                   <!-- 分类列表 end -->
+                   <!-- 操作 分页 start -->
+                   <div class="tablenav bottom">
+                       <div class="alignleft actions bulkactions">
+                           <label for='bulk-action-selector-bottom' class='screen-reader-text'>选择批量操作</label>
+                           <select name='action2' id='bulk-action-selector-bottom'>
+                               <option value='-1' selected='selected'>批量操作</option>
+                               <option value='delete'>删除</option>
+                           </select>
+                           <input type="submit" name="" id="doaction2" class="button action" value="应用"  />
+                       </div>
+                       <div class='tablenav-pages one-page'>
+                           <span class="displaying-num"><{echo:$total}>个项目</span>
+                           <span class='pagination-links'>
+                               <a class='first-page disabled' title='前往第一页' href=''>&laquo;</a>
+                               <a class='prev-page disabled' title='前往上一页' href=''>&lsaquo;</a>
+                               <span class="paging-input">第1页，共<span class='total-pages'>1</span>页</span>
+                               <a class='next-page disabled' title='前往下一页' href=''>&rsaquo;</a>
+                               <a class='last-page disabled' title='前往最后一页' href=''>&raquo;</a></span>
+                       </div>
+                       <br class="clear" />
+                    </div>
+                   <!-- 操作 分页 end -->
+                   <br class="clear" />
+                  </form>
+
+               <div class="form-wrap">
+                   <p><strong>注意：</strong><br />删除分类目录不会把该分类目录下的文章一并删除。文章会被归入“<strong>未分类</strong>”分类目录。</p>
+                   <p>分类目录可以有选择的转换成标签，请使用<a href="import.php">分类目录到标签转换器</a>。</p>
+               </div>
+
+        </div>
+        </div>
+       <!-- /col-right -->
+       <!-- 分类添加 start -->
+        <div id="col-left">
+        <div class="col-wrap">
+            <div class="form-wrap">
+                <h3>添加新分类目录</h3>
+                    <form id="addtag" method="post" action="/admin/category/add" class="validate">
+                        <input type="hidden" name="taxonomy" value="category" />
+                        <div class="form-field form-required">
+                                <label for="tag-name">名称</label>
+                                <input name="tag-name" id="tag-name" type="text" value="" size="40" aria-required="true" />
+                                <p>这将是它在站点上显示的名字。</p>
+                        </div>
+                        <div class="form-field">
+                            <label for="tag-slug">别名</label>
+                            <input name="slug" id="tag-slug" type="text" value="" size="40" />
+                            <p>“别名”是在URL中使用的别称，它可以令URL更美观。通常使用小写，只能包含字母，数字和连字符（-）。</p>
+                        </div>
+                        <div class="form-field">
+                            <label for="parent">父级</label>
+                            <select name='parent' id='parent' class='postform' >
+                                <option value='-1'>无</option>
+                                <{foreach:items=$treeData item=$category key=$k}>
+                                     <option class='level-<{echo:$category["level"]}>' value='<{echo:$category["term_id"]}>'>
+                                         <{echo:$category['name']}>
+                                     </option>
+                                <{/foreach}>
+                            </select>
+                            <p>分类目录和标签不同，它可以有层级关系。您可以有一个“音乐”分类目录，在这个目录下可以有叫做“流行”和“古典”的子目录。</p>
+                        </div>
+                        <div class="form-field">
+                                <label for="tag-description">描述</label>
+                                <textarea name="description" id="tag-description" rows="5" cols="40"></textarea>
+                                <p>描述只会在一部分主题中显示。</p>
+                        </div>
+
+                            <p class="submit">
+                                <input type="submit" name="submit" id="submit" class="button button-primary" value="添加新分类目录"  />
+                            </p>
+                    </form>
+            </div>
+        </div>
+        </div>
+        <!-- /col-left -->
+    </div>
+         <!-- /col-container -->
+      </div>
+    <!-- /wrap -->
+        <div class="clear"></div> 
+  </div><!-- wpbody-content -->
+  <div class="clear"></div>
+  <div class="clear"></div>
+</div><!-- wpwrap -->
+
+

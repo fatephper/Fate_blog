@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html xmlns="http://www.w3.org/1999/xhtml" class="ie8 wp-toolbar"  lang="zh-CN">
+<![endif]-->
+<!--[if !(IE 8) ]><!-->
+<html xmlns="http://www.w3.org/1999/xhtml" class="wp-toolbar"  lang="zh-CN">
+<!--<![endif]-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>博客管理后台</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<link type="/image/x-icon" href="<?php echo Fate::app()->url->getWebDir()."themes/default/skin/image/favicon.ico";?>" rel="icon">
+<?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/admin/dashicons.css\">";?>
+<?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/admin/admin-bar.css\">";?>
+<?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/admin/common.css\">";?>
+<?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/admin/dashboard.css\">";?>
+<?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/admin/edit.css\">";?>
+<?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/admin/screens.css\">";?>
+<?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/admin/press-this.css\">";?>
+<?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/admin/wp-admin.css\">";?>
+<?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/admin/buttons.css\">";?>
+<?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/admin/list-tables.css\">";?>
+<?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/admin/nav-menus.css\">";?>
+<?php echo "<script src=\"/themes/default/skin/js/common/jquery-1.8.3.js\"></script>";?>
+<!--[if lte IE 7]>
+<link rel='stylesheet' id='ie-css'  href='http://localhost/wordpress/wp-admin/css/ie.min.css?ver=4.0' type='text/css' media='all' />
+<![endif]-->
+<style type="text/css" media="print">#wpadminbar { display:none; }</style>
+</head>
+<body class="wp-admin wp-core-ui no-js  index-php auto-fold admin-bar branch-4 version-4-0 admin-color-fresh locale-zh-cn no-customize-support no-svg">
+<div id="wpwrap">
+<!-- header start -->
+<div id="wpadminbar" class="nojq nojs" role="navigation">
+   <a class="screen-reader-shortcut" href="#wp-toolbar" tabindex="1">跳至工具栏</a>
+    <div class="quicklinks" id="wp-toolbar" role="navigation" aria-label="顶部导航工具栏。" tabindex="0">
+      <ul id="wp-admin-bar-root-default" class="ab-top-menu">
+        <li id="wp-admin-bar-menu-toggle">
+            <a class="ab-item"  href="#"><span class="ab-icon"></span><span class="screen-reader-text">菜单</span></a>
+        </li>
+        <li id="wp-admin-bar-site-name" class="menupop">
+            <a class="ab-item"  aria-haspopup="true" href="<?php echo Fate::app()->url->getWebDir()."";?>">站点</a>	
+        </li>
+        <li id="wp-admin-bar-comments">
+            <a class="ab-item"  href="<?php echo Fate::app()->url->getWebDir()."admin/comment";?>" title="0条评论待审">
+                <span class="ab-icon"></span><span id="ab-awaiting-mod" class="ab-label awaiting-mod pending-count count-0">0</span>
+            </a>		
+        </li>
+        <li id="wp-admin-bar-new-content" class="menupop">
+            <a class="ab-item"  aria-haspopup="true" href="http://localhost/wordpress/wp-admin/post-new.php" title="添加">
+                <span class="ab-icon"></span><span class="ab-label">新建</span>
+            </a>
+            <div class="ab-sub-wrapper">
+                <ul id="wp-admin-bar-new-content-default" class="ab-submenu">
+                    <li id="wp-admin-bar-new-post"><a class="ab-item"  href="<?php echo Fate::app()->url->getWebDir()."admin/article/create";?>">文章</a></li>
+                    <li id="wp-admin-bar-new-media"><a class="ab-item"  href="<?php echo Fate::app()->url->getWebDir()."admin/media/create";?>">媒体</a></li>
+                    <li id="wp-admin-bar-new-page"><a class="ab-item"  href="<?php echo Fate::app()->url->getWebDir()."admin/page/create";?>">页面</a></li>
+                    <!--<li id="wp-admin-bar-new-user"><a class="ab-item"  href="http://localhost/wordpress/wp-admin/user-new.php">用户</a></li>-->
+                </ul>
+            </div>		
+         </li>
+      </ul>
+      <ul id="wp-admin-bar-top-secondary" class="ab-top-secondary ab-top-menu">
+         <li id="wp-admin-bar-my-account" class="menupop with-avatar">
+             <a class="ab-item"  aria-haspopup="true" href="<?php echo Fate::app()->url->getWebDir()."admin/user/center";?>" title="我的帐户">您好，admin<img alt='' src='http://0.gravatar.com/avatar/487f87505f619bf9ea08f26bb34f8118?s=26&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D26&amp;r=G' class='avatar avatar-26 photo' height='26' width='26' />
+             </a>
+             <div class="ab-sub-wrapper">
+                <ul id="wp-admin-bar-user-actions" class="ab-submenu">
+                       <li id="wp-admin-bar-user-info">
+                           <a class="ab-item" tabindex="-1" href="<?php echo Fate::app()->url->getWebDir()."admin/user/center";?>">
+                               <img alt='' src='http://0.gravatar.com/avatar/487f87505f619bf9ea08f26bb34f8118?s=64&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D64&amp;r=G' class='avatar avatar-64 photo' height='64' width='64' />
+                               <span class='display-name'>admin</span>
+                           </a>
+                       </li>
+                    <li id="wp-admin-bar-edit-profile"><a class="ab-item"  href="<?php echo Fate::app()->url->getWebDir()."admin/user/center";?>">编辑我的个人资料</a></li>
+                       <li id="wp-admin-bar-logout">
+                           <a class="ab-item"  href="<?php echo Fate::app()->url->getWebDir()."admin/user/logout";?>">登出</a>
+                       </li>
+                 </ul>
+              </div>		
+           </li>
+       </ul>			
+    </div>
+   <a class="screen-reader-shortcut" href="<?php echo Fate::app()->url->getWebDir()."admin/user/logout";?>">登出</a>
+</div>
+<!-- header stop --->
+
+<!-- menu start -->
+<div id="adminmenuwrap">
+    <ul id="adminmenu" role="navigation">
+        
+	<li id="menu-admin" class="wp-first-item wp-has-submenu wp-not-current-submenu wp-menu-open menu-top menu-top-first menu-icon-dashboard menu-top-last" >
+            <a href='<?php echo Fate::app()->url->getWebDir()."admin/admin";?>' class="wp-first-item wp-has-submenu wp-not-current-submenu wp-menu-open menu-top menu-top-first menu-icon-dashboard menu-top-last" >
+                <div class="wp-menu-arrow"><div></div></div>
+                <div class='wp-menu-image dashicons-before dashicons-dashboard'><br /></div>
+                <div class='wp-menu-name'>概况</div>
+            </a>
+        </li>
+        
+	<li id="menu-article" class="wp-has-submenu wp-not-current-submenu open-if-no-js menu-top menu-icon-post menu-top-first" >
+            <a href='<?php echo Fate::app()->url->getWebDir()."admin/article";?>' class="wp-has-submenu wp-not-current-submenu open-if-no-js menu-top menu-icon-post menu-top-first" aria-haspopup="true">
+                <div class="wp-menu-arrow"><div></div></div>
+                <div class='wp-menu-image dashicons-before dashicons-admin-post'><br /></div>
+                <div class='wp-menu-name'>文章</div>
+            </a>
+            <ul class='wp-submenu wp-submenu-wrap'>
+                <li class='wp-submenu-head'>文章</li>
+                <li class="wp-first-item"><a href='<?php echo Fate::app()->url->getWebDir()."admin/article";?>' class="wp-first-item">所有文章</a></li>
+                <li><a href='<?php echo Fate::app()->url->getWebDir()."admin/article/add";?>'>写文章</a></li>
+                <li><a href='<?php echo Fate::app()->url->getWebDir()."admin/category";?>'>分类目录</a></li>
+                <li><a href='<?php echo Fate::app()->url->getWebDir()."admin/tag";?>'>标签</a></li>
+            </ul>
+        </li>
+        
+	<li id="menu-media" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-media" >
+            <a href='<?php echo Fate::app()->url->getWebDir()."admin/media";?>' class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-media" aria-haspopup="true">
+                <div class="wp-menu-arrow"><div></div></div>
+                <div class='wp-menu-image dashicons-before dashicons-admin-media'><br /></div>
+                <div class='wp-menu-name'>多媒体</div>
+            </a>
+            <ul class='wp-submenu wp-submenu-wrap'>
+                <li class='wp-submenu-head'>多媒体</li>
+                <li class="wp-first-item"><a href='<?php echo Fate::app()->url->getWebDir()."admin/media";?>' class="wp-first-item">媒体库</a></li>
+                <li><a href='<?php echo Fate::app()->url->getWebDir()."admin/media/add";?>'>添加</a></li>
+            </ul>
+        </li>
+        
+	<li id="menu-page" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-page" >
+            <a href='<?php echo Fate::app()->url->getWebDir()."admin/page";?>' class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-page" aria-haspopup="true">
+                <div class="wp-menu-arrow"><div></div></div>
+                <div class='wp-menu-image dashicons-before dashicons-admin-page'><br /></div>
+                <div class='wp-menu-name'>页面</div>
+            </a>
+            <ul class='wp-submenu wp-submenu-wrap'>
+                <li class='wp-submenu-head'>页面</li>
+                <li class="wp-first-item"><a href='<?php echo Fate::app()->url->getWebDir()."admin/page";?>' class="wp-first-item">所有页面</a></li>
+                <li><a href='<?php echo Fate::app()->url->getWebDir()."admin/page/create";?>'>新建页面</a></li>
+            </ul>
+        </li>
+        
+	<li id="menu-comment" class="wp-not-current-submenu menu-top menu-icon-comments menu-top-last" >
+            <a href='<?php echo Fate::app()->url->getWebDir()."admin/comment";?>' class="wp-not-current-submenu menu-top menu-icon-comments menu-top-last" >
+                <div class="wp-menu-arrow"><div></div></div>
+                <div class='wp-menu-image dashicons-before dashicons-admin-comments'><br /></div>
+                <div class='wp-menu-name'>评论<span class='awaiting-mod count-0'><span class='pending-count'>0</span></span></div>
+            </a>
+        </li>
+
+	<li id="menu-theme" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-appearance menu-top-first" >
+            <a href='<?php echo Fate::app()->url->getWebDir()."admin/theme";?>' class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-appearance menu-top-first" aria-haspopup="true">
+                <div class="wp-menu-arrow"><div></div></div>
+                <div class='wp-menu-image dashicons-before dashicons-admin-appearance'><br /></div>
+                <div class='wp-menu-name'>外观</div>
+            </a>
+            <ul class='wp-submenu wp-submenu-wrap'>
+                <li class='wp-submenu-head'>外观</li>
+                <li class="wp-first-item"><a href='themes.php' class="wp-first-item">主题</a></li>
+                <li class="hide-if-no-customize"><a href='customize.php?return=%2Fwordpress%2Fwp-admin%2Findex.php' class="hide-if-no-customize">自定义</a></li>
+                <li><a href='widgets.php'>小工具</a></li>
+                <li><a href='nav-menus.php'>菜单</a></li>
+                <li><a href='themes.php?page=custom-header'>顶部</a></li>
+                <li><a href='themes.php?page=custom-background'>背景</a></li>
+                <li><a href='theme-editor.php'>编辑</a></li>
+            </ul>
+        </li>
+        
+	<li id="menu-plugin" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-plugins" >
+            <a href='plugins.php' class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-plugins" aria-haspopup="true">
+                <div class="wp-menu-arrow"><div></div></div>
+                <div class='wp-menu-image dashicons-before dashicons-admin-plugins'><br /></div>
+                <div class='wp-menu-name'>插件<span class='update-plugins count-0'><span class='plugin-count'>0</span></span></div>
+            </a>
+            <ul class='wp-submenu wp-submenu-wrap'>
+                <li class='wp-submenu-head'>插件<span class='update-plugins count-0'><span class='plugin-count'>0</span></span></li>
+                <li class="wp-first-item"><a href='plugins.php' class="wp-first-item">已安装的插件</a></li>
+                <li><a href='plugin-install.php'>安装插件</a></li>
+                <li><a href='plugin-editor.php'>编辑</a></li>
+            </ul
+        </li>
+        
+	<li id="menu-user" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-users" >
+            <a href='users.php' class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-users" aria-haspopup="true">
+                <div class="wp-menu-arrow"><div></div></div>
+                <div class='wp-menu-image dashicons-before dashicons-admin-users'><br /></div>
+                <div class='wp-menu-name'>用户</div>
+            </a>
+            <ul class='wp-submenu wp-submenu-wrap'>
+                <li class='wp-submenu-head'>用户</li>
+                <li class="wp-first-item"><a href='users.php' class="wp-first-item">所有用户</a></li>
+                <li><a href='user-new.php'>添加用户</a></li>
+                <li><a href='profile.php'>我的个人资料</a></li>
+            </ul>
+        </li>
+        
+	<li id="menu-tool" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-tools" >
+            <a href='tools.php' class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-tools" aria-haspopup="true">
+                <div class="wp-menu-arrow"><div></div></div>
+                <div class='wp-menu-image dashicons-before dashicons-admin-tools'><br /></div>
+                <div class='wp-menu-name'>工具</div>
+            </a>
+            <ul class='wp-submenu wp-submenu-wrap'>
+                <li class='wp-submenu-head'>工具</li>
+                <li class="wp-first-item"><a href='tools.php' class="wp-first-item">可用工具</a></li>
+                <li><a href='import.php'>导入</a></li>
+                <li><a href='export.php'>导出</a></li>
+            </ul>
+        </li>
+        
+	<li id="menu-setting" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-settings menu-top-last" >
+            <a href='<?php echo Fate::app()->url->getWebDir()."admin/setting";?>' class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-settings menu-top-last" aria-haspopup="true">
+                <div class="wp-menu-arrow"><div></div></div>
+                <div class='wp-menu-image dashicons-before dashicons-admin-settings'><br /></div>
+                <div class='wp-menu-name'>设置</div>
+            </a>
+            <ul class='wp-submenu wp-submenu-wrap'>
+                <li class='wp-submenu-head'>设置</li>
+                <li class="wp-first-item"><a href='<?php echo Fate::app()->url->getWebDir()."admin/setting";?>' class="wp-first-item">常规</a></li>
+                <li><a href='<?php echo Fate::app()->url->getWebDir()."admin/setting/write";?>'>撰写</a></li>
+                <li><a href='<?php echo Fate::app()->url->getWebDir()."admin/setting/read";?>'>阅读</a></li>
+                <li><a href='<?php echo Fate::app()->url->getWebDir()."admin/setting/discussion";?>'>讨论</a></li>
+                <li><a href='<?php echo Fate::app()->url->getWebDir()."admin/setting/media";?>'>多媒体</a></li>
+                <li><a href='<?php echo Fate::app()->url->getWebDir()."admin/setting/url";?>'>固定链接</a></li>
+            </ul>
+        </li>
+        
+        <li id="collapse-menu" class="hide-if-no-js"><div id="collapse-button"><div></div></div><span>收起菜单</span></li>
+    </ul>
+</div>
+<!-- menu end -->
+
+<div id="wpcontent"><div id="wpbody">
+  <div id="wpbody-content" aria-label="主内容" tabindex="0">	
+    <div class="wrap nosubsub">
+        <h2>分类目录</h2>
+        <div id="ajax-response"></div>
+        <form class="search-form" action="" method="get">
+            <input type="hidden" name="taxonomy" value="category" />
+            <input type="hidden" name="post_type" value="post" />
+            <p class="search-box">
+                <label class="screen-reader-text" for="tag-search-input">搜索分类目录:</label>
+                <input type="search" id="tag-search-input" name="s" value="" />
+                <input type="submit" name="" id="search-submit" class="button" value="搜索分类目录"  />
+            </p>
+        </form>
+        <br class="clear" />
+        <div id="col-container">
+          <!-- 分类列表 start -->
+          <div id="col-right">
+            <div class="col-wrap">
+                <form id="posts-filter" action="" method="post">
+                  <input type="hidden" name="taxonomy" value="category" />
+                  <input type="hidden" name="post_type" value="post" />
+                  <input type="hidden" id="_wpnonce" name="_wpnonce" value="fc6d69978e" />
+                  <input type="hidden" name="_wp_http_referer" value="/wordpress/wp-admin/edit-tags.php?taxonomy=category" />	
+                   <div class="tablenav top">
+                       <!-- 操作 start -->
+                       <div class="alignleft actions bulkactions">
+                           <label for='bulk-action-selector-top' class='screen-reader-text'>选择批量操作</label>
+                           <select name='action' id='bulk-action-selector-top'>
+                               <option value='-1' selected='selected'>批量操作</option>
+                               <option value='delete'>删除</option>
+                           </select>
+                           <input type="submit" name="" id="doaction" class="button action" value="应用"  />
+                       </div>
+                       <!-- 操作 end -->
+                       <!-- 分页 start -->
+                       <div class='tablenav-pages one-page'>
+                           <span class="displaying-num"><?php echo $total;?>个项目</span>
+                           <span class='pagination-links'>
+                               <a class='first-page disabled' title='前往第一页' href=''>&laquo;</a>
+                               <a class='prev-page disabled' title='前往上一页' href=''>&lsaquo;</a>
+                               <span class="paging-input">
+                                   第<label for="current-page-selector" class="screen-reader-text">选择页面</label>
+                                   <input class='current-page' id='current-page-selector' title='当前页面' type='text' name='paged' value='1' size='1' />页，共                <span class='total-pages'>1</span>页</span>
+                                   <a class='next-page disabled' title='前往下一页' href=''>&rsaquo;</a>
+                                   <a class='last-page disabled' title='前往最后一页' href=''>&raquo;</a>
+                           </span>
+                       </div>
+                       <!-- 分页 end -->
+                       <br class="clear" />
+                   </div>
+                   <!-- 分类列表 start -->
+                   <table class="wp-list-table widefat fixed tags">
+                       <!-- 列表头 start -->
+                       <thead>
+                           <tr>
+                             <th scope='col' id='cb' class='manage-column column-cb check-column'  style="">
+                                 <label class="screen-reader-text" for="cb-select-all-1">全选</label>
+                                 <input id="cb-select-all-1" type="checkbox" />
+                             </th>
+                             <th scope='col' id='name' class='manage-column column-name sortable desc'  style="">
+                                 <a href="">
+                                     <span>名称</span><span class="sorting-indicator"></span>
+                                 </a>
+                             </th>
+                             <th scope='col' id='description' class='manage-column column-description sortable desc'  style="">
+                                 <a href="">
+                                     <span>图像描述</span>
+                                     <span class="sorting-indicator"></span>
+                                 </a>
+                             </th>
+                             <th scope='col' id='slug' class='manage-column column-slug sortable desc'  style="">
+                                 <a href="">
+                                     <span>别名</span>
+                                     <span class="sorting-indicator"></span>
+                                 </a>
+                             </th>
+                             <th scope='col' id='posts' class='manage-column column-posts num sortable desc'  style="">
+                                 <a href="">
+                                     <span>总数</span>
+                                     <span class="sorting-indicator"></span>
+                                 </a>
+                             </th>	
+                           </tr>
+                       </thead>
+                       <!-- 列表头 end -->
+                       <!-- 列表尾 start -->
+                       <tfoot>
+                           <tr>
+                             <th scope='col'  class='manage-column column-cb check-column'  style="">
+                                 <label class="screen-reader-text" for="cb-select-all-2">全选</label>
+                                 <input id="cb-select-all-2" type="checkbox" />
+                             </th>
+                             <th scope='col'  class='manage-column column-name sortable desc'  style="">
+                                 <a href="">
+                                     <span>名称</span>
+                                     <span class="sorting-indicator"></span>
+                                 </a>
+                             </th>
+                             <th scope='col'  class='manage-column column-description sortable desc'  style="">
+                                 <a href=""><span>图像描述</span><span class="sorting-indicator"></span></a>
+                             </th>
+                             <th scope='col'  class='manage-column column-slug sortable desc'  style="">
+                                 <a href=""><span>别名</span><span class="sorting-indicator"></span></a>
+                             </th>
+                             <th scope='col'  class='manage-column column-posts num sortable desc'  style="">
+                                 <a href=""><span>总数</span><span class="sorting-indicator"></span></a>
+                             </th>	
+                           </tr>
+                       </tfoot>
+                       <!-- 列表尾 end -->
+                       <!-- 列表主体 start -->
+                       <tbody id="the-list" data-wp-lists='list:tag'>
+                           <?php foreach($treeData as $key => $category){?>
+                            <tr id="tag-1" class="alternate">
+                                <th scope="row" class="check-column">&nbsp;</th>
+                                <!--标题-->
+                                <td class='name column-name'>
+                                    <strong>
+                                        <a class="row-title" href=""><?php echo $category['name'];?></a>
+                                    </strong>
+                                    <br />
+                                    <div class="row-actions">
+                                        <span class='edit'>
+                                            <a href="<?php echo Fate::app()->url->getWebDir()."admin/category/edit/";?><?php echo $category['term_id'];?>">编辑</a> | 
+                                        </span>
+                                        <span class='inline hide-if-no-js'><a href="#" class="editinline">快速编辑</a> | </span>
+                                        <span class='view'><a href="<?php echo Fate::app()->url->getWebDir()."";?><?php echo $category['term_id'];?>">查看</a> | </span>
+                                        <span class="delete"><a class="delete-tag" href="<?php echo Fate::app()->url->getWebDir()."admin/category/del/";?><?php echo $category['term_id'];?>">删除</a> | </span>
+                                    </div>
+                                    <!--
+                                    <div class="hidden" id="inline_1">
+                                        <div class="name">未分类</div>
+                                        <div class="slug">uncategorized</div>
+                                        <div class="parent">0</div>
+                                    </div>
+                                    -->
+                                 </td>
+                                 <!--描述-->
+                                 <td class='description column-description'><?php echo $category['description'];?></td>
+                                 <!--别名-->
+                                 <td class='slug column-slug'><?php echo $category['slug'];?></td>
+                                 <!--文章数-->
+                                 <td class='posts column-posts'><?php echo $category['count'];?></td>
+                            </tr>
+                            <?php }?>
+                       </tbody>
+                       <!-- 列表主体 end -->
+                   </table>
+                   <!-- 分类列表 end -->
+                   <!-- 操作 分页 start -->
+                   <div class="tablenav bottom">
+                       <div class="alignleft actions bulkactions">
+                           <label for='bulk-action-selector-bottom' class='screen-reader-text'>选择批量操作</label>
+                           <select name='action2' id='bulk-action-selector-bottom'>
+                               <option value='-1' selected='selected'>批量操作</option>
+                               <option value='delete'>删除</option>
+                           </select>
+                           <input type="submit" name="" id="doaction2" class="button action" value="应用"  />
+                       </div>
+                       <div class='tablenav-pages one-page'>
+                           <span class="displaying-num"><?php echo $total;?>个项目</span>
+                           <span class='pagination-links'>
+                               <a class='first-page disabled' title='前往第一页' href=''>&laquo;</a>
+                               <a class='prev-page disabled' title='前往上一页' href=''>&lsaquo;</a>
+                               <span class="paging-input">第1页，共<span class='total-pages'>1</span>页</span>
+                               <a class='next-page disabled' title='前往下一页' href=''>&rsaquo;</a>
+                               <a class='last-page disabled' title='前往最后一页' href=''>&raquo;</a></span>
+                       </div>
+                       <br class="clear" />
+                    </div>
+                   <!-- 操作 分页 end -->
+                   <br class="clear" />
+                  </form>
+
+               <div class="form-wrap">
+                   <p><strong>注意：</strong><br />删除分类目录不会把该分类目录下的文章一并删除。文章会被归入“<strong>未分类</strong>”分类目录。</p>
+                   <p>分类目录可以有选择的转换成标签，请使用<a href="import.php">分类目录到标签转换器</a>。</p>
+               </div>
+
+        </div>
+        </div>
+       <!-- /col-right -->
+       <!-- 分类添加 start -->
+        <div id="col-left">
+        <div class="col-wrap">
+            <div class="form-wrap">
+                <h3>添加新分类目录</h3>
+                    <form id="addtag" method="post" action="/admin/category/add" class="validate">
+                        <input type="hidden" name="taxonomy" value="category" />
+                        <div class="form-field form-required">
+                                <label for="tag-name">名称</label>
+                                <input name="tag-name" id="tag-name" type="text" value="" size="40" aria-required="true" />
+                                <p>这将是它在站点上显示的名字。</p>
+                        </div>
+                        <div class="form-field">
+                            <label for="tag-slug">别名</label>
+                            <input name="slug" id="tag-slug" type="text" value="" size="40" />
+                            <p>“别名”是在URL中使用的别称，它可以令URL更美观。通常使用小写，只能包含字母，数字和连字符（-）。</p>
+                        </div>
+                        <div class="form-field">
+                            <label for="parent">父级</label>
+                            <select name='parent' id='parent' class='postform' >
+                                <option value='-1'>无</option>
+                                <?php foreach($treeData as $k => $category){?>
+                                     <option class='level-<?php echo $category["level"];?>' value='<?php echo $category["term_id"];?>'>
+                                         <?php echo $category['name'];?>
+                                     </option>
+                                <?php }?>
+                            </select>
+                            <p>分类目录和标签不同，它可以有层级关系。您可以有一个“音乐”分类目录，在这个目录下可以有叫做“流行”和“古典”的子目录。</p>
+                        </div>
+                        <div class="form-field">
+                                <label for="tag-description">描述</label>
+                                <textarea name="description" id="tag-description" rows="5" cols="40"></textarea>
+                                <p>描述只会在一部分主题中显示。</p>
+                        </div>
+
+                            <p class="submit">
+                                <input type="submit" name="submit" id="submit" class="button button-primary" value="添加新分类目录"  />
+                            </p>
+                    </form>
+            </div>
+        </div>
+        </div>
+        <!-- /col-left -->
+    </div>
+         <!-- /col-container -->
+      </div>
+    <!-- /wrap -->
+        <div class="clear"></div> 
+  </div><!-- wpbody-content -->
+  <div class="clear"></div>
+  <div class="clear"></div>
+</div><!-- wpwrap -->
+
+
+</div>
+    
+</div>
+<script>
+    $(function(){
+        
+        var menu = eval(<?php echo $menu;?>);
+        var module =  '<?php echo Fate::app()->module;?>';
+        var control = '<?php echo Fate::app()->control;?>';
+        var action = '<?php echo Fate::app()->action;?>';
+        var menu_bar = $('#adminmenu');
+        var current_menu ;
+        
+        $.each(menu,function(i){
+            if($.inArray(control,menu[i])!=-1){
+                current_menu = $('#'+i);;
+                return ;
+            }
+        })
+        
+        var href_parttern = control
+        if(action!='index'){
+            href_parttern = control+'/'+action;
+        }
+        var current_tag = current_menu.children('ul').children('li').children('a[href$="'+href_parttern+'"]');
+
+        if(current_tag.length==0){
+            current_tag = current_menu.children('ul').children('li').children('a[href$="'+control+'"]');   
+        }
+        current_menu.toggleClass('wp-not-current-submenu wp-has-current-submenu');
+        current_menu.children('a').toggleClass('wp-not-current-submenu wp-has-current-submenu');
+        current_tag.addClass('current');
+        current_tag.parent().addClass('current');
+
+        menu_bar.children('li').hover(function(){
+                $(this).addClass('opensub');
+                $(this).children('ul').css('top',-1);
+        },function(){
+                $(this).removeClass('opensub');
+                if(!$(this).hasClass('wp-has-current-submenu')){
+                    $(this).children('ul').css('top','-1000em'); 
+                }
+        })
+        
+        function initLayout(){
+            
+            var hight = document.documentElement.clientHeight - $("#nav").outerHeight(true);   
+
+            $('#adminmenuwrap').height(hight); 
+            $('#wpwrap').height(hight);
+            
+        }
+		
+        initLayout();
+
+        $(window).resize(function(){   
+               initLayout();   
+        });
+
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,2162 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html xmlns="http://www.w3.org/1999/xhtml" class="ie8 wp-toolbar"  lang="zh-CN">
+<![endif]-->
+<!--[if !(IE 8) ]><!-->
+<html xmlns="http://www.w3.org/1999/xhtml" class="wp-toolbar"  lang="zh-CN">
+<!--<![endif]-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>博客管理后台</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<link type="/image/x-icon" href="<?php echo Fate::app()->url->getWebDir()."themes/default/skin/image/favicon.ico";?>" rel="icon">
+<?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/admin/dashicons.css\">";?>
+<?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/admin/admin-bar.css\">";?>
+<?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/admin/common.css\">";?>
+<?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/admin/dashboard.css\">";?>
+<?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/admin/edit.css\">";?>
+<?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/admin/screens.css\">";?>
+<?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/admin/press-this.css\">";?>
+<?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/admin/wp-admin.css\">";?>
+<?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/admin/buttons.css\">";?>
+<?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/admin/list-tables.css\">";?>
+<?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/admin/nav-menus.css\">";?>
+<?php echo "<script src=\"/themes/default/skin/js/common/jquery-1.8.3.js\"></script>";?>
+<!--[if lte IE 7]>
+<link rel='stylesheet' id='ie-css'  href='http://localhost/wordpress/wp-admin/css/ie.min.css?ver=4.0' type='text/css' media='all' />
+<![endif]-->
+<style type="text/css" media="print">#wpadminbar { display:none; }</style>
+</head>
+<body class="wp-admin wp-core-ui no-js  index-php auto-fold admin-bar branch-4 version-4-0 admin-color-fresh locale-zh-cn no-customize-support no-svg">
+<div id="wpwrap">
+<!-- header start -->
+<div id="wpadminbar" class="nojq nojs" role="navigation">
+   <a class="screen-reader-shortcut" href="#wp-toolbar" tabindex="1">跳至工具栏</a>
+    <div class="quicklinks" id="wp-toolbar" role="navigation" aria-label="顶部导航工具栏。" tabindex="0">
+      <ul id="wp-admin-bar-root-default" class="ab-top-menu">
+        <li id="wp-admin-bar-menu-toggle">
+            <a class="ab-item"  href="#"><span class="ab-icon"></span><span class="screen-reader-text">菜单</span></a>
+        </li>
+        <li id="wp-admin-bar-site-name" class="menupop">
+            <a class="ab-item"  aria-haspopup="true" href="<?php echo Fate::app()->url->getWebDir()."";?>">站点</a>	
+        </li>
+        <li id="wp-admin-bar-comments">
+            <a class="ab-item"  href="<?php echo Fate::app()->url->getWebDir()."admin/comment";?>" title="0条评论待审">
+                <span class="ab-icon"></span><span id="ab-awaiting-mod" class="ab-label awaiting-mod pending-count count-0">0</span>
+            </a>		
+        </li>
+        <li id="wp-admin-bar-new-content" class="menupop">
+            <a class="ab-item"  aria-haspopup="true" href="http://localhost/wordpress/wp-admin/post-new.php" title="添加">
+                <span class="ab-icon"></span><span class="ab-label">新建</span>
+            </a>
+            <div class="ab-sub-wrapper">
+                <ul id="wp-admin-bar-new-content-default" class="ab-submenu">
+                    <li id="wp-admin-bar-new-post"><a class="ab-item"  href="<?php echo Fate::app()->url->getWebDir()."admin/article/create";?>">文章</a></li>
+                    <li id="wp-admin-bar-new-media"><a class="ab-item"  href="<?php echo Fate::app()->url->getWebDir()."admin/media/create";?>">媒体</a></li>
+                    <li id="wp-admin-bar-new-page"><a class="ab-item"  href="<?php echo Fate::app()->url->getWebDir()."admin/page/create";?>">页面</a></li>
+                    <!--<li id="wp-admin-bar-new-user"><a class="ab-item"  href="http://localhost/wordpress/wp-admin/user-new.php">用户</a></li>-->
+                </ul>
+            </div>		
+         </li>
+      </ul>
+      <ul id="wp-admin-bar-top-secondary" class="ab-top-secondary ab-top-menu">
+         <li id="wp-admin-bar-my-account" class="menupop with-avatar">
+             <a class="ab-item"  aria-haspopup="true" href="<?php echo Fate::app()->url->getWebDir()."admin/user/center";?>" title="我的帐户">您好，admin<img alt='' src='http://0.gravatar.com/avatar/487f87505f619bf9ea08f26bb34f8118?s=26&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D26&amp;r=G' class='avatar avatar-26 photo' height='26' width='26' />
+             </a>
+             <div class="ab-sub-wrapper">
+                <ul id="wp-admin-bar-user-actions" class="ab-submenu">
+                       <li id="wp-admin-bar-user-info">
+                           <a class="ab-item" tabindex="-1" href="<?php echo Fate::app()->url->getWebDir()."admin/user/center";?>">
+                               <img alt='' src='http://0.gravatar.com/avatar/487f87505f619bf9ea08f26bb34f8118?s=64&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D64&amp;r=G' class='avatar avatar-64 photo' height='64' width='64' />
+                               <span class='display-name'>admin</span>
+                           </a>
+                       </li>
+                    <li id="wp-admin-bar-edit-profile"><a class="ab-item"  href="<?php echo Fate::app()->url->getWebDir()."admin/user/center";?>">编辑我的个人资料</a></li>
+                       <li id="wp-admin-bar-logout">
+                           <a class="ab-item"  href="<?php echo Fate::app()->url->getWebDir()."admin/user/logout";?>">登出</a>
+                       </li>
+                 </ul>
+              </div>		
+           </li>
+       </ul>			
+    </div>
+   <a class="screen-reader-shortcut" href="<?php echo Fate::app()->url->getWebDir()."admin/user/logout";?>">登出</a>
+</div>
+<!-- header stop --->
+
+<!-- menu start -->
+<div id="adminmenuwrap">
+    <ul id="adminmenu" role="navigation">
+        
+	<li id="menu-admin" class="wp-first-item wp-has-submenu wp-not-current-submenu wp-menu-open menu-top menu-top-first menu-icon-dashboard menu-top-last" >
+            <a href='<?php echo Fate::app()->url->getWebDir()."admin/admin";?>' class="wp-first-item wp-has-submenu wp-not-current-submenu wp-menu-open menu-top menu-top-first menu-icon-dashboard menu-top-last" >
+                <div class="wp-menu-arrow"><div></div></div>
+                <div class='wp-menu-image dashicons-before dashicons-dashboard'><br /></div>
+                <div class='wp-menu-name'>概况</div>
+            </a>
+        </li>
+        
+	<li id="menu-article" class="wp-has-submenu wp-not-current-submenu open-if-no-js menu-top menu-icon-post menu-top-first" >
+            <a href='<?php echo Fate::app()->url->getWebDir()."admin/article";?>' class="wp-has-submenu wp-not-current-submenu open-if-no-js menu-top menu-icon-post menu-top-first" aria-haspopup="true">
+                <div class="wp-menu-arrow"><div></div></div>
+                <div class='wp-menu-image dashicons-before dashicons-admin-post'><br /></div>
+                <div class='wp-menu-name'>文章</div>
+            </a>
+            <ul class='wp-submenu wp-submenu-wrap'>
+                <li class='wp-submenu-head'>文章</li>
+                <li class="wp-first-item"><a href='<?php echo Fate::app()->url->getWebDir()."admin/article";?>' class="wp-first-item">所有文章</a></li>
+                <li><a href='<?php echo Fate::app()->url->getWebDir()."admin/article/add";?>'>写文章</a></li>
+                <li><a href='<?php echo Fate::app()->url->getWebDir()."admin/category";?>'>分类目录</a></li>
+                <li><a href='<?php echo Fate::app()->url->getWebDir()."admin/tag";?>'>标签</a></li>
+            </ul>
+        </li>
+        
+	<li id="menu-media" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-media" >
+            <a href='<?php echo Fate::app()->url->getWebDir()."admin/media";?>' class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-media" aria-haspopup="true">
+                <div class="wp-menu-arrow"><div></div></div>
+                <div class='wp-menu-image dashicons-before dashicons-admin-media'><br /></div>
+                <div class='wp-menu-name'>多媒体</div>
+            </a>
+            <ul class='wp-submenu wp-submenu-wrap'>
+                <li class='wp-submenu-head'>多媒体</li>
+                <li class="wp-first-item"><a href='<?php echo Fate::app()->url->getWebDir()."admin/media";?>' class="wp-first-item">媒体库</a></li>
+                <li><a href='<?php echo Fate::app()->url->getWebDir()."admin/media/add";?>'>添加</a></li>
+            </ul>
+        </li>
+        
+	<li id="menu-page" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-page" >
+            <a href='<?php echo Fate::app()->url->getWebDir()."admin/page";?>' class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-page" aria-haspopup="true">
+                <div class="wp-menu-arrow"><div></div></div>
+                <div class='wp-menu-image dashicons-before dashicons-admin-page'><br /></div>
+                <div class='wp-menu-name'>页面</div>
+            </a>
+            <ul class='wp-submenu wp-submenu-wrap'>
+                <li class='wp-submenu-head'>页面</li>
+                <li class="wp-first-item"><a href='<?php echo Fate::app()->url->getWebDir()."admin/page";?>' class="wp-first-item">所有页面</a></li>
+                <li><a href='<?php echo Fate::app()->url->getWebDir()."admin/page/create";?>'>新建页面</a></li>
+            </ul>
+        </li>
+        
+	<li id="menu-comment" class="wp-not-current-submenu menu-top menu-icon-comments menu-top-last" >
+            <a href='<?php echo Fate::app()->url->getWebDir()."admin/comment";?>' class="wp-not-current-submenu menu-top menu-icon-comments menu-top-last" >
+                <div class="wp-menu-arrow"><div></div></div>
+                <div class='wp-menu-image dashicons-before dashicons-admin-comments'><br /></div>
+                <div class='wp-menu-name'>评论<span class='awaiting-mod count-0'><span class='pending-count'>0</span></span></div>
+            </a>
+        </li>
+
+	<li id="menu-theme" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-appearance menu-top-first" >
+            <a href='<?php echo Fate::app()->url->getWebDir()."admin/theme";?>' class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-appearance menu-top-first" aria-haspopup="true">
+                <div class="wp-menu-arrow"><div></div></div>
+                <div class='wp-menu-image dashicons-before dashicons-admin-appearance'><br /></div>
+                <div class='wp-menu-name'>外观</div>
+            </a>
+            <ul class='wp-submenu wp-submenu-wrap'>
+                <li class='wp-submenu-head'>外观</li>
+                <li class="wp-first-item"><a href='themes.php' class="wp-first-item">主题</a></li>
+                <li class="hide-if-no-customize"><a href='customize.php?return=%2Fwordpress%2Fwp-admin%2Findex.php' class="hide-if-no-customize">自定义</a></li>
+                <li><a href='widgets.php'>小工具</a></li>
+                <li><a href='nav-menus.php'>菜单</a></li>
+                <li><a href='themes.php?page=custom-header'>顶部</a></li>
+                <li><a href='themes.php?page=custom-background'>背景</a></li>
+                <li><a href='theme-editor.php'>编辑</a></li>
+            </ul>
+        </li>
+        
+	<li id="menu-plugin" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-plugins" >
+            <a href='plugins.php' class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-plugins" aria-haspopup="true">
+                <div class="wp-menu-arrow"><div></div></div>
+                <div class='wp-menu-image dashicons-before dashicons-admin-plugins'><br /></div>
+                <div class='wp-menu-name'>插件<span class='update-plugins count-0'><span class='plugin-count'>0</span></span></div>
+            </a>
+            <ul class='wp-submenu wp-submenu-wrap'>
+                <li class='wp-submenu-head'>插件<span class='update-plugins count-0'><span class='plugin-count'>0</span></span></li>
+                <li class="wp-first-item"><a href='plugins.php' class="wp-first-item">已安装的插件</a></li>
+                <li><a href='plugin-install.php'>安装插件</a></li>
+                <li><a href='plugin-editor.php'>编辑</a></li>
+            </ul
+        </li>
+        
+	<li id="menu-user" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-users" >
+            <a href='users.php' class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-users" aria-haspopup="true">
+                <div class="wp-menu-arrow"><div></div></div>
+                <div class='wp-menu-image dashicons-before dashicons-admin-users'><br /></div>
+                <div class='wp-menu-name'>用户</div>
+            </a>
+            <ul class='wp-submenu wp-submenu-wrap'>
+                <li class='wp-submenu-head'>用户</li>
+                <li class="wp-first-item"><a href='users.php' class="wp-first-item">所有用户</a></li>
+                <li><a href='user-new.php'>添加用户</a></li>
+                <li><a href='profile.php'>我的个人资料</a></li>
+            </ul>
+        </li>
+        
+	<li id="menu-tool" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-tools" >
+            <a href='tools.php' class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-tools" aria-haspopup="true">
+                <div class="wp-menu-arrow"><div></div></div>
+                <div class='wp-menu-image dashicons-before dashicons-admin-tools'><br /></div>
+                <div class='wp-menu-name'>工具</div>
+            </a>
+            <ul class='wp-submenu wp-submenu-wrap'>
+                <li class='wp-submenu-head'>工具</li>
+                <li class="wp-first-item"><a href='tools.php' class="wp-first-item">可用工具</a></li>
+                <li><a href='import.php'>导入</a></li>
+                <li><a href='export.php'>导出</a></li>
+            </ul>
+        </li>
+        
+	<li id="menu-setting" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-settings menu-top-last" >
+            <a href='<?php echo Fate::app()->url->getWebDir()."admin/setting";?>' class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-settings menu-top-last" aria-haspopup="true">
+                <div class="wp-menu-arrow"><div></div></div>
+                <div class='wp-menu-image dashicons-before dashicons-admin-settings'><br /></div>
+                <div class='wp-menu-name'>设置</div>
+            </a>
+            <ul class='wp-submenu wp-submenu-wrap'>
+                <li class='wp-submenu-head'>设置</li>
+                <li class="wp-first-item"><a href='<?php echo Fate::app()->url->getWebDir()."admin/setting";?>' class="wp-first-item">常规</a></li>
+                <li><a href='<?php echo Fate::app()->url->getWebDir()."admin/setting/write";?>'>撰写</a></li>
+                <li><a href='<?php echo Fate::app()->url->getWebDir()."admin/setting/read";?>'>阅读</a></li>
+                <li><a href='<?php echo Fate::app()->url->getWebDir()."admin/setting/discussion";?>'>讨论</a></li>
+                <li><a href='<?php echo Fate::app()->url->getWebDir()."admin/setting/media";?>'>多媒体</a></li>
+                <li><a href='<?php echo Fate::app()->url->getWebDir()."admin/setting/url";?>'>固定链接</a></li>
+            </ul>
+        </li>
+        
+        <li id="collapse-menu" class="hide-if-no-js"><div id="collapse-button"><div></div></div><span>收起菜单</span></li>
+    </ul>
+</div>
+<!-- menu end -->
+
+<div id="wpcontent"><div id="wpbody">
+    <div class="wrap">
+        <h2>撰写新文章</h2>
+        <div id="lost-connection-notice" class="error hidden">
+            <p>
+                <span class="spinner"></span> <strong>连接丢失。</strong>保存已被禁用，直到您重新连接。	
+               <span class="hide-if-no-sessionstorage">我们正在您的浏览器中备份此文章，以防不测。</span>
+            </p>
+        </div>
+        <form name="post" action="post.php" method="post" id="post">
+            <input type="hidden" id="originalaction" name="originalaction" value="editpost" />
+            <input type="hidden" id="post_author" name="post_author" value="1" />
+            <input type="hidden" id="post_type" name="post_type" value="post" />
+            <input type="hidden" id="original_post_status" name="original_post_status" value="auto-draft" />
+            <input type="hidden" id="referredby" name="referredby" value="http://localhost/wordpress/wp-admin/edit.php" />
+            <input type="hidden" name="_wp_original_http_referer" value="http://localhost/wordpress/wp-admin/edit.php" />
+            <input type='hidden' id='auto_draft' name='auto_draft' value='1' />
+            <input type='hidden' id='post_ID' name='post_ID' value='6' />
+            <input type="hidden" id="meta-box-order-nonce" name="meta-box-order-nonce" value="65317e56e7" />
+            <input type="hidden" id="closedpostboxesnonce" name="closedpostboxesnonce" value="01a57af5d4" />
+
+            <div id="poststuff">
+             <div id="post-body" class="metabox-holder columns-2">
+               <div id="postbox-container-1" class="postbox-container">
+                <div id="side-sortables" class="meta-box-sortables">
+                  <div id="submitdiv" class="postbox " >
+                    <div class="handlediv" title="点击以切换"><br /></div>
+                      <h3 class='hndle'><span>发布</span></h3>
+                        <div class="inside">
+                          <div class="submitbox" id="submitpost">
+                           <div id="minor-publishing">
+                              <div style="display:none;">
+                                <p class="submit">
+                                  <input type="submit" name="save" id="save" class="button" value="保存"  />
+                                </p>
+                              </div>
+  
+                              <div id="minor-publishing-actions">
+                                <div id="save-action">
+                                <input  type="submit" name="save" id="save-post" value="保存草稿" class="button" />
+                                <span class="spinner"></span>
+                                </div>
+                                <div id="preview-action">
+                                    <a class="preview button" href="" target="wp-preview-6" id="post-preview">预览</a>
+                                    <input type="hidden" name="wp-preview" id="wp-preview" value="" />
+                                </div>
+                                <div class="clear"></div>
+                              </div>
+
+            <div id="misc-publishing-actions">
+
+            <div class="misc-pub-section misc-pub-post-status"><label for="post_status">状态：</label>
+            <span id="post-status-display">
+            草稿</span>
+            <a href="#post_status" class="edit-post-status hide-if-no-js"><span aria-hidden="true">编辑</span> <span class="screen-reader-text">编辑状态</span></a>
+
+            <div id="post-status-select" class="hide-if-js">
+            <input type="hidden" name="hidden_post_status" id="hidden_post_status" value="draft" />
+            <select name='post_status' id='post_status'>
+            <option value='pending'>等待复审</option>
+            <option selected='selected' value='draft'>草稿</option>
+            </select>
+             <a href="#post_status" class="save-post-status hide-if-no-js button">确定</a>
+             <a href="#post_status" class="cancel-post-status hide-if-no-js button-cancel">取消</a>
+            </div>
+
+            </div><!-- .misc-pub-section -->
+
+            <div class="misc-pub-section misc-pub-visibility" id="visibility">
+            公开度： <span id="post-visibility-display">公开</span>
+            <a href="#visibility" class="edit-visibility hide-if-no-js"><span aria-hidden="true">编辑</span> <span class="screen-reader-text">编辑可见性</span></a>
+
+            <div id="post-visibility-select" class="hide-if-js">
+            <input type="hidden" name="hidden_post_password" id="hidden-post-password" value="" />
+            <input type="checkbox" style="display:none" name="hidden_post_sticky" id="hidden-post-sticky" value="sticky"  />
+            <input type="hidden" name="hidden_post_visibility" id="hidden-post-visibility" value="public" />
+            <input type="radio" name="visibility" id="visibility-radio-public" value="public"  checked='checked' /> <label for="visibility-radio-public" class="selectit">公开</label><br />
+            <span id="sticky-span"><input id="sticky" name="sticky" type="checkbox" value="sticky"  /> <label for="sticky" class="selectit">将文章置于首页顶端</label><br /></span>
+            <input type="radio" name="visibility" id="visibility-radio-password" value="password"  /> <label for="visibility-radio-password" class="selectit">密码保护</label><br />
+            <span id="password-span"><label for="post_password">密码：</label> <input type="text" name="post_password" id="post_password" value=""  maxlength="20" /><br /></span>
+            <input type="radio" name="visibility" id="visibility-radio-private" value="private"  /> <label for="visibility-radio-private" class="selectit">私密</label><br />
+
+            <p>
+             <a href="#visibility" class="save-post-visibility hide-if-no-js button">确定</a>
+             <a href="#visibility" class="cancel-post-visibility hide-if-no-js button-cancel">取消</a>
+            </p>
+            </div>
+
+            </div><!-- .misc-pub-section -->
+
+            <div class="misc-pub-section curtime misc-pub-curtime">
+                    <span id="timestamp">
+                    <b>立即</b>发布</span>
+                    <a href="#edit_timestamp" class="edit-timestamp hide-if-no-js"><span aria-hidden="true">编辑</span> <span class="screen-reader-text">编辑日期、时间</span></a>
+                    <div id="timestampdiv" class="hide-if-js"><div class="timestamp-wrap"><label for="aa" class="screen-reader-text">年</label><input type="text" id="aa" name="aa" value="2014" size="4" maxlength="4" autocomplete="off" />年<label for="mm" class="screen-reader-text">月份</label><select id="mm" name="mm">
+                                    <option value="01" >一</option>
+                                    <option value="02" >二</option>
+                                    <option value="03" >三</option>
+                                    <option value="04" >四</option>
+                                    <option value="05" >五</option>
+                                    <option value="06" >六</option>
+                                    <option value="07" >七</option>
+                                    <option value="08" >八</option>
+                                    <option value="09" >九</option>
+                                    <option value="10"  selected='selected'>十</option>
+                                    <option value="11" >十一</option>
+                                    <option value="12" >十二</option>
+            </select>月<label for="jj" class="screen-reader-text">日期</label><input type="text" id="jj" name="jj" value="05" size="2" maxlength="2" autocomplete="off" />日@<label for="hh" class="screen-reader-text">小时</label><input type="text" id="hh" name="hh" value="15" size="2" maxlength="2" autocomplete="off" />:<label for="mn" class="screen-reader-text">分钟</label><input type="text" id="mn" name="mn" value="33" size="2" maxlength="2" autocomplete="off" /></div><input type="hidden" id="ss" name="ss" value="46" />
+
+            <input type="hidden" id="hidden_mm" name="hidden_mm" value="10" />
+            <input type="hidden" id="cur_mm" name="cur_mm" value="10" />
+            <input type="hidden" id="hidden_jj" name="hidden_jj" value="05" />
+            <input type="hidden" id="cur_jj" name="cur_jj" value="05" />
+            <input type="hidden" id="hidden_aa" name="hidden_aa" value="2014" />
+            <input type="hidden" id="cur_aa" name="cur_aa" value="2014" />
+            <input type="hidden" id="hidden_hh" name="hidden_hh" value="15" />
+            <input type="hidden" id="cur_hh" name="cur_hh" value="15" />
+            <input type="hidden" id="hidden_mn" name="hidden_mn" value="33" />
+            <input type="hidden" id="cur_mn" name="cur_mn" value="33" />
+
+            <p>
+            <a href="#edit_timestamp" class="save-timestamp hide-if-no-js button">确定</a>
+            <a href="#edit_timestamp" class="cancel-timestamp hide-if-no-js button-cancel">取消</a>
+            </p>
+            </div>
+            </div>
+            </div>
+            <div class="clear"></div>
+            </div>
+
+            <div id="major-publishing-actions">
+            <div id="delete-action">
+            <a class="submitdelete deletion" href="http://localhost/wordpress/wp-admin/post.php?post=6&amp;action=trash&amp;_wpnonce=7d7210fd6c">移至回收站</a></div>
+
+            <div id="publishing-action">
+            <span class="spinner"></span>
+                            <input name="original_publish" type="hidden" id="original_publish" value="发布" />
+                            <input type="submit" name="publish" id="publish" class="button button-primary button-large" value="发布" accesskey="p"  /></div>
+            <div class="clear"></div>
+            </div>
+            </div>
+
+            </div>
+            </div>
+            <div id="formatdiv" class="postbox " >
+            <div class="handlediv" title="点击以切换"><br /></div><h3 class='hndle'><span>形式</span></h3>
+            <div class="inside">
+                    <div id="post-formats-select">
+                            <input type="radio" name="post_format" class="post-format" id="post-format-0" value="0"  checked='checked' /> <label for="post-format-0" class="post-format-icon post-format-standard">标准</label>
+                                            <br /><input type="radio" name="post_format" class="post-format" id="post-format-aside" value="aside"  /> <label for="post-format-aside" class="post-format-icon post-format-aside">日志</label>
+                                            <br /><input type="radio" name="post_format" class="post-format" id="post-format-image" value="image"  /> <label for="post-format-image" class="post-format-icon post-format-image">图像</label>
+                                            <br /><input type="radio" name="post_format" class="post-format" id="post-format-video" value="video"  /> <label for="post-format-video" class="post-format-icon post-format-video">视频</label>
+                                            <br /><input type="radio" name="post_format" class="post-format" id="post-format-audio" value="audio"  /> <label for="post-format-audio" class="post-format-icon post-format-audio">音频</label>
+                                            <br /><input type="radio" name="post_format" class="post-format" id="post-format-quote" value="quote"  /> <label for="post-format-quote" class="post-format-icon post-format-quote">引语</label>
+                                            <br /><input type="radio" name="post_format" class="post-format" id="post-format-link" value="link"  /> <label for="post-format-link" class="post-format-icon post-format-link">链接</label>
+                                            <br /><input type="radio" name="post_format" class="post-format" id="post-format-gallery" value="gallery"  /> <label for="post-format-gallery" class="post-format-icon post-format-gallery">相册</label>
+                            <br />
+                    </div>
+                    </div>
+            </div>
+            <div id="categorydiv" class="postbox " >
+            <div class="handlediv" title="点击以切换"><br /></div><h3 class='hndle'><span>分类目录</span></h3>
+            <div class="inside">
+                    <div id="taxonomy-category" class="categorydiv">
+                            <ul id="category-tabs" class="category-tabs">
+                                    <li class="tabs"><a href="#category-all">所有分类目录</a></li>
+                                    <li class="hide-if-no-js"><a href="#category-pop">最常用</a></li>
+                            </ul>
+
+                            <div id="category-pop" class="tabs-panel" style="display: none;">
+                                    <ul id="categorychecklist-pop" class="categorychecklist form-no-clear" >
+
+                            <li id="popular-category-1" class="popular-category">
+                                    <label class="selectit">
+                                            <input id="in-popular-category-1" type="checkbox"  value="1"  />
+                                            未分类			</label>
+                            </li>
+
+                                                    </ul>
+                            </div>
+
+                            <div id="category-all" class="tabs-panel">
+                                    <input type='hidden' name='post_category[]' value='0' />			<ul id="categorychecklist" data-wp-lists="list:category" class="categorychecklist form-no-clear">
+
+            <li id='category-1' class="popular-category"><label class="selectit"><input value="1" type="checkbox" name="post_category[]" id="in-category-1" /> 未分类</label></li>
+                                    </ul>
+                            </div>
+                                            <div id="category-adder" class="wp-hidden-children">
+                                            <h4>
+                                                    <a id="category-add-toggle" href="#category-add" class="hide-if-no-js">
+                                                            + 添加新分类目录					</a>
+                                            </h4>
+                                            <p id="category-add" class="category-add wp-hidden-child">
+                                                    <label class="screen-reader-text" for="newcategory">添加新分类目录</label>
+                                                    <input type="text" name="newcategory" id="newcategory" class="form-required form-input-tip" value="新分类目录名" aria-required="true"/>
+                                                    <label class="screen-reader-text" for="newcategory_parent">
+                                                            父级分类目录：					</label>
+                                                    <select name='newcategory_parent' id='newcategory_parent' class='postform' >
+                    <option value='-1'>&mdash; 父级分类目录 &mdash;</option>
+                    <option class="level-0" value="1">未分类</option>
+            </select>
+                                                    <input type="button" id="category-add-submit" data-wp-lists="add:categorychecklist:category-add" class="button category-add-submit" value="添加新分类目录" />
+                                                    <input type="hidden" id="_ajax_nonce-add-category" name="_ajax_nonce-add-category" value="eb2092e856" />					<span id="category-ajax-response"></span>
+                                            </p>
+                                    </div>
+                                    </div>
+                    </div>
+            </div>
+            <div id="tagsdiv-post_tag" class="postbox " >
+            <div class="handlediv" title="点击以切换"><br /></div><h3 class='hndle'><span>标签</span></h3>
+            <div class="inside">
+            <div class="tagsdiv" id="post_tag">
+                    <div class="jaxtag">
+                    <div class="nojs-tags hide-if-js">
+                    <p>添加或删除标签</p>
+                    <textarea name="tax_input[post_tag]" rows="3" cols="20" class="the-tags" id="tax-input-post_tag" ></textarea></div>
+                            <div class="ajaxtag hide-if-no-js">
+                            <label class="screen-reader-text" for="new-tag-post_tag">标签</label>
+                            <div class="taghint">添加新标签</div>
+                            <p><input type="text" id="new-tag-post_tag" name="newtag[post_tag]" class="newtag form-input-tip" size="16" autocomplete="off" value="" />
+                            <input type="button" class="button tagadd" value="添加" /></p>
+                    </div>
+                    <p class="howto">多个标签请用英文逗号（,）分开</p>
+                            </div>
+                    <div class="tagchecklist"></div>
+            </div>
+            <p class="hide-if-no-js"><a href="#titlediv" class="tagcloud-link" id="link-post_tag">从常用标签中选择</a></p>
+            </div>
+            </div>
+            <div id="postimagediv" class="postbox " >
+            <div class="handlediv" title="点击以切换"><br /></div><h3 class='hndle'><span>特色图像</span></h3>
+            <div class="inside">
+            <p class="hide-if-no-js"><a title="设为特色图像" href="http://localhost/wordpress/wp-admin/media-upload.php?post_id=6&#038;type=image&#038;TB_iframe=1" id="set-post-thumbnail" class="thickbox">设为特色图像</a></p></div>
+            </div>
+            </div></div>
+            <div id="postbox-container-2" class="postbox-container">
+            <div id="normal-sortables" class="meta-box-sortables"><div id="postexcerpt" class="postbox  hide-if-js" >
+            <div class="handlediv" title="点击以切换"><br /></div><h3 class='hndle'><span>摘要</span></h3>
+            <div class="inside">
+            <label class="screen-reader-text" for="excerpt">摘要</label><textarea rows="1" cols="40" name="excerpt" id="excerpt"></textarea>
+            <p>摘要是您可以手动添加的内容概要，一些主题会用到这些文字。<a href="http://codex.wordpress.org/zh-cn:%E6%91%98%E8%A6%81" target="_blank">了解关于人工摘要的更多信息。</a></p>
+            </div>
+            </div>
+            <div id="trackbacksdiv" class="postbox  hide-if-js" >
+            <div class="handlediv" title="点击以切换"><br /></div><h3 class='hndle'><span>发送Trackback</span></h3>
+            <div class="inside">
+            <p><label for="trackback_url">发送trackback到：</label> <input type="text" name="trackback_url" id="trackback_url" class="code" value="" /><br /> (多个URL用空格分隔)</p>
+            <p>Trackback是针对老式博客系统的一种引用通知方式。如果文章内的链接指向同为WordPress的站点，则您无需手动填写<a href="http://codex.wordpress.org/zh-cn:%E5%8D%9A%E5%AE%A2%E7%BB%AA%E8%AE%BA#.E7.AE.A1.E7.90.86.E8.AF.84.E8.AE.BA" target="_blank">pingback</a>地址。</p>
+            </div>
+            </div>
+            <div id="postcustom" class="postbox  hide-if-js" >
+            <div class="handlediv" title="点击以切换"><br /></div><h3 class='hndle'><span>自定义栏目</span></h3>
+            <div class="inside">
+            <div id="postcustomstuff">
+            <div id="ajax-response"></div>
+
+            <table id="list-table" style="display: none;">
+                    <thead>
+                    <tr>
+                            <th class="left">名称</th>
+                            <th>值</th>
+                    </tr>
+                    </thead>
+                    <tbody id="the-list" data-wp-lists="list:meta">
+                    <tr><td></td></tr>
+                    </tbody>
+            </table><p><strong>添加自定义栏目：</strong></p>
+            <table id="newmeta">
+            <thead>
+            <tr>
+            <th class="left"><label for="metakeyinput">名称</label></th>
+            <th><label for="metavalue">值</label></th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+            <td id="newmetaleft" class="left">
+            <input type="text" id="metakeyinput" name="metakeyinput" value="" />
+            </td>
+            <td><textarea id="metavalue" name="metavalue" rows="2" cols="25"></textarea></td>
+            </tr>
+
+            <tr><td colspan="2">
+            <div class="submit">
+            <input type="submit" name="addmeta" id="newmeta-submit" class="button" value="添加自定义栏目" data-wp-lists="add:the-list:newmeta"  /></div>
+            <input type="hidden" id="_ajax_nonce-add-meta" name="_ajax_nonce-add-meta" value="20bc411e82" /></td></tr>
+            </tbody>
+            </table>
+            </div>
+            <p>自定义栏目用来向文章添加额外的属性，您可以<a href="http://codex.wordpress.org/zh-cn:%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A0%8F%E7%9B%AE" target="_blank">在主题中使用它们</a>。</p>
+            </div>
+            </div>
+            <div id="commentstatusdiv" class="postbox  hide-if-js" >
+            <div class="handlediv" title="点击以切换"><br /></div><h3 class='hndle'><span>讨论</span></h3>
+            <div class="inside">
+            <input name="advanced_view" type="hidden" value="1" />
+            <p class="meta-options">
+                    <label for="comment_status" class="selectit"><input name="comment_status" type="checkbox" id="comment_status" value="open"  checked='checked' /> 允许评论。</label><br />
+                    <label for="ping_status" class="selectit"><input name="ping_status" type="checkbox" id="ping_status" value="open"  checked='checked' /> 这个页面接受<a href="http://codex.wordpress.org/zh-cn:%E5%8D%9A%E5%AE%A2%E7%BB%AA%E8%AE%BA#.E7.AE.A1.E7.90.86.E8.AF.84.E8.AE.BA" target="_blank">trackback和pingback</a>。</label>
+                    </p>
+            </div>
+            </div>
+            <div id="slugdiv" class="postbox  hide-if-js" >
+            <div class="handlediv" title="点击以切换"><br /></div><h3 class='hndle'><span>别名</span></h3>
+            <div class="inside">
+            <label class="screen-reader-text" for="post_name">别名</label><input name="post_name" type="text" size="13" id="post_name" value="" />
+            </div>
+            </div>
+            <div id="authordiv" class="postbox  hide-if-js" >
+            <div class="handlediv" title="点击以切换"><br /></div><h3 class='hndle'><span>作者</span></h3>
+            <div class="inside">
+            <label class="screen-reader-text" for="post_author_override">作者</label>
+            <select name='post_author_override' id='post_author_override' class=''>
+                    <option value='1' selected='selected'>admin</option>
+            </select></div>
+            </div>
+            </div><div id="advanced-sortables" class="meta-box-sortables"></div></div>
+            </div><!-- /post-body -->
+            <br class="clear" />
+            </div><!-- /poststuff -->
+</form>
+</div>
+
+<form method="get" action="">
+<table style="display:none;"><tbody id="com-reply"><tr id="replyrow" style="display:none;"><td colspan="2" class="colspanchange">
+	<div id="replyhead" style="display:none;"><h5>回复评论</h5></div>
+	<div id="addhead" style="display:none;"><h5>添加新评论</h5></div>
+	<div id="edithead" style="display:none;">
+		<div class="inside">
+		<label for="author">姓名</label>
+		<input type="text" name="newcomment_author" size="50" value="" id="author" />
+		</div>
+
+		<div class="inside">
+		<label for="author-email">电子邮件</label>
+		<input type="text" name="newcomment_author_email" size="50" value="" id="author-email" />
+		</div>
+
+		<div class="inside">
+		<label for="author-url">URL</label>
+		<input type="text" id="author-url" name="newcomment_author_url" class="code" size="103" value="" />
+		</div>
+		<div style="clear:both;"></div>
+	</div>
+
+	<div id="replycontainer">
+	<div id="wp-replycontent-wrap" class="wp-core-ui wp-editor-wrap html-active"><div id="wp-replycontent-editor-container" class="wp-editor-container"><textarea class="wp-editor-area" rows="20" cols="40" name="replycontent" id="replycontent"></textarea></div>
+</div>
+
+	</div>
+
+	<p id="replysubmit" class="submit">
+	<a href="#comments-form" class="save button-primary alignright">
+	<span id="addbtn" style="display:none;">添加评论</span>
+	<span id="savebtn" style="display:none;">更新评论</span>
+	<span id="replybtn" style="display:none;">提交回复</span></a>
+	<a href="#comments-form" class="cancel button-secondary alignleft">取消</a>
+	<span class="waiting spinner"></span>
+	<span class="error" style="display:none;"></span>
+	<br class="clear" />
+	</p>
+
+	<input type="hidden" name="user_ID" id="user_ID" value="1" />
+	<input type="hidden" name="action" id="action" value="" />
+	<input type="hidden" name="comment_ID" id="comment_ID" value="" />
+	<input type="hidden" name="comment_post_ID" id="comment_post_ID" value="" />
+	<input type="hidden" name="status" id="status" value="" />
+	<input type="hidden" name="position" id="position" value="1" />
+	<input type="hidden" name="checkbox" id="checkbox" value="0" />
+	<input type="hidden" name="mode" id="mode" value="single" />
+	<input type="hidden" id="_ajax_nonce-replyto-comment" name="_ajax_nonce-replyto-comment" value="72f7c3da7b" /><input type="hidden" id="_wp_unfiltered_html_comment" name="_wp_unfiltered_html_comment" value="f88296372d" /></td></tr></tbody></table>
+</form>
+
+<script type="text/javascript">
+try{document.post.title.focus();}catch(e){}
+</script>
+
+<div class="clear"></div></div><!-- wpbody-content -->
+<div class="clear"></div></div><!-- wpbody -->
+<div class="clear"></div>
+
+
+	<!--[if lte IE 8]>
+	<style>
+		.attachment:focus {
+			outline: #1e8cbe solid;
+		}
+		.selected.attachment {
+			outline: #1e8cbe solid;
+		}
+	</style>
+	<![endif]-->
+	<script type="text/html" id="tmpl-media-frame">
+		<div class="media-frame-menu"></div>
+		<div class="media-frame-title"></div>
+		<div class="media-frame-router"></div>
+		<div class="media-frame-content"></div>
+		<div class="media-frame-toolbar"></div>
+		<div class="media-frame-uploader"></div>
+	</script>
+
+	<script type="text/html" id="tmpl-media-modal">
+		<div class="media-modal wp-core-ui">
+			<a class="media-modal-close" href="#"><span class="media-modal-icon"><span class="screen-reader-text">关闭媒体面板</span></span></a>
+			<div class="media-modal-content"></div>
+		</div>
+		<div class="media-modal-backdrop"></div>
+	</script>
+
+	<script type="text/html" id="tmpl-uploader-window">
+		<div class="uploader-window-content">
+			<h3>拖文件至此可上传</h3>
+		</div>
+	</script>
+
+	<script type="text/html" id="tmpl-uploader-editor">
+		<div class="uploader-editor-content">
+			<div class="uploader-editor-title">拖文件至此可上传</div>
+		</div>
+	</script>
+
+	<script type="text/html" id="tmpl-uploader-inline">
+		<# var messageClass = data.message ? 'has-upload-message' : 'no-upload-message'; #>
+		<# if ( data.canClose ) { #>
+		<button class="close dashicons dashicons-no"><span class="screen-reader-text">关闭上传器</span></button>
+		<# } #>
+		<div class="uploader-inline-content {{ messageClass }}">
+		<# if ( data.message ) { #>
+			<h3 class="upload-message">{{ data.message }}</h3>
+		<# } #>
+					<div class="upload-ui">
+				<h3 class="upload-instructions drop-instructions">拖文件到任何地方来上传</h3>
+				<p class="upload-instructions drop-instructions">或</p>
+				<a href="#" class="browser button button-hero">选择文件</a>
+			</div>
+
+			<div class="upload-inline-status"></div>
+
+			<div class="post-upload-ui">
+				
+				<p class="max-upload-size">最大上传文件大小：2 MB。</p>
+
+				<# if ( data.suggestedWidth && data.suggestedHeight ) { #>
+					<p class="suggested-dimensions">
+						推荐的图像尺寸： {{data.suggestedWidth}} &times; {{data.suggestedHeight}}
+					</p>
+				<# } #>
+
+							</div>
+				</div>
+	</script>
+
+	<script type="text/html" id="tmpl-media-library-view-switcher">
+		<a href="/wordpress/wp-admin/post-new.php?mode=list" class="view-list">
+			<span class="screen-reader-text">列表视图</span>
+		</a>
+		<a href="/wordpress/wp-admin/post-new.php?mode=grid" class="view-grid current">
+			<span class="screen-reader-text">网格视图</span>
+		</a>
+	</script>
+
+	<script type="text/html" id="tmpl-uploader-status">
+		<h3>正上传</h3>
+		<a class="upload-dismiss-errors" href="#">忽略错误</a>
+
+		<div class="media-progress-bar"><div></div></div>
+		<div class="upload-details">
+			<span class="upload-count">
+				<span class="upload-index"></span> / <span class="upload-total"></span>
+			</span>
+			<span class="upload-detail-separator">&ndash;</span>
+			<span class="upload-filename"></span>
+		</div>
+		<div class="upload-errors"></div>
+	</script>
+
+	<script type="text/html" id="tmpl-uploader-status-error">
+		<span class="upload-error-label">错误</span>
+		<span class="upload-error-filename">{{{ data.filename }}}</span>
+		<span class="upload-error-message">{{ data.message }}</span>
+	</script>
+
+	<script type="text/html" id="tmpl-edit-attachment-frame">
+		<div class="edit-media-header">
+			<button class="left dashicons <# if ( ! data.hasPrevious ) { #> disabled <# } #>"><span class="screen-reader-text">编辑上一媒体项目</span></button>
+			<button class="right dashicons <# if ( ! data.hasNext ) { #> disabled <# } #>"><span class="screen-reader-text">编辑下一媒体项目</span></button>
+		</div>
+		<div class="media-frame-title"></div>
+		<div class="media-frame-content"></div>
+	</script>
+
+	<script type="text/html" id="tmpl-attachment-details-two-column">
+		<div class="attachment-media-view {{ data.orientation }}">
+			<div class="thumbnail thumbnail-{{ data.type }}">
+				<# if ( data.uploading ) { #>
+					<div class="media-progress-bar"><div></div></div>
+				<# } else if ( 'image' === data.type && data.sizes && data.sizes.large ) { #>
+					<img class="details-image" src="{{ data.sizes.large.url }}" draggable="false" />
+				<# } else if ( 'image' === data.type && data.sizes && data.sizes.full ) { #>
+					<img class="details-image" src="{{ data.sizes.full.url }}" draggable="false" />
+				<# } else if ( -1 === jQuery.inArray( data.type, [ 'audio', 'video' ] ) ) { #>
+					<img class="details-image" src="{{ data.icon }}" class="icon" draggable="false" />
+				<# } #>
+
+				<# if ( 'audio' === data.type ) { #>
+				<div class="wp-media-wrapper">
+					<audio style="visibility: hidden" controls class="wp-audio-shortcode" width="100%" preload="none">
+						<source type="{{ data.mime }}" src="{{ data.url }}"/>
+					</audio>
+				</div>
+				<# } else if ( 'video' === data.type ) {
+					var w_rule = h_rule = '';
+					if ( data.width ) {
+						w_rule = 'width: ' + data.width + 'px;';
+					} else if ( wp.media.view.settings.contentWidth ) {
+						w_rule = 'width: ' + wp.media.view.settings.contentWidth + 'px;';
+					}
+					if ( data.height ) {
+						h_rule = 'height: ' + data.height + 'px;';
+					}
+				#>
+				<div style="{{ w_rule }}{{ h_rule }}" class="wp-media-wrapper wp-video">
+					<video controls="controls" class="wp-video-shortcode" preload="metadata"
+						<# if ( data.width ) { #>width="{{ data.width }}"<# } #>
+						<# if ( data.height ) { #>height="{{ data.height }}"<# } #>
+						<# if ( data.image && data.image.src !== data.icon ) { #>poster="{{ data.image.src }}"<# } #>>
+						<source type="{{ data.mime }}" src="{{ data.url }}"/>
+					</video>
+				</div>
+				<# } #>
+
+				<div class="attachment-actions">
+					<# if ( 'image' === data.type && ! data.uploading && data.sizes ) { #>
+						<a class="button edit-attachment" href="#">编辑图像</a>
+					<# } #>
+				</div>
+			</div>
+		</div>
+		<div class="attachment-info">
+			<span class="settings-save-status">
+				<span class="spinner"></span>
+				<span class="saved">已保存。</span>
+			</span>
+			<div class="details">
+				<div class="filename"><strong>文件名：</strong> {{ data.filename }}</div>
+				<div class="filename"><strong>文件类型：</strong> {{ data.mime }}</div>
+				<div class="uploaded"><strong>上传于：</strong> {{ data.dateFormatted }}</div>
+
+				<div class="file-size"><strong>文件大小：</strong> {{ data.filesizeHumanReadable }}</div>
+				<# if ( 'image' === data.type && ! data.uploading ) { #>
+					<# if ( data.width && data.height ) { #>
+						<div class="dimensions"><strong>分辨率：</strong> {{ data.width }} &times; {{ data.height }}</div>
+					<# } #>
+				<# } #>
+
+				<# if ( data.fileLength ) { #>
+					<div class="file-length"><strong>长度：</strong> {{ data.fileLength }}</div>
+				<# } #>
+
+				<# if ( 'audio' === data.type && data.meta.bitrate ) { #>
+					<div class="bitrate">
+						<strong>比特率：</strong> {{ Math.round( data.meta.bitrate / 1000 ) }}kb/s
+						<# if ( data.meta.bitrate_mode ) { #>
+						{{ ' ' + data.meta.bitrate_mode.toUpperCase() }}
+						<# } #>
+					</div>
+				<# } #>
+
+				<div class="compat-meta">
+					<# if ( data.compat && data.compat.meta ) { #>
+						{{{ data.compat.meta }}}
+					<# } #>
+				</div>
+			</div>
+
+			<div class="settings">
+				<label class="setting" data-setting="url">
+					<span class="name">URL</span>
+					<input type="text" value="{{ data.url }}" readonly />
+				</label>
+				<# var maybeReadOnly = data.can.save || data.allowLocalEdits ? '' : 'readonly'; #>
+				<label class="setting" data-setting="title">
+					<span class="name">标题</span>
+					<input type="text" value="{{ data.title }}" {{ maybeReadOnly }} />
+				</label>
+				<# if ( 'audio' === data.type ) { #>
+								<label class="setting" data-setting="artist">
+					<span class="name">艺术家</span>
+					<input type="text" value="{{ data.artist || data.meta.artist || '' }}" />
+				</label>
+								<label class="setting" data-setting="album">
+					<span class="name">相册</span>
+					<input type="text" value="{{ data.album || data.meta.album || '' }}" />
+				</label>
+								<# } #>
+				<label class="setting" data-setting="caption">
+					<span class="name">说明</span>
+					<textarea {{ maybeReadOnly }}>{{ data.caption }}</textarea>
+				</label>
+				<# if ( 'image' === data.type ) { #>
+					<label class="setting" data-setting="alt">
+						<span class="name">替代文本</span>
+						<input type="text" value="{{ data.alt }}" {{ maybeReadOnly }} />
+					</label>
+				<# } #>
+				<label class="setting" data-setting="description">
+					<span class="name">图像描述</span>
+					<textarea {{ maybeReadOnly }}>{{ data.description }}</textarea>
+				</label>
+				<label class="setting">
+					<span class="name">上传者为</span>
+					<span class="value">{{ data.authorName }}</span>
+				</label>
+				<# if ( data.uploadedTo ) { #>
+					<label class="setting">
+						<span class="name">上传至</span>
+						<# if ( data.uploadedToLink ) { #>
+							<span class="value"><a href="{{ data.uploadedToLink }}">{{ data.uploadedToTitle }}</a></span>
+						<# } else { #>
+							<span class="value">{{ data.uploadedToTitle }}</span>
+						<# } #>
+					</label>
+				<# } #>
+				<div class="attachment-compat"></div>
+			</div>
+
+			<div class="actions">
+				<a class="view-attachment" href="{{ data.link }}">查看附件页面</a> |
+				<a href="post.php?post={{ data.id }}&action=edit">编辑详细信息</a>
+				<# if ( ! data.uploading && data.can.remove ) { #> |
+													<a class="delete-attachment" href="#">永久删除</a>
+											<# } #>
+			</div>
+
+		</div>
+	</script>
+
+	<script type="text/html" id="tmpl-attachment">
+		<div class="attachment-preview js--select-attachment type-{{ data.type }} subtype-{{ data.subtype }} {{ data.orientation }}">
+			<div class="thumbnail">
+				<# if ( data.uploading ) { #>
+					<div class="media-progress-bar"><div style="width: {{ data.percent }}%"></div></div>
+				<# } else if ( 'image' === data.type && data.sizes ) { #>
+					<div class="centered">
+						<img src="{{ data.size.url }}" draggable="false" alt="" />
+					</div>
+				<# } else { #>
+					<div class="centered">
+						<# if ( data.image && data.image.src && data.image.src !== data.icon ) { #>
+							<img src="{{ data.image.src }}" class="thumbnail" draggable="false" />
+						<# } else { #>
+							<img src="{{ data.icon }}" class="icon" draggable="false" />
+						<# } #>
+					</div>
+					<div class="filename">
+						<div>{{ data.filename }}</div>
+					</div>
+				<# } #>
+			</div>
+			<# if ( data.buttons.close ) { #>
+				<a class="close media-modal-icon" href="#" title="移除"></a>
+			<# } #>
+		</div>
+		<# if ( data.buttons.check ) { #>
+			<a class="check" href="#" title="取消选择" tabindex="-1"><div class="media-modal-icon"></div></a>
+		<# } #>
+		<#
+		var maybeReadOnly = data.can.save || data.allowLocalEdits ? '' : 'readonly';
+		if ( data.describe ) {
+			if ( 'image' === data.type ) { #>
+				<input type="text" value="{{ data.caption }}" class="describe" data-setting="caption"
+					placeholder="描述此图&hellip;" {{ maybeReadOnly }} />
+			<# } else { #>
+				<input type="text" value="{{ data.title }}" class="describe" data-setting="title"
+					<# if ( 'video' === data.type ) { #>
+						placeholder="描述此视频&hellip;"
+					<# } else if ( 'audio' === data.type ) { #>
+						placeholder="描述此音频&hellip;"
+					<# } else { #>
+						placeholder="描述此文件&hellip;"
+					<# } #> {{ maybeReadOnly }} />
+			<# }
+		} #>
+	</script>
+
+	<script type="text/html" id="tmpl-attachment-details">
+		<h3>
+			附件详情
+			<span class="settings-save-status">
+				<span class="spinner"></span>
+				<span class="saved">已保存。</span>
+			</span>
+		</h3>
+		<div class="attachment-info">
+			<div class="thumbnail thumbnail-{{ data.type }}">
+				<# if ( data.uploading ) { #>
+					<div class="media-progress-bar"><div></div></div>
+				<# } else if ( 'image' === data.type && data.sizes ) { #>
+					<img src="{{ data.size.url }}" draggable="false" />
+				<# } else { #>
+					<img src="{{ data.icon }}" class="icon" draggable="false" />
+				<# } #>
+			</div>
+			<div class="details">
+				<div class="filename">{{ data.filename }}</div>
+				<div class="uploaded">{{ data.dateFormatted }}</div>
+
+				<div class="file-size">{{ data.filesizeHumanReadable }}</div>
+				<# if ( 'image' === data.type && ! data.uploading ) { #>
+					<# if ( data.width && data.height ) { #>
+						<div class="dimensions">{{ data.width }} &times; {{ data.height }}</div>
+					<# } #>
+
+					<# if ( data.can.save && data.sizes ) { #>
+						<a class="edit-attachment" href="{{ data.editLink }}&amp;image-editor" target="_blank">编辑图像</a>
+						<a class="refresh-attachment" href="#">刷新</a>
+					<# } #>
+				<# } #>
+
+				<# if ( data.fileLength ) { #>
+					<div class="file-length">长度： {{ data.fileLength }}</div>
+				<# } #>
+
+				<# if ( ! data.uploading && data.can.remove ) { #>
+											<a class="delete-attachment" href="#">永久删除</a>
+									<# } #>
+
+				<div class="compat-meta">
+					<# if ( data.compat && data.compat.meta ) { #>
+						{{{ data.compat.meta }}}
+					<# } #>
+				</div>
+			</div>
+		</div>
+
+		<label class="setting" data-setting="url">
+			<span class="name">URL</span>
+			<input type="text" value="{{ data.url }}" readonly />
+		</label>
+		<# var maybeReadOnly = data.can.save || data.allowLocalEdits ? '' : 'readonly'; #>
+		<label class="setting" data-setting="title">
+			<span class="name">标题</span>
+			<input type="text" value="{{ data.title }}" {{ maybeReadOnly }} />
+		</label>
+		<# if ( 'audio' === data.type ) { #>
+				<label class="setting" data-setting="artist">
+			<span class="name">艺术家</span>
+			<input type="text" value="{{ data.artist || data.meta.artist || '' }}" />
+		</label>
+				<label class="setting" data-setting="album">
+			<span class="name">相册</span>
+			<input type="text" value="{{ data.album || data.meta.album || '' }}" />
+		</label>
+				<# } #>
+		<label class="setting" data-setting="caption">
+			<span class="name">说明</span>
+			<textarea {{ maybeReadOnly }}>{{ data.caption }}</textarea>
+		</label>
+		<# if ( 'image' === data.type ) { #>
+			<label class="setting" data-setting="alt">
+				<span class="name">替代文本</span>
+				<input type="text" value="{{ data.alt }}" {{ maybeReadOnly }} />
+			</label>
+		<# } #>
+		<label class="setting" data-setting="description">
+			<span class="name">图像描述</span>
+			<textarea {{ maybeReadOnly }}>{{ data.description }}</textarea>
+		</label>
+	</script>
+
+	<script type="text/html" id="tmpl-media-selection">
+		<div class="selection-info">
+			<span class="count"></span>
+			<# if ( data.editable ) { #>
+				<a class="edit-selection" href="#">编辑</a>
+			<# } #>
+			<# if ( data.clearable ) { #>
+				<a class="clear-selection" href="#">清空</a>
+			<# } #>
+		</div>
+		<div class="selection-view"></div>
+	</script>
+
+	<script type="text/html" id="tmpl-attachment-display-settings">
+		<h3>附件显示设置</h3>
+
+		<# if ( 'image' === data.type ) { #>
+			<label class="setting">
+				<span>对齐方式</span>
+				<select class="alignment"
+					data-setting="align"
+					<# if ( data.userSettings ) { #>
+						data-user-setting="align"
+					<# } #>>
+
+					<option value="left">
+						左					</option>
+					<option value="center">
+						中					</option>
+					<option value="right">
+						右					</option>
+					<option value="none" selected>
+						无					</option>
+				</select>
+			</label>
+		<# } #>
+
+		<div class="setting">
+			<label>
+				<# if ( data.model.canEmbed ) { #>
+					<span>嵌入或链接</span>
+				<# } else { #>
+					<span>链接到</span>
+				<# } #>
+
+				<select class="link-to"
+					data-setting="link"
+					<# if ( data.userSettings && ! data.model.canEmbed ) { #>
+						data-user-setting="urlbutton"
+					<# } #>>
+
+				<# if ( data.model.canEmbed ) { #>
+					<option value="embed" selected>
+						内嵌媒体播放器					</option>
+					<option value="file">
+				<# } else { #>
+					<option value="file" selected>
+				<# } #>
+					<# if ( data.model.canEmbed ) { #>
+						链接到媒体文件					<# } else { #>
+						媒体文件					<# } #>
+					</option>
+					<option value="post">
+					<# if ( data.model.canEmbed ) { #>
+						链接到附件页面					<# } else { #>
+						附件页面					<# } #>
+					</option>
+				<# if ( 'image' === data.type ) { #>
+					<option value="custom">
+						自定义URL					</option>
+					<option value="none">
+						无					</option>
+				<# } #>
+				</select>
+			</label>
+			<input type="text" class="link-to-custom" data-setting="linkUrl" />
+		</div>
+
+		<# if ( 'undefined' !== typeof data.sizes ) { #>
+			<label class="setting">
+				<span>尺寸</span>
+				<select class="size" name="size"
+					data-setting="size"
+					<# if ( data.userSettings ) { #>
+						data-user-setting="imgsize"
+					<# } #>>
+											<#
+						var size = data.sizes['thumbnail'];
+						if ( size ) { #>
+							<option value="thumbnail" >
+								缩略图 &ndash; {{ size.width }} &times; {{ size.height }}
+							</option>
+						<# } #>
+											<#
+						var size = data.sizes['medium'];
+						if ( size ) { #>
+							<option value="medium" >
+								中等 &ndash; {{ size.width }} &times; {{ size.height }}
+							</option>
+						<# } #>
+											<#
+						var size = data.sizes['large'];
+						if ( size ) { #>
+							<option value="large" >
+								大 &ndash; {{ size.width }} &times; {{ size.height }}
+							</option>
+						<# } #>
+											<#
+						var size = data.sizes['full'];
+						if ( size ) { #>
+							<option value="full"  selected='selected'>
+								完整尺寸 &ndash; {{ size.width }} &times; {{ size.height }}
+							</option>
+						<# } #>
+									</select>
+			</label>
+		<# } #>
+	</script>
+
+	<script type="text/html" id="tmpl-gallery-settings">
+		<h3>相册设置</h3>
+
+		<label class="setting">
+			<span>链接到</span>
+			<select class="link-to"
+				data-setting="link"
+				<# if ( data.userSettings ) { #>
+					data-user-setting="urlbutton"
+				<# } #>>
+
+				<option value="post" <# if ( ! wp.media.galleryDefaults.link || 'post' == wp.media.galleryDefaults.link ) {
+					#>selected="selected"<# }
+				#>>
+					附件页面				</option>
+				<option value="file" <# if ( 'file' == wp.media.galleryDefaults.link ) { #>selected="selected"<# } #>>
+					媒体文件				</option>
+				<option value="none" <# if ( 'none' == wp.media.galleryDefaults.link ) { #>selected="selected"<# } #>>
+					无				</option>
+			</select>
+		</label>
+
+		<label class="setting">
+			<span>栏目</span>
+			<select class="columns" name="columns"
+				data-setting="columns">
+									<option value="1" <#
+						if ( 1 == wp.media.galleryDefaults.columns ) { #>selected="selected"<# }
+					#>>
+						1					</option>
+									<option value="2" <#
+						if ( 2 == wp.media.galleryDefaults.columns ) { #>selected="selected"<# }
+					#>>
+						2					</option>
+									<option value="3" <#
+						if ( 3 == wp.media.galleryDefaults.columns ) { #>selected="selected"<# }
+					#>>
+						3					</option>
+									<option value="4" <#
+						if ( 4 == wp.media.galleryDefaults.columns ) { #>selected="selected"<# }
+					#>>
+						4					</option>
+									<option value="5" <#
+						if ( 5 == wp.media.galleryDefaults.columns ) { #>selected="selected"<# }
+					#>>
+						5					</option>
+									<option value="6" <#
+						if ( 6 == wp.media.galleryDefaults.columns ) { #>selected="selected"<# }
+					#>>
+						6					</option>
+									<option value="7" <#
+						if ( 7 == wp.media.galleryDefaults.columns ) { #>selected="selected"<# }
+					#>>
+						7					</option>
+									<option value="8" <#
+						if ( 8 == wp.media.galleryDefaults.columns ) { #>selected="selected"<# }
+					#>>
+						8					</option>
+									<option value="9" <#
+						if ( 9 == wp.media.galleryDefaults.columns ) { #>selected="selected"<# }
+					#>>
+						9					</option>
+							</select>
+		</label>
+
+		<label class="setting">
+			<span>随机顺序</span>
+			<input type="checkbox" data-setting="_orderbyRandom" />
+		</label>
+	</script>
+
+	<script type="text/html" id="tmpl-playlist-settings">
+		<h3>播放列表设置</h3>
+
+		<# var emptyModel = _.isEmpty( data.model ),
+			isVideo = 'video' === data.controller.get('library').props.get('type'); #>
+
+		<label class="setting">
+			<input type="checkbox" data-setting="tracklist" <# if ( emptyModel ) { #>
+				checked="checked"
+			<# } #> />
+			<# if ( isVideo ) { #>
+			<span>显示视频列表</span>
+			<# } else { #>
+			<span>显示曲目列表</span>
+			<# } #>
+		</label>
+
+		<# if ( ! isVideo ) { #>
+		<label class="setting">
+			<input type="checkbox" data-setting="artists" <# if ( emptyModel ) { #>
+				checked="checked"
+			<# } #> />
+			<span>在曲目列表中显示艺术家名</span>
+		</label>
+		<# } #>
+
+		<label class="setting">
+			<input type="checkbox" data-setting="images" <# if ( emptyModel ) { #>
+				checked="checked"
+			<# } #> />
+			<span>显示图像</span>
+		</label>
+	</script>
+
+	<script type="text/html" id="tmpl-embed-link-settings">
+		<label class="setting title">
+			<span>标题</span>
+			<input type="text" class="alignment" data-setting="title" />
+		</label>
+		<div class="embed-container" style="display: none;">
+			<div class="embed-preview"></div>
+		</div>
+	</script>
+
+	<script type="text/html" id="tmpl-embed-image-settings">
+		<div class="thumbnail">
+			<img src="{{ data.model.url }}" draggable="false" />
+		</div>
+
+					<label class="setting caption">
+				<span>说明</span>
+				<textarea data-setting="caption" />
+			</label>
+		
+		<label class="setting alt-text">
+			<span>替代文本</span>
+			<input type="text" data-setting="alt" />
+		</label>
+
+		<div class="setting align">
+			<span>对齐</span>
+			<div class="button-group button-large" data-setting="align">
+				<button class="button" value="left">
+					左				</button>
+				<button class="button" value="center">
+					中				</button>
+				<button class="button" value="right">
+					右				</button>
+				<button class="button active" value="none">
+					无				</button>
+			</div>
+		</div>
+
+		<div class="setting link-to">
+			<span>链接到</span>
+			<div class="button-group button-large" data-setting="link">
+				<button class="button" value="file">
+					图像URL				</button>
+				<button class="button" value="custom">
+					自定义URL				</button>
+				<button class="button active" value="none">
+					无				</button>
+			</div>
+			<input type="text" class="link-to-custom" data-setting="linkUrl" />
+		</div>
+	</script>
+
+	<script type="text/html" id="tmpl-image-details">
+		<div class="media-embed">
+			<div class="embed-media-settings">
+				<div class="column-image">
+					<div class="image">
+						<img src="{{ data.model.url }}" draggable="false" />
+
+						<# if ( data.attachment && window.imageEdit ) { #>
+							<div class="actions">
+								<input type="button" class="edit-attachment button" value="编辑原始文件" />
+								<input type="button" class="replace-attachment button" value="替换" />
+							</div>
+						<# } #>
+					</div>
+				</div>
+				<div class="column-settings">
+											<label class="setting caption">
+							<span>说明</span>
+							<textarea data-setting="caption">{{ data.model.caption }}</textarea>
+						</label>
+					
+					<label class="setting alt-text">
+						<span>替代文本</span>
+						<input type="text" data-setting="alt" value="{{ data.model.alt }}" />
+					</label>
+
+					<h3>显示设置</h3>
+					<div class="setting align">
+						<span>对齐</span>
+						<div class="button-group button-large" data-setting="align">
+							<button class="button" value="left">
+								左							</button>
+							<button class="button" value="center">
+								中							</button>
+							<button class="button" value="right">
+								右							</button>
+							<button class="button active" value="none">
+								无							</button>
+						</div>
+					</div>
+
+					<# if ( data.attachment ) { #>
+						<# if ( 'undefined' !== typeof data.attachment.sizes ) { #>
+							<label class="setting size">
+								<span>尺寸</span>
+								<select class="size" name="size"
+									data-setting="size"
+									<# if ( data.userSettings ) { #>
+										data-user-setting="imgsize"
+									<# } #>>
+																			<#
+										var size = data.sizes['thumbnail'];
+										if ( size ) { #>
+											<option value="thumbnail">
+												缩略图 &ndash; {{ size.width }} &times; {{ size.height }}
+											</option>
+										<# } #>
+																			<#
+										var size = data.sizes['medium'];
+										if ( size ) { #>
+											<option value="medium">
+												中等 &ndash; {{ size.width }} &times; {{ size.height }}
+											</option>
+										<# } #>
+																			<#
+										var size = data.sizes['large'];
+										if ( size ) { #>
+											<option value="large">
+												大 &ndash; {{ size.width }} &times; {{ size.height }}
+											</option>
+										<# } #>
+																			<#
+										var size = data.sizes['full'];
+										if ( size ) { #>
+											<option value="full">
+												完整尺寸 &ndash; {{ size.width }} &times; {{ size.height }}
+											</option>
+										<# } #>
+																		<option value="custom">
+										自定义尺寸									</option>
+								</select>
+							</label>
+						<# } #>
+							<div class="custom-size<# if ( data.model.size !== 'custom' ) { #> hidden<# } #>">
+								<label><span>宽度 <small>(px)</small></span> <input data-setting="customWidth" type="number" step="1" value="{{ data.model.customWidth }}" /></label><span class="sep">&times;</span><label><span>高度 <small>(px)</small></span><input data-setting="customHeight" type="number" step="1" value="{{ data.model.customHeight }}" /></label>
+							</div>
+					<# } #>
+
+					<div class="setting link-to">
+						<span>链接到</span>
+						<select data-setting="link">
+						<# if ( data.attachment ) { #>
+							<option value="file">
+								媒体文件							</option>
+							<option value="post">
+								附件页面							</option>
+						<# } else { #>
+							<option value="file">
+								图像URL							</option>
+						<# } #>
+							<option value="custom">
+								自定义URL							</option>
+							<option value="none">
+								无							</option>
+						</select>
+						<input type="text" class="link-to-custom" data-setting="linkUrl" />
+					</div>
+					<div class="advanced-section">
+						<h3><a class="advanced-toggle" href="#">高级选项</a></h3>
+						<div class="advanced-settings hidden">
+							<div class="advanced-image">
+								<label class="setting title-text">
+									<span>图像标题属性</span>
+									<input type="text" data-setting="title" value="{{ data.model.title }}" />
+								</label>
+								<label class="setting extra-classes">
+									<span>图像CSS类</span>
+									<input type="text" data-setting="extraClasses" value="{{ data.model.extraClasses }}" />
+								</label>
+							</div>
+							<div class="advanced-link">
+								<div class="setting link-target">
+									<label><input type="checkbox" data-setting="linkTargetBlank" value="_blank" <# if ( data.model.linkTargetBlank ) { #>checked="checked"<# } #>>在新窗口或标签页打开链接</label>
+								</div>
+								<label class="setting link-rel">
+									<span>链接Rel</span>
+									<input type="text" data-setting="linkRel" value="{{ data.model.linkClassName }}" />
+								</label>
+								<label class="setting link-class-name">
+									<span>链接CSS类</span>
+									<input type="text" data-setting="linkClassName" value="{{ data.model.linkClassName }}" />
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</script>
+
+	<script type="text/html" id="tmpl-image-editor">
+		<div id="media-head-{{ data.id }}"></div>
+		<div id="image-editor-{{ data.id }}"></div>
+	</script>
+
+	<script type="text/html" id="tmpl-audio-details">
+		<# var ext, html5types = {
+			mp3: wp.media.view.settings.embedMimes.mp3,
+			ogg: wp.media.view.settings.embedMimes.ogg
+		}; #>
+
+				<div class="media-embed media-embed-details">
+			<div class="embed-media-settings embed-audio-settings">
+				<audio style="visibility: hidden"
+	controls
+	class="wp-audio-shortcode"
+	width="{{ _.isUndefined( data.model.width ) ? 400 : data.model.width }}"
+	preload="{{ _.isUndefined( data.model.preload ) ? 'none' : data.model.preload }}"
+	<#
+	if ( ! _.isUndefined( data.model.autoplay ) && data.model.autoplay ) {
+		#> autoplay<#
+	}
+	if ( ! _.isUndefined( data.model.loop ) && data.model.loop ) {
+		#> loop<#
+	}
+	#>
+>
+	<# if ( ! _.isEmpty( data.model.src ) ) { #>
+	<source src="{{ data.model.src }}" type="{{ wp.media.view.settings.embedMimes[ data.model.src.split('.').pop() ] }}" />
+	<# } #>
+
+	<# if ( ! _.isEmpty( data.model.mp3 ) ) { #>
+	<source src="{{ data.model.mp3 }}" type="{{ wp.media.view.settings.embedMimes[ 'mp3' ] }}" />
+	<# } #>
+	<# if ( ! _.isEmpty( data.model.ogg ) ) { #>
+	<source src="{{ data.model.ogg }}" type="{{ wp.media.view.settings.embedMimes[ 'ogg' ] }}" />
+	<# } #>
+	<# if ( ! _.isEmpty( data.model.wma ) ) { #>
+	<source src="{{ data.model.wma }}" type="{{ wp.media.view.settings.embedMimes[ 'wma' ] }}" />
+	<# } #>
+	<# if ( ! _.isEmpty( data.model.m4a ) ) { #>
+	<source src="{{ data.model.m4a }}" type="{{ wp.media.view.settings.embedMimes[ 'm4a' ] }}" />
+	<# } #>
+	<# if ( ! _.isEmpty( data.model.wav ) ) { #>
+	<source src="{{ data.model.wav }}" type="{{ wp.media.view.settings.embedMimes[ 'wav' ] }}" />
+	<# } #>
+	</audio>
+
+				<# if ( ! _.isEmpty( data.model.src ) ) {
+					ext = data.model.src.split('.').pop();
+					if ( html5types[ ext ] ) {
+						delete html5types[ ext ];
+					}
+				#>
+				<label class="setting">
+					<span>SRC</span>
+					<input type="text" disabled="disabled" data-setting="src" value="{{ data.model.src }}" />
+					<a class="remove-setting">移除</a>
+				</label>
+				<# } #>
+				<# if ( ! _.isEmpty( data.model.mp3 ) ) {
+					if ( ! _.isUndefined( html5types.mp3 ) ) {
+						delete html5types.mp3;
+					}
+				#>
+				<label class="setting">
+					<span>MP3</span>
+					<input type="text" disabled="disabled" data-setting="mp3" value="{{ data.model.mp3 }}" />
+					<a class="remove-setting">移除</a>
+				</label>
+				<# } #>
+				<# if ( ! _.isEmpty( data.model.ogg ) ) {
+					if ( ! _.isUndefined( html5types.ogg ) ) {
+						delete html5types.ogg;
+					}
+				#>
+				<label class="setting">
+					<span>OGG</span>
+					<input type="text" disabled="disabled" data-setting="ogg" value="{{ data.model.ogg }}" />
+					<a class="remove-setting">移除</a>
+				</label>
+				<# } #>
+				<# if ( ! _.isEmpty( data.model.wma ) ) {
+					if ( ! _.isUndefined( html5types.wma ) ) {
+						delete html5types.wma;
+					}
+				#>
+				<label class="setting">
+					<span>WMA</span>
+					<input type="text" disabled="disabled" data-setting="wma" value="{{ data.model.wma }}" />
+					<a class="remove-setting">移除</a>
+				</label>
+				<# } #>
+				<# if ( ! _.isEmpty( data.model.m4a ) ) {
+					if ( ! _.isUndefined( html5types.m4a ) ) {
+						delete html5types.m4a;
+					}
+				#>
+				<label class="setting">
+					<span>M4A</span>
+					<input type="text" disabled="disabled" data-setting="m4a" value="{{ data.model.m4a }}" />
+					<a class="remove-setting">移除</a>
+				</label>
+				<# } #>
+				<# if ( ! _.isEmpty( data.model.wav ) ) {
+					if ( ! _.isUndefined( html5types.wav ) ) {
+						delete html5types.wav;
+					}
+				#>
+				<label class="setting">
+					<span>WAV</span>
+					<input type="text" disabled="disabled" data-setting="wav" value="{{ data.model.wav }}" />
+					<a class="remove-setting">移除</a>
+				</label>
+				<# } #>
+				
+				<# if ( ! _.isEmpty( html5types ) ) { #>
+				<div class="setting">
+					<span>为了增强HTML5播放体验，请添加备用源：</span>
+					<div class="button-large">
+					<# _.each( html5types, function (mime, type) { #>
+					<button class="button add-media-source" data-mime="{{ mime }}">{{ type }}</button>
+					<# } ) #>
+					</div>
+				</div>
+				<# } #>
+
+				<div class="setting preload">
+					<span>预加载</span>
+					<div class="button-group button-large" data-setting="preload">
+						<button class="button" value="auto">自动</button>
+						<button class="button" value="metadata">元数据</button>
+						<button class="button active" value="none">无</button>
+					</div>
+				</div>
+
+				<label class="setting checkbox-setting">
+					<input type="checkbox" data-setting="autoplay" />
+					<span>自动播放</span>
+				</label>
+
+				<label class="setting checkbox-setting">
+					<input type="checkbox" data-setting="loop" />
+					<span>循环</span>
+				</label>
+			</div>
+		</div>
+	</script>
+
+	<script type="text/html" id="tmpl-video-details">
+		<# var ext, html5types = {
+			mp4: wp.media.view.settings.embedMimes.mp4,
+			ogv: wp.media.view.settings.embedMimes.ogv,
+			webm: wp.media.view.settings.embedMimes.webm
+		}; #>
+
+				<div class="media-embed media-embed-details">
+			<div class="embed-media-settings embed-video-settings">
+				<div class="wp-video-holder">
+				<#
+				var isYouTube = ! _.isEmpty( data.model.src ) && data.model.src.match(/youtube|youtu\.be/);
+					w = ! data.model.width || data.model.width > 640 ? 640 : data.model.width,
+					h = ! data.model.height ? 360 : data.model.height;
+
+				if ( data.model.width && w !== data.model.width ) {
+					h = Math.ceil( ( h * w ) / data.model.width );
+				}
+				#>
+
+				<#  var w_rule = h_rule = '',
+		w, h, settings = wp.media.view.settings,
+		isYouTube = ! _.isEmpty( data.model.src ) && data.model.src.match(/youtube|youtu\.be/);
+
+	if ( settings.contentWidth && data.model.width >= settings.contentWidth ) {
+		w = settings.contentWidth;
+	} else {
+		w = data.model.width;
+	}
+
+	if ( w !== data.model.width ) {
+		h = Math.ceil( ( data.model.height * w ) / data.model.width );
+	} else {
+		h = data.model.height;
+	}
+
+	if ( w ) {
+		w_rule = 'width: ' + w + 'px; ';
+	}
+	if ( h ) {
+		h_rule = 'height: ' + h + 'px;';
+	}
+#>
+<div style="{{ w_rule }}{{ h_rule }}" class="wp-video">
+<video controls
+	class="wp-video-shortcode{{ isYouTube ? ' youtube-video' : '' }}"
+	<# if ( w ) { #>width="{{ w }}"<# } #>
+	<# if ( h ) { #>height="{{ h }}"<# } #>
+	<#
+		if ( ! _.isUndefined( data.model.poster ) && data.model.poster ) {
+			#> poster="{{ data.model.poster }}"<#
+		} #>
+		preload="{{ _.isUndefined( data.model.preload ) ? 'metadata' : data.model.preload }}"<#
+	 if ( ! _.isUndefined( data.model.autoplay ) && data.model.autoplay ) {
+		#> autoplay<#
+	}
+	 if ( ! _.isUndefined( data.model.loop ) && data.model.loop ) {
+		#> loop<#
+	}
+	#>
+>
+	<# if ( ! _.isEmpty( data.model.src ) ) {
+		if ( isYouTube ) { #>
+		<source src="{{ data.model.src }}" type="video/youtube" />
+		<# } else { #>
+		<source src="{{ data.model.src }}" type="{{ settings.embedMimes[ data.model.src.split('.').pop() ] }}" />
+		<# }
+	} #>
+
+	<# if ( data.model.mp4 ) { #>
+	<source src="{{ data.model.mp4 }}" type="{{ settings.embedMimes[ 'mp4' ] }}" />
+	<# } #>
+	<# if ( data.model.m4v ) { #>
+	<source src="{{ data.model.m4v }}" type="{{ settings.embedMimes[ 'm4v' ] }}" />
+	<# } #>
+	<# if ( data.model.webm ) { #>
+	<source src="{{ data.model.webm }}" type="{{ settings.embedMimes[ 'webm' ] }}" />
+	<# } #>
+	<# if ( data.model.ogv ) { #>
+	<source src="{{ data.model.ogv }}" type="{{ settings.embedMimes[ 'ogv' ] }}" />
+	<# } #>
+	<# if ( data.model.wmv ) { #>
+	<source src="{{ data.model.wmv }}" type="{{ settings.embedMimes[ 'wmv' ] }}" />
+	<# } #>
+	<# if ( data.model.flv ) { #>
+	<source src="{{ data.model.flv }}" type="{{ settings.embedMimes[ 'flv' ] }}" />
+	<# } #>
+		{{{ data.model.content }}}
+</video>
+</div>
+
+				<# if ( ! _.isEmpty( data.model.src ) ) {
+					ext = data.model.src.split('.').pop();
+					if ( html5types[ ext ] ) {
+						delete html5types[ ext ];
+					}
+				#>
+				<label class="setting">
+					<span>SRC</span>
+					<input type="text" disabled="disabled" data-setting="src" value="{{ data.model.src }}" />
+					<a class="remove-setting">移除</a>
+				</label>
+				<# } #>
+				<# if ( ! _.isEmpty( data.model.mp4 ) ) {
+					if ( ! _.isUndefined( html5types.mp4 ) ) {
+						delete html5types.mp4;
+					}
+				#>
+				<label class="setting">
+					<span>MP4</span>
+					<input type="text" disabled="disabled" data-setting="mp4" value="{{ data.model.mp4 }}" />
+					<a class="remove-setting">移除</a>
+				</label>
+				<# } #>
+				<# if ( ! _.isEmpty( data.model.m4v ) ) {
+					if ( ! _.isUndefined( html5types.m4v ) ) {
+						delete html5types.m4v;
+					}
+				#>
+				<label class="setting">
+					<span>M4V</span>
+					<input type="text" disabled="disabled" data-setting="m4v" value="{{ data.model.m4v }}" />
+					<a class="remove-setting">移除</a>
+				</label>
+				<# } #>
+				<# if ( ! _.isEmpty( data.model.webm ) ) {
+					if ( ! _.isUndefined( html5types.webm ) ) {
+						delete html5types.webm;
+					}
+				#>
+				<label class="setting">
+					<span>WEBM</span>
+					<input type="text" disabled="disabled" data-setting="webm" value="{{ data.model.webm }}" />
+					<a class="remove-setting">移除</a>
+				</label>
+				<# } #>
+				<# if ( ! _.isEmpty( data.model.ogv ) ) {
+					if ( ! _.isUndefined( html5types.ogv ) ) {
+						delete html5types.ogv;
+					}
+				#>
+				<label class="setting">
+					<span>OGV</span>
+					<input type="text" disabled="disabled" data-setting="ogv" value="{{ data.model.ogv }}" />
+					<a class="remove-setting">移除</a>
+				</label>
+				<# } #>
+				<# if ( ! _.isEmpty( data.model.wmv ) ) {
+					if ( ! _.isUndefined( html5types.wmv ) ) {
+						delete html5types.wmv;
+					}
+				#>
+				<label class="setting">
+					<span>WMV</span>
+					<input type="text" disabled="disabled" data-setting="wmv" value="{{ data.model.wmv }}" />
+					<a class="remove-setting">移除</a>
+				</label>
+				<# } #>
+				<# if ( ! _.isEmpty( data.model.flv ) ) {
+					if ( ! _.isUndefined( html5types.flv ) ) {
+						delete html5types.flv;
+					}
+				#>
+				<label class="setting">
+					<span>FLV</span>
+					<input type="text" disabled="disabled" data-setting="flv" value="{{ data.model.flv }}" />
+					<a class="remove-setting">移除</a>
+				</label>
+				<# } #>
+								</div>
+
+				<# if ( ! _.isEmpty( html5types ) ) { #>
+				<div class="setting">
+					<span>为了增强HTML5播放体验，请添加备用源：</span>
+					<div class="button-large">
+					<# _.each( html5types, function (mime, type) { #>
+					<button class="button add-media-source" data-mime="{{ mime }}">{{ type }}</button>
+					<# } ) #>
+					</div>
+				</div>
+				<# } #>
+
+				<# if ( ! _.isEmpty( data.model.poster ) ) { #>
+				<label class="setting">
+					<span>海报图像</span>
+					<input type="text" disabled="disabled" data-setting="poster" value="{{ data.model.poster }}" />
+					<a class="remove-setting">移除</a>
+				</label>
+				<# } #>
+				<div class="setting preload">
+					<span>预加载</span>
+					<div class="button-group button-large" data-setting="preload">
+						<button class="button" value="auto">自动</button>
+						<button class="button" value="metadata">元数据</button>
+						<button class="button active" value="none">无</button>
+					</div>
+				</div>
+
+				<label class="setting checkbox-setting">
+					<input type="checkbox" data-setting="autoplay" />
+					<span>自动播放</span>
+				</label>
+
+				<label class="setting checkbox-setting">
+					<input type="checkbox" data-setting="loop" />
+					<span>循环</span>
+				</label>
+
+				<label class="setting" data-setting="content">
+					<span>曲目（字幕、说明、描述、章节或元数据）</span>
+					<#
+					var content = '';
+					if ( ! _.isEmpty( data.model.content ) ) {
+						var tracks = jQuery( data.model.content ).filter( 'track' );
+						_.each( tracks.toArray(), function (track) {
+							content += track.outerHTML; #>
+						<p>
+							<input class="content-track" type="text" value="{{ track.outerHTML }}" />
+							<a class="remove-setting remove-track">移除</a>
+						</p>
+						<# } ); #>
+					<# } else { #>
+					<em>没有关联的字幕。</em>
+					<# } #>
+					<textarea class="hidden content-setting">{{ content }}</textarea>
+				</label>
+			</div>
+		</div>
+	</script>
+
+	<script type="text/html" id="tmpl-editor-gallery">
+		<# if ( data.attachments ) { #>
+			<div class="gallery gallery-columns-{{ data.columns }}">
+				<# _.each( data.attachments, function( attachment, index ) { #>
+					<dl class="gallery-item">
+						<dt class="gallery-icon">
+							<# if ( attachment.thumbnail ) { #>
+								<img src="{{ attachment.thumbnail.url }}" width="{{ attachment.thumbnail.width }}" height="{{ attachment.thumbnail.height }}" />
+							<# } else { #>
+								<img src="{{ attachment.url }}" />
+							<# } #>
+						</dt>
+						<# if ( attachment.caption ) { #>
+							<dd class="wp-caption-text gallery-caption">
+								{{ attachment.caption }}
+							</dd>
+						<# } #>
+					</dl>
+					<# if ( index % data.columns === data.columns - 1 ) { #>
+						<br style="clear: both;">
+					<# } #>
+				<# } ); #>
+			</div>
+		<# } else { #>
+			<div class="wpview-error">
+				<div class="dashicons dashicons-format-gallery"></div><p>找不到条目。</p>
+			</div>
+		<# } #>
+	</script>
+
+	<script type="text/html" id="tmpl-crop-content">
+		<img class="crop-image" src="{{ data.url }}">
+		<div class="upload-errors"></div>
+	</script>
+
+		<div id="local-storage-notice" class="hidden">
+	<p class="local-restore">
+		您浏览器中此文章的备份与以下版本不同。		<a class="restore-backup" href="#">恢复备份。</a>
+	</p>
+	<p class="undo-restore hidden">
+		文章还原成功。		<a class="undo-restore-backup" href="#">撤销。</a>
+	</p>
+	</div>
+	<script type='text/javascript'>list_args = {"class":"WP_Post_Comments_List_Table","screen":{"id":"post","base":"post"}};</script>
+	<div id="wp-auth-check-wrap" class="hidden">
+	<div id="wp-auth-check-bg"></div>
+	<div id="wp-auth-check">
+	<div class="wp-auth-check-close" tabindex="0" title="关闭"></div>
+			<div id="wp-auth-check-form" data-src="http://localhost/wordpress/wp-login.php?interim-login=1"></div>
+			<div class="wp-auth-fallback">
+		<p><b class="wp-auth-fallback-expired" tabindex="0">会话已过期</b></p>
+		<p><a href="http://localhost/wordpress/wp-login.php" target="_blank">请重新登录。</a>
+		登录页会在新窗口中打开，在登录后您可关闭该窗口并返回本页。</p>
+	</div>
+	</div>
+	</div>
+	
+<script type='text/javascript'>
+/* <![CDATA[ */
+var commonL10n = {"warnDelete":"\u60a8\u5c06\u6c38\u4e45\u5220\u9664\u6240\u9009\u9879\u76ee\u3002\n\u70b9\u51fb\u201c\u53d6\u6d88\u201d\u505c\u6b62\uff0c\u70b9\u51fb\u201c\u786e\u5b9a\u201d\u5220\u9664\u3002"};var wpAjax = {"noPerm":"\u60a8\u65e0\u6743\u6267\u884c\u6b64\u64cd\u4f5c\u3002","broken":"\u53d1\u751f\u4e86\u65e0\u6cd5\u8bc6\u522b\u7684\u9519\u8bef\u3002"};var autosaveL10n = {"autosaveInterval":"60","blog_id":"1"};var heartbeatSettings = {"nonce":"c63b35be06","suspension":"disable"};var postL10n = {"ok":"\u786e\u5b9a","cancel":"\u53d6\u6d88","publishOn":"\u53d1\u5e03\u4e8e\uff1a","publishOnFuture":"\u5b9a\u65f6\uff1a","publishOnPast":"\u53d1\u5e03\u4e8e\uff1a","dateFormat":"%3$s\u5e74%1$s\u6708%2$s\u65e5@%4$s:%5$s","showcomm":"\u663e\u793a\u66f4\u591a\u8bc4\u8bba","endcomm":"\u5df2\u65e0\u66f4\u591a\u8bc4\u8bba\u3002","publish":"\u53d1\u5e03","schedule":"\u5b9a\u65f6","update":"\u66f4\u65b0","savePending":"\u4fdd\u5b58\u5e76\u63d0\u8bf7\u5ba1\u6838","saveDraft":"\u4fdd\u5b58\u8349\u7a3f","private":"\u79c1\u5bc6","public":"\u516c\u5f00","publicSticky":"\u516c\u5f00\u3001\u7f6e\u9876","password":"\u5bc6\u7801\u4fdd\u62a4","privatelyPublished":"\u79c1\u5bc6\u3001\u5df2\u53d1\u5e03","published":"\u5df2\u53d1\u5e03","comma":"\u3001","saveAlert":"\u79bb\u5f00\u8fd9\u4e2a\u9875\u9762\uff0c\u60a8\u6240\u505a\u7684\u66f4\u6539\u5c06\u4e22\u5931\u3002","savingText":"\u6b63\u5728\u4fdd\u5b58\u8349\u7a3f\u2026"};var thickboxL10n = {"next":"\u4e0b\u4e00\u9875 >","prev":"< \u4e0a\u4e00\u9875","image":"\u56fe\u50cf","of":"\/","close":"\u5173\u95ed","noiframes":"\u8fd9\u4e2a\u529f\u80fd\u9700\u8981iframe\u7684\u652f\u6301\u3002\u60a8\u53ef\u80fd\u7981\u6b62\u4e86iframe\u7684\u663e\u793a\uff0c\u6216\u60a8\u7684\u6d4f\u89c8\u5668\u4e0d\u652f\u6301\u6b64\u529f\u80fd\u3002","loadingAnimation":"http:\/\/localhost\/wordpress\/wp-includes\/js\/thickbox\/loadingAnimation.gif"};var _wpUtilSettings = {"ajax":{"url":"\/wordpress\/wp-admin\/admin-ajax.php"}};var _wpMediaModelsL10n = {"settings":{"ajaxurl":"\/wordpress\/wp-admin\/admin-ajax.php","post":{"id":0}}};var pluploadL10n = {"queue_limit_exceeded":"\u60a8\u5411\u961f\u5217\u4e2d\u6dfb\u52a0\u7684\u6587\u4ef6\u8fc7\u591a\u3002","file_exceeds_size_limit":"%s\u8d85\u8fc7\u4e86\u7ad9\u70b9\u7684\u6700\u5927\u4e0a\u4f20\u9650\u5236\u3002","zero_byte_file":"\u6587\u4ef6\u4e3a\u7a7a\uff0c\u8bf7\u9009\u62e9\u5176\u5b83\u6587\u4ef6\u3002","invalid_filetype":"\u4e0d\u5141\u8bb8\u4e0a\u4f20\u8be5\u7c7b\u578b\u7684\u6587\u4ef6\uff0c\u8bf7\u9009\u62e9\u5176\u5b83\u6587\u4ef6\u3002","not_an_image":"\u8be5\u6587\u4ef6\u4e0d\u662f\u56fe\u50cf\uff0c\u8bf7\u4f7f\u7528\u5176\u5b83\u6587\u4ef6\u3002","image_memory_exceeded":"\u8fbe\u5230\u5185\u5b58\u9650\u5236\uff0c\u8bf7\u4f7f\u7528\u5c0f\u4e00\u4e9b\u7684\u6587\u4ef6\u3002","image_dimensions_exceeded":"\u8be5\u6587\u4ef6\u8d85\u8fc7\u4e86\u6700\u5927\u5927\u5c0f\uff0c\u8bf7\u4f7f\u7528\u5176\u5b83\u6587\u4ef6\u3002","default_error":"\u4e0a\u4f20\u65f6\u53d1\u751f\u4e86\u9519\u8bef\u3002\u8bf7\u7a0d\u540e\u518d\u8bd5\u3002","missing_upload_url":"\u914d\u7f6e\u6709\u8bef\u3002\u8bf7\u8054\u7cfb\u60a8\u7684\u670d\u52a1\u5668\u7ba1\u7406\u5458\u3002","upload_limit_exceeded":"\u60a8\u53ea\u80fd\u4e0a\u4f20\u4e00\u4e2a\u6587\u4ef6\u3002","http_error":"HTTP\u9519\u8bef\u3002","upload_failed":"\u4e0a\u4f20\u5931\u8d25\u3002","big_upload_failed":"\u8bf7\u5c1d\u8bd5\u4f7f\u7528%1$s\u6807\u51c6\u7684\u6d4f\u89c8\u5668\u4e0a\u4f20\u5de5\u5177%2$s\u6765\u4e0a\u4f20\u8fd9\u4e2a\u6587\u4ef6\u3002","big_upload_queued":"%s\u8d85\u51fa\u4e86\u60a8\u6d4f\u89c8\u5668\u5bf9\u9ad8\u7ea7\u591a\u6587\u4ef6\u4e0a\u4f20\u5de5\u5177\u6240\u505a\u7684\u5927\u5c0f\u9650\u5236\u3002","io_error":"IO\u9519\u8bef\u3002","security_error":"\u5b89\u5168\u9519\u8bef\u3002","file_cancelled":"\u6587\u4ef6\u5df2\u53d6\u6d88\u3002","upload_stopped":"\u4e0a\u4f20\u505c\u6b62\u3002","dismiss":"\u4e0d\u518d\u663e\u793a","crunching":"\u5904\u7406\u4e2d\u2026","deleted":"\u79fb\u52a8\u5230\u56de\u6536\u7ad9\u3002","error_uploading":"\u201c%s\u201d\u4e0a\u4f20\u5931\u8d25\u3002"};
+var _wpPluploadSettings = {"defaults":{"runtimes":"html5,flash,silverlight,html4","file_data_name":"async-upload","url":"\/wordpress\/wp-admin\/async-upload.php","flash_swf_url":"http:\/\/localhost\/wordpress\/wp-includes\/js\/plupload\/plupload.flash.swf","silverlight_xap_url":"http:\/\/localhost\/wordpress\/wp-includes\/js\/plupload\/plupload.silverlight.xap","filters":{"max_file_size":"2097152b"},"multipart_params":{"action":"upload-attachment","_wpnonce":"becb427236"}},"browser":{"mobile":false,"supported":true},"limitExceeded":false};var mejsL10n = {"language":"zh","strings":{"Close":"\u5173\u95ed","Fullscreen":"\u5168\u5c4f","Download File":"\u4e0b\u8f7d\u6587\u4ef6","Download Video":"\u4e0b\u8f7d\u89c6\u9891","Play\/Pause":"\u64ad\u653e\/\u6682\u505c","Mute Toggle":"\u5207\u6362\u9759\u97f3","None":"\u65e0","Turn off Fullscreen":"\u5173\u95ed\u5168\u5c4f","Go Fullscreen":"\u5168\u5c4f","Unmute":"\u53d6\u6d88\u9759\u97f3","Mute":"\u9759\u97f3","Captions\/Subtitles":"\u5b57\u5e55"}};
+var _wpmejsSettings = {"pluginPath":"\/wordpress\/wp-includes\/js\/mediaelement\/"};var _wpMediaViewsL10n = {"url":"URL","addMedia":"\u6dfb\u52a0\u5a92\u4f53","search":"\u641c\u7d22","select":"\u9009\u62e9","cancel":"\u53d6\u6d88","update":"\u66f4\u65b0","replace":"\u66ff\u6362","remove":"\u79fb\u9664","back":"\u8fd4\u56de","selected":"\u5df2\u9009%d\u4e2a","dragInfo":"\u62d6\u653e\u6765\u6392\u5e8f\u56fe\u50cf\u3002","uploadFilesTitle":"\u4e0a\u4f20\u6587\u4ef6","uploadImagesTitle":"\u4e0a\u4f20\u6587\u4ef6","mediaLibraryTitle":"\u5a92\u4f53\u5e93","insertMediaTitle":"\u63d2\u5165\u591a\u5a92\u4f53","createNewGallery":"\u521b\u5efa\u65b0\u76f8\u518c","createNewPlaylist":"\u521b\u5efa\u65b0\u7684\u64ad\u653e\u5217\u8868","createNewVideoPlaylist":"\u521b\u5efa\u65b0\u7684\u89c6\u9891\u64ad\u653e\u5217\u8868","returnToLibrary":"\u2190 \u56de\u5230\u5a92\u4f53\u5e93","allMediaItems":"\u6240\u6709\u591a\u5a92\u4f53\u9879\u76ee","allMediaTypes":"\u6240\u6709\u5a92\u4f53\u7c7b\u578b","allDates":"\u5168\u90e8\u65e5\u671f","noItemsFound":"\u627e\u4e0d\u5230\u6761\u76ee\u3002","insertIntoPost":"\u63d2\u5165\u81f3\u6587\u7ae0","unattached":"\u5c1a\u672a\u9644\u52a0","trash":"\u56de\u6536\u7ad9","uploadedToThisPost":"\u4e0a\u4f20\u5230\u672c\u6587\u7ae0\u7684","warnDelete":"\u60a8\u5c06\u6c38\u4e45\u5220\u9664\u6240\u9009\u6761\u76ee\u3002\n\u70b9\u51fb\u201c\u53d6\u6d88\u201d\u505c\u6b62\uff0c\u70b9\u51fb\u201c\u786e\u5b9a\u201d\u5220\u9664\u3002","warnBulkDelete":"\u60a8\u5c06\u6c38\u4e45\u5220\u9664\u8fd9\u4e9b\u9879\u76ee\u3002\n\u70b9\u51fb\u201c\u53d6\u6d88\u201d\u505c\u6b62\uff0c\u70b9\u51fb\u201c\u786e\u5b9a\u201d\u5220\u9664\u3002","warnBulkTrash":"\u60a8\u5c06\u5220\u9664\u8fd9\u4e9b\u9879\u76ee\u3002\n\u70b9\u51fb\u201c\u53d6\u6d88\u201d\u505c\u6b62\uff0c\u70b9\u51fb\u201c\u786e\u5b9a\u201d\u5220\u9664\u3002","bulkSelect":"\u6279\u91cf\u9009\u62e9","cancelSelection":"\u53d6\u6d88\u9009\u62e9","trashSelected":"\u5220\u9664\u6240\u9009","untrashSelected":"\u8fd8\u539f\u6240\u9009","deleteSelected":"\u6c38\u4e45\u5220\u9664\u6240\u9009","deletePermanently":"\u6c38\u4e45\u5220\u9664","apply":"\u5e94\u7528","filterByDate":"\u6309\u65e5\u671f\u7b5b\u9009","filterByType":"\u6309\u7c7b\u578b\u7b5b\u9009","searchMediaLabel":"\u641c\u7d22\u5a92\u4f53","attachmentDetails":"\u9644\u4ef6\u8be6\u60c5","insertFromUrlTitle":"\u4eceURL\u63d2\u5165","setFeaturedImageTitle":"\u8bbe\u4e3a\u7279\u8272\u56fe\u50cf","setFeaturedImage":"\u8bbe\u4e3a\u7279\u8272\u56fe\u50cf","createGalleryTitle":"\u521b\u5efa\u76f8\u518c","editGalleryTitle":"\u7f16\u8f91\u76f8\u518c","cancelGalleryTitle":"\u2190 \u53d6\u6d88\u76f8\u518c","insertGallery":"\u63d2\u5165\u76f8\u518c","updateGallery":"\u66f4\u65b0\u76f8\u518c","addToGallery":"\u6dfb\u52a0\u81f3\u76f8\u518c","addToGalleryTitle":"\u6dfb\u52a0\u81f3\u76f8\u518c","reverseOrder":"\u53cd\u8f6c\u987a\u5e8f","imageDetailsTitle":"\u56fe\u50cf\u8be6\u60c5","imageReplaceTitle":"\u66ff\u6362\u56fe\u50cf","imageDetailsCancel":"\u53d6\u6d88\u7f16\u8f91","editImage":"\u7f16\u8f91\u56fe\u50cf","chooseImage":"\u9009\u62e9\u56fe\u50cf","selectAndCrop":"\u9009\u62e9\u5e76\u88c1\u526a","skipCropping":"\u8df3\u8fc7\u88c1\u526a","cropImage":"\u88c1\u526a\u56fe\u50cf","cropYourImage":"\u88c1\u526a\u60a8\u7684\u56fe\u7247","cropping":"\u88c1\u526a\u4e2d\u2026","suggestedDimensions":"\u63a8\u8350\u7684\u56fe\u50cf\u5c3a\u5bf8\uff1a","cropError":"\u5728\u88c1\u526a\u60a8\u7684\u56fe\u50cf\u65f6\u53d1\u751f\u4e86\u9519\u8bef\u3002","audioDetailsTitle":"\u97f3\u9891\u8be6\u60c5","audioReplaceTitle":"\u66ff\u6362\u97f3\u9891","audioAddSourceTitle":"\u6dfb\u52a0\u97f3\u9891\u6e90","audioDetailsCancel":"\u53d6\u6d88\u7f16\u8f91","videoDetailsTitle":"\u89c6\u9891\u8be6\u60c5","videoReplaceTitle":"\u66ff\u6362\u89c6\u9891","videoAddSourceTitle":"\u6dfb\u52a0\u89c6\u9891\u6e90","videoDetailsCancel":"\u53d6\u6d88\u7f16\u8f91","videoSelectPosterImageTitle":"\u9009\u62e9\u6d77\u62a5\u56fe\u50cf","videoAddTrackTitle":"\u6dfb\u52a0\u5b57\u5e55","playlistDragInfo":"\u62d6\u653e\u6765\u6392\u5e8f\u66f2\u76ee\u3002","createPlaylistTitle":"\u521b\u5efa\u97f3\u9891\u64ad\u653e\u5217\u8868","editPlaylistTitle":"\u7f16\u8f91\u97f3\u9891\u64ad\u653e\u5217\u8868","cancelPlaylistTitle":"\u2190 \u53d6\u6d88\u97f3\u9891\u64ad\u653e\u5217\u8868","insertPlaylist":"\u63d2\u5165\u97f3\u9891\u64ad\u653e\u5217\u8868","updatePlaylist":"\u66f4\u65b0\u97f3\u9891\u64ad\u653e\u5217\u8868","addToPlaylist":"\u6dfb\u52a0\u5230\u97f3\u9891\u64ad\u653e\u5217\u8868","addToPlaylistTitle":"\u6dfb\u52a0\u5230\u97f3\u9891\u64ad\u653e\u5217\u8868","videoPlaylistDragInfo":"\u62d6\u653e\u6765\u6392\u5e8f\u89c6\u9891\u3002","createVideoPlaylistTitle":"\u521b\u5efa\u89c6\u9891\u64ad\u653e\u5217\u8868","editVideoPlaylistTitle":"\u7f16\u8f91\u89c6\u9891\u64ad\u653e\u5217\u8868","cancelVideoPlaylistTitle":"\u2190 \u53d6\u6d88\u89c6\u9891\u64ad\u653e\u5217\u8868","insertVideoPlaylist":"\u63d2\u5165\u89c6\u9891\u64ad\u653e\u5217\u8868","updateVideoPlaylist":"\u66f4\u65b0\u89c6\u9891\u64ad\u653e\u5217\u8868","addToVideoPlaylist":"\u6dfb\u52a0\u5230\u89c6\u9891\u64ad\u653e\u5217\u8868","addToVideoPlaylistTitle":"\u6dfb\u52a0\u5230\u89c6\u9891\u64ad\u653e\u5217\u8868","editMetadata":"\u7f16\u8f91\u5143\u6570\u636e","noMedia":"\u6ca1\u6709\u627e\u5230\u5a92\u4f53\u9644\u4ef6\u3002","settings":{"tabs":[],"tabUrl":"http:\/\/localhost\/wordpress\/wp-admin\/media-upload.php?chromeless=1","mimeTypes":{"image":"\u56fe\u50cf","audio":"\u97f3\u9891","video":"\u89c6\u9891"},"captions":true,"nonce":{"sendToEditor":"531df2ba8f"},"post":{"id":6,"nonce":"1ecf948bc1","featuredImageId":-1},"defaultProps":{"link":"file","align":"","size":""},"attachmentCounts":{"audio":0,"video":0},"embedExts":["mp3","ogg","wma","m4a","wav","mp4","m4v","webm","ogv","wmv","flv"],"embedMimes":{"mp3":"audio\/mpeg","ogg":"audio\/ogg","wma":"audio\/x-ms-wma","m4a":"audio\/mpeg","wav":"audio\/wav","mp4":"video\/mp4","m4v":"video\/mp4","webm":"video\/webm","ogv":"video\/ogg","wmv":"video\/x-ms-wmv","flv":"video\/x-flv"},"contentWidth":474,"months":[],"mediaTrash":0}};var imageEditL10n = {"error":"\u65e0\u6cd5\u52a0\u8f7d\u9884\u89c8\u56fe\u7247\u3002\u8bf7\u5c1d\u8bd5\u5237\u65b0\u9875\u9762\u3002"};var authcheckL10n = {"beforeunload":"\u60a8\u7684\u767b\u5f55\u4f1a\u8bdd\u5df2\u8fc7\u671f\uff0c\u8bf7\u91cd\u65b0\u767b\u5f55\u3002","interval":"180"};var quicktagsL10n = {"closeAllOpenTags":"\u5173\u95ed\u6240\u6709\u6253\u5f00\u7684\u6807\u7b7e","closeTags":"\u5173\u95ed\u6807\u7b7e","enterURL":"\u8f93\u5165URL","enterImageURL":"\u8f93\u5165\u56fe\u50cfURL","enterImageDescription":"\u4e3a\u56fe\u50cf\u8f93\u5165\u63cf\u8ff0","fullscreen":"\u5168\u5c4f","toggleFullscreen":"\u5207\u6362\u5168\u5c4f\u6a21\u5f0f","textdirection":"\u6587\u672c\u65b9\u5411","toggleTextdirection":"\u5207\u6362\u7f16\u8f91\u5668\u6587\u672c\u4e66\u5199\u65b9\u5411"};var wpLinkL10n = {"title":"\u63d2\u5165\u6216\u7f16\u8f91\u94fe\u63a5","update":"\u66f4\u65b0","save":"\u6dfb\u52a0\u94fe\u63a5","noTitle":"(\u65e0\u6807\u9898)","noMatchesFound":"\u627e\u4e0d\u5230\u7b26\u5408\u6761\u4ef6\u7684\u9879\u76ee\u3002"};/* ]]> */
+</script>
+<script type='text/javascript' src='http://localhost/wordpress/wp-admin/load-scripts.php?c=1&amp;load%5B%5D=hoverIntent,common,admin-bar,schedule,wp-ajax-response,autosave,suggest,jquery-color,wp-lists,jquery-ui-core,jquery-ui-widget,jq&amp;load%5B%5D=uery-ui-mouse,jquery-ui-sortable,postbox,heartbeat,post,editor-expand,thickbox,underscore,shortcode,backbone,wp-util,wp-backbone&amp;load%5B%5D=,media-models,wp-plupload,mediaelement,wp-mediaelement,media-views,media-editor,media-audiovideo,wp-playlist,mce-view,imgareasel&amp;load%5B%5D=ect,image-edit,svg-painter,wp-auth-check,editor,quicktags,wplink,wp-fullscreen,media-upload&amp;ver=4.0'></script>
+<script type='text/javascript' src='http://localhost/wordpress/wp-content/languages/zh_CN-word-count.js?ver=20120605'></script>
+
+		<script type="text/javascript">
+		tinyMCEPreInit = {
+			baseURL: "http://localhost/wordpress/wp-includes/js/tinymce",
+			suffix: ".min",
+			dragDropUpload: true,			mceInit: {'content':{theme:"modern",skin:"lightgray",language:"zh",formats:{
+						alignleft: [
+							{selector: 'p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li', styles: {textAlign:'left'}},
+							{selector: 'img,table,dl.wp-caption', classes: 'alignleft'}
+						],
+						aligncenter: [
+							{selector: 'p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li', styles: {textAlign:'center'}},
+							{selector: 'img,table,dl.wp-caption', classes: 'aligncenter'}
+						],
+						alignright: [
+							{selector: 'p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li', styles: {textAlign:'right'}},
+							{selector: 'img,table,dl.wp-caption', classes: 'alignright'}
+						],
+						strikethrough: {inline: 'del'}
+					},relative_urls:false,remove_script_host:false,convert_urls:false,browser_spellcheck:true,fix_list_elements:true,entities:"38,amp,60,lt,62,gt",entity_encoding:"raw",keep_styles:false,preview_styles:"font-family font-size font-weight font-style text-decoration text-transform",wpeditimage_disable_captions:false,wpeditimage_html5_captions:true,plugins:"charmap,colorpicker,hr,lists,media,paste,tabfocus,textcolor,fullscreen,wordpress,wpautoresize,wpeditimage,wpgallery,wplink,wpdialogs,wpview,wpfullscreen",content_css:"http://localhost/wordpress/wp-includes/css/dashicons.min.css?ver=4.0,http://localhost/wordpress/wp-includes/js/tinymce/skins/wordpress/wp-content.css?ver=4.0,//fonts.googleapis.com/css?family=Lato%3A300%2C400%2C700%2C900%2C300italic%2C400italic%2C700italic,http://localhost/wordpress/wp-content/themes/twentyfourteen/css/editor-style.css,http://localhost/wordpress/wp-content/themes/twentyfourteen/genericons/genericons.css",selector:"#content",resize:false,menubar:false,wpautop:true,indent:false,toolbar1:"bold,italic,strikethrough,bullist,numlist,blockquote,hr,alignleft,aligncenter,alignright,link,unlink,wp_more,spellchecker,wp_fullscreen,wp_adv",toolbar2:"formatselect,underline,alignjustify,forecolor,pastetext,removeformat,charmap,outdent,indent,undo,redo,wp_help",toolbar3:"",toolbar4:"",tabfocus_elements:"insert-media-button,save-post",body_class:"content post-type-post post-status-auto-draft post-format-standard",wp_autoresize_on:true,add_unload_trigger:false}},
+			qtInit: {'content':{id:"content",buttons:"strong,em,link,block,del,ins,img,ul,ol,li,code,more,close,fullscreen"},'replycontent':{id:"replycontent",buttons:"strong,em,link,block,del,ins,img,ul,ol,li,code,close"}},
+			ref: {plugins:"charmap,colorpicker,hr,lists,media,paste,tabfocus,textcolor,fullscreen,wordpress,wpautoresize,wpeditimage,wpgallery,wplink,wpdialogs,wpview,wpfullscreen",theme:"modern",language:"zh"},
+			load_ext: function(url,lang){var sl=tinymce.ScriptLoader;sl.markDone(url+'/langs/'+lang+'.js');sl.markDone(url+'/langs/'+lang+'_dlg.js');}
+		};
+		</script>
+		<script type='text/javascript' src='http://localhost/wordpress/wp-includes/js/tinymce/wp-tinymce.php?c=1&amp;ver=4104-20140822'></script>
+<script type='text/javascript'>
+tinymce.addI18n( 'zh', {"New document":"\u65b0\u6587\u6863","Formats":"\u683c\u5f0f","Headings":"\u6807\u9898","Heading 1":"\u4e00\u7ea7\u6807\u9898","Heading 2":"\u4e8c\u7ea7\u6807\u9898","Heading 3":"\u4e09\u7ea7\u6807\u9898","Heading 4":"\u56db\u7ea7\u6807\u9898","Heading 5":"\u4e94\u7ea7\u6807\u9898","Heading 6":"\u516d\u7ea7\u6807\u9898","Blocks":"\u5757","Paragraph":"\u6bb5\u843d","Blockquote":"\u5757\u5f15\u7528","Div":"Div","Pre":"Pre","Address":"\u5730\u5740","Inline":"\u884c\u5185","Underline":"\u4e0b\u5212\u7ebf","Strikethrough":"\u5220\u9664\u7ebf","Subscript":"\u4e0b\u6807","Superscript":"\u4e0a\u6807","Clear formatting":"\u6e05\u9664\u683c\u5f0f","Bold":"\u7c97\u4f53","Italic":"\u659c\u4f53","Code":"\u4ee3\u7801","Source code":"\u6e90\u4ee3\u7801","Font Family":"\u5b57\u4f53","Font Sizes":"\u5b57\u53f7","Align center":"\u5c45\u4e2d\u5bf9\u9f50","Align right":"\u53f3\u5bf9\u9f50","Align left":"\u5de6\u5bf9\u9f50","Justify":"\u4e24\u7aef\u5bf9\u9f50","Increase indent":"\u589e\u52a0\u7f29\u8fdb\u91cf","Decrease indent":"\u51cf\u5c11\u7f29\u8fdb\u91cf","Cut":"\u526a\u5207","Copy":"\u590d\u5236","Paste":"\u7c98\u5e16","Select all":"\u5168\u9009","Undo":"\u64a4\u9500","Redo":"\u91cd\u505a","Ok":"\u786e\u5b9a","Cancel":"\u53d6\u6d88","Close":"\u5173\u95ed","Visual aids":"\u89c6\u89c9\u8f85\u52a9","Bullet list":"\u9879\u76ee\u7b26\u53f7\u5217\u8868","Numbered list":"\u7f16\u53f7\u5217\u8868","Square":"\u5b9e\u5fc3\u65b9\u5757","Default":"\u9ed8\u8ba4","Circle":"\u5706\u5708","Disc":"\u5706\u70b9","Lower Greek":"\u5c0f\u5199\u5e0c\u814a\u5b57\u6bcd","Lower Alpha":"\u5c0f\u5199\u82f1\u6587\u5b57\u6bcd","Upper Alpha":"\u5927\u5199\u82f1\u6587\u5b57\u6bcd","Upper Roman":"\u5927\u5199\u7f57\u9a6c\u6570\u5b57","Lower Roman":"\u5c0f\u5199\u7f57\u9a6c\u6570\u5b57","Name":"\u540d\u5b57","Anchor":"\u951a","Anchors":"\u951a","Document properties":"\u6587\u6863\u5c5e\u6027","Robots":"\u673a\u5668\u4eba","Title":"\u6807\u9898","Keywords":"\u5173\u952e\u8bcd","Encoding":"\u7f16\u7801","Description":"\u56fe\u50cf\u63cf\u8ff0","Author":"\u4f5c\u8005","Insert\/edit image":"\u63d2\u5165\u6216\u7f16\u8f91\u56fe\u50cf","General":"\u5e38\u89c4","Advanced":"\u9ad8\u7ea7","Source":"\u6e90","Border":"\u8fb9\u6846","Constrain proportions":"\u4fdd\u6301\u957f\u5bbd\u6bd4","Vertical space":"\u5782\u76f4\u95f4\u9694","Image description":"\u56fe\u50cf\u63cf\u8ff0","Style":"\u6837\u5f0f","Dimensions":"\u5c3a\u5bf8","Insert image":"\u63d2\u5165\u56fe\u50cf","Insert date\/time":"\u63d2\u5165\u65e5\u671f\u3001\u65f6\u95f4","Insert\/edit video":"\u63d2\u5165\u6216\u7f16\u8f91\u89c6\u9891","Poster":"\u6d77\u62a5","Alternative source":"\u5907\u7528\u6e90","Paste your embed code below:":"\u8bf7\u5c06\u5d4c\u5165\u4ee3\u7801\u8d34\u5165\u4e0b\u65b9\uff1a","Insert video":"\u63d2\u5165\u89c6\u9891","Embed":"\u5d4c\u5165","Special character":"\u7279\u6b8a\u5b57\u7b26","Right to left":"\u4ece\u53f3\u5230\u5de6","Left to right":"\u4ece\u5de6\u5230\u53f3","Emoticons":"\u8868\u60c5\u7b26\u53f7","Nonbreaking space":"\u4e0d\u95f4\u65ad\u7a7a\u683c","Page break":"\u5206\u9875\u7b26","Paste as text":"\u7c98\u8d34\u4e3a\u6587\u672c","Preview":"\u9884\u89c8","Print":"\u6253\u5370","Save":"\u4fdd\u5b58","Fullscreen":"\u5168\u5c4f","Horizontal line":"\u6c34\u5e73\u7ebf","Horizontal space":"\u6c34\u5e73\u95f4\u9694","Restore last draft":"\u6062\u590d\u4e0a\u4e00\u8349\u7a3f","Insert\/edit link":"\u63d2\u5165\u6216\u7f16\u8f91\u94fe\u63a5","Remove link":"\u79fb\u9664\u94fe\u63a5","Could not find the specified string.":"\u65e0\u6cd5\u627e\u5230\u6307\u5b9a\u7684\u5b57\u7b26\u4e32\u3002","Replace":"\u66ff\u6362","Next":"\u4e0b\u4e00\u4e2a","Prev":"\u4e0a\u4e00\u4e2a","Whole words":"\u5339\u914d\u6574\u8bcd","Find and replace":"\u67e5\u627e\u548c\u66ff\u6362","Replace with":"\u66ff\u6362\u4e3a","Find":"\u67e5\u627e","Replace all":"\u5168\u90e8\u66ff\u6362","Match case":"\u5339\u914d\u5927\u5c0f\u5199","Spellcheck":"\u62fc\u5199\u68c0\u67e5","Finish":"\u5b8c\u6210","Ignore all":"\u5168\u90e8\u5ffd\u7565","Ignore":"\u5ffd\u7565","Insert table":"\u63d2\u5165\u8868\u683c","Delete table":"\u5220\u9664\u8868\u683c","Table properties":"\u8868\u683c\u5c5e\u6027","Row properties":"\u8868\u683c\u884c\u5c5e\u6027","Cell properties":"\u5355\u5143\u683c\u5c5e\u6027","Row":"\u884c","Rows":"\u884c","Column":"\u5217","Cols":"\u5217","Cell":"\u5355\u5143\u683c","Header cell":"\u8868\u5934\u5355\u5143\u683c","Header":"\u8868\u5934","Body":"\u4e3b\u4f53","Footer":"\u6ce8\u811a","Insert row before":"\u5728\u4e0a\u65b9\u63d2\u5165\u884c","Insert row after":"\u5728\u4e0b\u65b9\u63d2\u5165\u884c","Insert column before":"\u5728\u524d\u65b9\u63d2\u5165\u5217","Insert column after":"\u5728\u540e\u65b9\u63d2\u5165\u5217","Paste row before":"\u5728\u4e0a\u65b9\u7c98\u8d34\u8868\u683c\u884c","Paste row after":"\u5728\u4e0b\u65b9\u7c98\u8d34\u8868\u683c\u884c","Delete row":"\u5220\u9664\u884c","Delete column":"\u5220\u9664\u5217","Cut row":"\u526a\u5207\u8be5\u884c","Copy row":"\u590d\u5236\u8be5\u884c","Merge cells":"\u5408\u5e76\u5355\u5143\u683c","Split cell":"\u62c6\u5206\u5355\u5143\u683c","Height":"\u9ad8\u5ea6","Width":"\u5bbd\u5ea6","Caption":"\u8bf4\u660e","Alignment":"\u5bf9\u9f50\u65b9\u5f0f","Left":"\u5de6","Center":"\u4e2d","Right":"\u53f3","None":"\u65e0","Row group":"\u884c\u7ec4","Column group":"\u5217\u7ec4","Row type":"\u884c\u7c7b\u578b","Cell type":"\u5355\u5143\u683c\u7c7b\u578b","Cell padding":"\u5355\u5143\u683c\u5185\u8fb9\u8ddd","Cell spacing":"\u5355\u5143\u683c\u95f4\u8ddd","Scope":"\u8303\u56f4","Insert template":"\u63d2\u5165\u6a21\u677f","Templates":"\u6a21\u677f","Background color":"\u80cc\u666f\u989c\u8272","Text color":"\u6587\u5b57\u989c\u8272","Show blocks":"\u663e\u793a\u5757","Show invisible characters":"\u663e\u793a\u4e0d\u53ef\u89c1\u5b57\u7b26","Words: {0}":"\u8bcd\u6570\uff1a{0}","Paste is now in plain text mode. Contents will now be pasted as plain text until you toggle this option off.":"\u5f53\u524d\u5904\u4e8e\u7eaf\u6587\u672c\u7c98\u8d34\u6a21\u5f0f\uff0c\u7c98\u8d34\u7684\u5185\u5bb9\u5c06\u88ab\u89c6\u4f5c\u7eaf\u6587\u672c\u3002\n\n\u5982\u679c\u60a8\u5e0c\u671b\u4eceMicrosoft Word\u7c98\u8d34\u5bcc\u6587\u672c\u5185\u5bb9\uff0c\u8bf7\u5c06\u6b64\u9009\u9879\u5173\u95ed\u3002\u7f16\u8f91\u5668\u5c06\u81ea\u52a8\u6e05\u7406\u4eceWord\u7c98\u8d34\u6765\u7684\u6587\u672c\u3002","Rich Text Area. Press ALT-F9 for menu. Press ALT-F10 for toolbar. Press ALT-0 for help":"\u5bcc\u6587\u672c\u533a\u57df\u3002\u6309ALT-F9\u6253\u5f00\u83dc\u5355\uff0c\u6309ALT-F10\u5f00\u542f\u5de5\u5177\u680f\uff0c\u6309ALT-0\u4ee5\u83b7\u5f97\u5e2e\u52a9\u3002","You have unsaved changes are you sure you want to navigate away?":"\u79bb\u5f00\u8fd9\u4e2a\u9875\u9762\uff0c\u60a8\u6240\u505a\u7684\u66f4\u6539\u5c06\u4e22\u5931\u3002","Your browser doesn't support direct access to the clipboard. Please use the Ctrl+X\/C\/V keyboard shortcuts instead.":"\u60a8\u7684\u6d4f\u89c8\u5668\u4e0d\u652f\u6301\u76f4\u63a5\u8bbf\u95ee\u526a\u8d34\u677f\uff0c\u8bf7\u4f7f\u7528\u952e\u76d8\u5feb\u6377\u952e\u6216\u6d4f\u89c8\u5668\u7684\u7f16\u8f91\u83dc\u5355\u3002","Insert":"\u63d2\u5165","File":"\u6587\u4ef6","Edit":"\u7f16\u8f91","Tools":"\u5de5\u5177","View":"\u67e5\u770b","Table":"\u8868\u683c","Format":"\u683c\u5f0f","Keyboard Shortcuts":"\u952e\u76d8\u5feb\u6377\u952e","Toolbar Toggle":"\u663e\u793a\/\u9690\u85cf\u5de5\u5177\u680f","Insert Read More tag":"\u63d2\u5165\u201cMore\u201d\u6807\u7b7e","Read more...":"\u9605\u8bfb\u66f4\u591a\u2026","Distraction Free Writing":"\u5168\u5c4f\u5199\u4f5c\u6a21\u5f0f"});
+tinymce.ScriptLoader.markDone( 'http://localhost/wordpress/wp-includes/js/tinymce/langs/zh.js' );
+</script>
+		<script type="text/javascript">
+		
+		( function() {
+			var init, edId, qtId, firstInit, wrapper;
+
+			if ( typeof tinymce !== 'undefined' ) {
+				for ( edId in tinyMCEPreInit.mceInit ) {
+					if ( firstInit ) {
+						init = tinyMCEPreInit.mceInit[edId] = tinymce.extend( {}, firstInit, tinyMCEPreInit.mceInit[edId] );
+					} else {
+						init = firstInit = tinyMCEPreInit.mceInit[edId];
+					}
+
+					wrapper = tinymce.DOM.select( '#wp-' + edId + '-wrap' )[0];
+
+					if ( ( tinymce.DOM.hasClass( wrapper, 'tmce-active' ) || ! tinyMCEPreInit.qtInit.hasOwnProperty( edId ) ) &&
+						! init.wp_skip_init ) {
+
+						try {
+							tinymce.init( init );
+
+							if ( ! window.wpActiveEditor ) {
+								window.wpActiveEditor = edId;
+							}
+						} catch(e){}
+					}
+				}
+			}
+
+			if ( typeof quicktags !== 'undefined' ) {
+				for ( qtId in tinyMCEPreInit.qtInit ) {
+					try {
+						quicktags( tinyMCEPreInit.qtInit[qtId] );
+
+						if ( ! window.wpActiveEditor ) {
+							window.wpActiveEditor = qtId;
+						}
+					} catch(e){};
+				}
+			}
+
+			if ( typeof jQuery !== 'undefined' ) {
+				jQuery('.wp-editor-wrap').on( 'click.wp-editor', function() {
+					if ( this.id ) {
+						window.wpActiveEditor = this.id.slice( 3, -5 );
+					}
+				});
+			} else {
+				for ( qtId in tinyMCEPreInit.qtInit ) {
+					document.getElementById( 'wp-' + qtId + '-wrap' ).onclick = function() {
+						window.wpActiveEditor = this.id.slice( 3, -5 );
+					}
+				}
+			}
+		}());
+		</script>
+				<div id="wp-link-backdrop" style="display: none"></div>
+		<div id="wp-link-wrap" class="wp-core-ui" style="display: none">
+		<form id="wp-link" tabindex="-1">
+		<input type="hidden" id="_ajax_linking_nonce" name="_ajax_linking_nonce" value="e831f8160d" />		<div id="link-modal-title">
+			插入或编辑链接			<button type="button" id="wp-link-close"><span class="screen-reader-text">关闭</span></button>
+	 	</div>
+		<div id="link-selector">
+			<div id="link-options">
+				<p class="howto">输入目标URL</p>
+				<div>
+					<label><span>URL</span><input id="url-field" type="text" name="href" /></label>
+				</div>
+				<div>
+					<label><span>标题</span><input id="link-title-field" type="text" name="linktitle" /></label>
+				</div>
+				<div class="link-target">
+					<label><span>&nbsp;</span><input type="checkbox" id="link-target-checkbox" /> 在新窗口或标签页打开链接</label>
+				</div>
+			</div>
+			<p class="howto"><a href="#" id="wp-link-search-toggle">或链接到站点中的内容</a></p>
+			<div id="search-panel">
+				<div class="link-search-wrapper">
+					<label>
+						<span class="search-label">搜索</span>
+						<input type="search" id="search-field" class="link-search-field" autocomplete="off" />
+						<span class="spinner"></span>
+					</label>
+				</div>
+				<div id="search-results" class="query-results" tabindex="0">
+					<ul></ul>
+					<div class="river-waiting">
+						<span class="spinner"></span>
+					</div>
+				</div>
+				<div id="most-recent-results" class="query-results" tabindex="0">
+					<div class="query-notice" id="query-notice-message">
+						<em class="query-notice-default">未指定搜索条件。自动显示近期条目。</em>
+						<em class="query-notice-hint screen-reader-text">搜索或使用上下方向键来选择一项。</em>
+					</div>
+					<ul></ul>
+					<div class="river-waiting">
+						<span class="spinner"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="submitbox">
+			<div id="wp-link-cancel">
+				<a class="submitdelete deletion" href="#">取消</a>
+			</div>
+			<div id="wp-link-update">
+				<input type="submit" value="添加链接" class="button button-primary" id="wp-link-submit" name="wp-link-submit">
+			</div>
+		</div>
+		</form>
+		</div>
+				<div id="wp-fullscreen-body" class="wp-core-ui" data-theme-width="496" data-dfw-width="496">
+		<div id="fullscreen-topbar">
+			<div id="wp-fullscreen-toolbar">
+			<div id="wp-fullscreen-close"><a href="#" onclick="wp.editor.fullscreen.off();return false;">退出全屏</a></div>
+			<div id="wp-fullscreen-central-toolbar" style="width:496px;">
+
+			<div id="wp-fullscreen-mode-bar">
+				<div id="wp-fullscreen-modes" class="button-group">
+					<a class="button wp-fullscreen-mode-tinymce" href="#" onclick="wp.editor.fullscreen.switchmode( 'tinymce' ); return false;">可视化</a>
+					<a class="button wp-fullscreen-mode-html" href="#" onclick="wp.editor.fullscreen.switchmode( 'html' ); return false;">文本</a>
+				</div>
+			</div>
+
+			<div id="wp-fullscreen-button-bar"><div id="wp-fullscreen-buttons" class="mce-toolbar">
+		
+			<div class="mce-widget mce-btn">
+			<button type="button" aria-label="粗体（Ctrl + B）" title="粗体（Ctrl + B）" id="wp_fs_bold">
+				<i class="mce-ico mce-i-bold"></i>
+			</button>
+			</div>
+			
+			<div class="mce-widget mce-btn">
+			<button type="button" aria-label="斜体（Ctrl + I）" title="斜体（Ctrl + I）" id="wp_fs_italic">
+				<i class="mce-ico mce-i-italic"></i>
+			</button>
+			</div>
+			
+			<div class="mce-widget mce-btn">
+			<button type="button" aria-label="非序号式列表（Alt + Shift + U）" title="非序号式列表（Alt + Shift + U）" id="wp_fs_bullist">
+				<i class="mce-ico mce-i-bullist"></i>
+			</button>
+			</div>
+			
+			<div class="mce-widget mce-btn">
+			<button type="button" aria-label="序号式列表（Alt + Shift + O）" title="序号式列表（Alt + Shift + O）" id="wp_fs_numlist">
+				<i class="mce-ico mce-i-numlist"></i>
+			</button>
+			</div>
+			
+			<div class="mce-widget mce-btn">
+			<button type="button" aria-label="引用文段（Alt + Shift + Q）" title="引用文段（Alt + Shift + Q）" id="wp_fs_blockquote">
+				<i class="mce-ico mce-i-blockquote"></i>
+			</button>
+			</div>
+			
+			<div class="mce-widget mce-btn wp-fullscreen-both">
+			<button type="button" aria-label="媒体库（Alt + Shift + M）" title="媒体库（Alt + Shift + M）" id="wp_fs_wp-media-library">
+				<i class="mce-ico mce-i-wp-media-library"></i>
+			</button>
+			</div>
+			
+			<div class="mce-widget mce-btn wp-fullscreen-both">
+			<button type="button" aria-label="插入或编辑链接（Alt + Shift + A）" title="插入或编辑链接（Alt + Shift + A）" id="wp_fs_link">
+				<i class="mce-ico mce-i-link"></i>
+			</button>
+			</div>
+			
+			<div class="mce-widget mce-btn">
+			<button type="button" aria-label="取消链接（Alt + Shift + S）" title="取消链接（Alt + Shift + S）" id="wp_fs_unlink">
+				<i class="mce-ico mce-i-unlink"></i>
+			</button>
+			</div>
+			
+			<div class="mce-widget mce-btn">
+			<button type="button" aria-label="帮助（Alt + Shift + H）" title="帮助（Alt + Shift + H）" id="wp_fs_help">
+				<i class="mce-ico mce-i-help"></i>
+			</button>
+			</div>
+			
+		</div></div>
+
+		<div id="wp-fullscreen-save">
+			<input type="button" class="button button-primary right" value="保存" onclick="wp.editor.fullscreen.save();" />
+			<span class="wp-fullscreen-saved-message">已保存。</span>
+			<span class="wp-fullscreen-error-message">保存失败。</span>
+			<span class="spinner"></span>
+		</div>
+
+		</div>
+		</div>
+	</div>
+	<div id="wp-fullscreen-statusbar">
+		<div id="wp-fullscreen-status">
+			<div id="wp-fullscreen-count">字数：<span class="word-count">0</span></div>
+			<div id="wp-fullscreen-tagline">尽情写作吧。</div>
+		</div>
+	</div>
+	</div>
+
+	<div class="fullscreen-overlay" id="fullscreen-overlay"></div>
+	<div class="fullscreen-overlay fullscreen-fader fade-300" id="fullscreen-fader"></div>
+	
+<div class="clear"></div></div><!-- wpwrap -->
+<script type="text/javascript">if(typeof wpOnload=='function')wpOnload();</script>
+</body>
+</html>
+</div>
+    
+</div>
+<script>
+    $(function(){
+        
+        var menu = eval(<?php echo $menu;?>);
+        var module =  '<?php echo Fate::app()->module;?>';
+        var control = '<?php echo Fate::app()->control;?>';
+        var action = '<?php echo Fate::app()->action;?>';
+        var menu_bar = $('#adminmenu');
+        var current_menu ;
+        
+        $.each(menu,function(i){
+            if($.inArray(control,menu[i])!=-1){
+                current_menu = $('#'+i);;
+                return ;
+            }
+        })
+        
+        var href_parttern = control
+        if(action!='index'){
+            href_parttern = control+'/'+action;
+        }
+        var current_tag = current_menu.children('ul').children('li').children('a[href$="'+href_parttern+'"]');
+
+        if(current_tag.length==0){
+            current_tag = current_menu.children('ul').children('li').children('a[href$="'+control+'"]');   
+        }
+        current_menu.toggleClass('wp-not-current-submenu wp-has-current-submenu');
+        current_menu.children('a').toggleClass('wp-not-current-submenu wp-has-current-submenu');
+        current_tag.addClass('current');
+        current_tag.parent().addClass('current');
+
+        menu_bar.children('li').hover(function(){
+                $(this).addClass('opensub');
+                $(this).children('ul').css('top',-1);
+        },function(){
+                $(this).removeClass('opensub');
+                if(!$(this).hasClass('wp-has-current-submenu')){
+                    $(this).children('ul').css('top','-1000em'); 
+                }
+        })
+        
+        function initLayout(){
+            
+            var hight = document.documentElement.clientHeight - $("#nav").outerHeight(true);   
+
+            $('#adminmenuwrap').height(hight); 
+            $('#wpwrap').height(hight);
+            
+        }
+		
+        initLayout();
+
+        $(window).resize(function(){   
+               initLayout();   
+        });
+
+})
+</script>
+</body>
+</html>

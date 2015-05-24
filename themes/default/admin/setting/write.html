@@ -1,0 +1,168 @@
+<div id="wpbody">
+<div id="wpbody-content" aria-label="主内容" tabindex="0">
+		<div id="screen-meta" class="metabox-prefs">
+
+			<div id="contextual-help-wrap" class="hidden" tabindex="-1" aria-label="“上下文帮助”选项卡">
+				<div id="contextual-help-back"></div>
+				<div id="contextual-help-columns">
+					<div class="contextual-help-tabs">
+						<ul>
+						
+							<li id="tab-link-overview" class="active">
+								<a href="#tab-panel-overview" aria-controls="tab-panel-overview">
+									概述								</a>
+							</li>
+						
+							<li id="tab-link-options-press">
+								<a href="#tab-panel-options-press" aria-controls="tab-panel-options-press">
+									快速发布								</a>
+							</li>
+						
+							<li id="tab-link-options-postemail">
+								<a href="#tab-panel-options-postemail" aria-controls="tab-panel-options-postemail">
+									通过电子邮件发布								</a>
+							</li>
+						
+							<li id="tab-link-options-services">
+								<a href="#tab-panel-options-services" aria-controls="tab-panel-options-services">
+									更新服务								</a>
+							</li>
+												</ul>
+					</div>
+
+										<div class="contextual-help-sidebar">
+						<p><strong>更多信息：</strong></p><p><a href="http://codex.wordpress.org/Settings_Writing_Screen" target="_blank">关于撰写设置的文档</a>（英文）</p><p><a href="http://cn.forums.wordpress.org" target="_blank">中文支持论坛</a></p>					</div>
+					
+					<div class="contextual-help-tabs-wrap">
+						
+							<div id="tab-panel-overview" class="help-tab-content active">
+								<p>您可以在本页面设定撰写文章的方式。顶端的几个选项是有关在WordPress仪表盘的编辑选项；剩余的项目与通过其他发布方式有关。欲了解关于其它发布方式的信息，请参考文档链接。</p><p>调整完成后，记得点击页面下方“保存更改”按钮使设置生效。</p>							</div>
+						
+							<div id="tab-panel-options-press" class="help-tab-content">
+								<p>“快速发布”是一个允许您快速发表在网络上的所见所闻的浏览器书签。您可使用它获取网页链接，或引用网页中的某段话。“快速发布”甚至可以助您从当前浏览的页面中挑选用于自己文章的图片。只需将“快速发布”链接拖拽或加入到您的浏览器书签栏，然后您就可以更方便地创建自己的内容了。请在浏览其它页面的时候点击此书签。</p>							</div>
+						
+							<div id="tab-panel-options-postemail" class="help-tab-content">
+								<p>您可以通过给您的WordPress站点发送电子邮件的方式发表文章。要通过电子邮件发布，您须设置一个有POP3访问权限的电子邮件账户，并且帐户电子邮件地址应该只有您自己才知道。任何投递到这个电子邮件地址的邮件之内容将会被直接发布，所以您必须保证这个地址绝对的私密。</p>							</div>
+						
+							<div id="tab-panel-options-services" class="help-tab-content">
+								<p>如有需要，WordPress可自动在您发布新文章时通知若干网络服务。</p>							</div>
+											</div>
+				</div>
+			</div>
+				</div>
+				<div id="screen-meta-links">
+					<div id="contextual-help-link-wrap" class="hide-if-no-js screen-meta-toggle">
+			<a href="#contextual-help-wrap" id="contextual-help-link" class="show-settings" aria-controls="contextual-help-wrap" aria-expanded="false">帮助</a>
+			</div>
+				</div>
+		
+<div class="wrap">
+<h2>撰写设置</h2>
+
+<form method="post" action="options.php">
+<input type='hidden' name='option_page' value='writing' /><input type="hidden" name="action" value="update" /><input type="hidden" id="_wpnonce" name="_wpnonce" value="80cf56a5d4" /><input type="hidden" name="_wp_http_referer" value="/wordpress/wp-admin/options-writing.php" />
+<table class="form-table">
+<tr>
+<th scope="row">格式</th>
+<td><fieldset><legend class="screen-reader-text"><span>格式</span></legend>
+<label for="use_smilies">
+<input name="use_smilies" type="checkbox" id="use_smilies" value="1"  checked='checked' />
+转换如<code>:-)</code>、<code>:-P</code>等文本表情符号为图像</label><br />
+<label for="use_balanceTags"><input name="use_balanceTags" type="checkbox" id="use_balanceTags" value="1"  /> 让WordPress自动校正嵌套错误的XHTML代码</label>
+</fieldset></td>
+</tr>
+<tr>
+<th scope="row"><label for="default_category">默认文章分类目录</label></th>
+<td>
+<select name='default_category' id='default_category' class='postform' >
+	<option class="level-0" value="1" selected="selected">未分类</option>
+</select>
+</td>
+</tr>
+<tr>
+<th scope="row"><label for="default_post_format">默认文章形式</label></th>
+<td>
+	<select name="default_post_format" id="default_post_format">
+		<option value="0">标准</option>
+		<option value="aside">日志</option>
+		<option value="chat">聊天</option>
+		<option value="gallery">相册</option>
+		<option value="link">链接</option>
+		<option value="image">图像</option>
+		<option value="quote">引语</option>
+		<option value="status">状态</option>
+		<option value="video">视频</option>
+		<option value="audio">音频</option>
+	</select>
+</td>
+</tr>
+
+</table>
+
+<h3 class="title">快速发布</h3>
+<p>快速发布功能是个书签工具按钮：一个运行于浏览器上，能帮您获取网络上一些零碎内容的小程序。</p>
+<p>用快速发布功能摘取任意网页上的文字、图像和视频。在您保存或发布文章之前都可以通过快速发布功能继续编辑、添加更多内容。</p>
+<p>将下面的链接拖拽到您的书签工具栏，或右键点击链接把它添加到您的收藏夹中，即可创建一个快速发布文章的快捷方式。</p>
+<p class="pressthis"><a onclick="return false;" oncontextmenu="if(window.navigator.userAgent.indexOf('WebKit')!=-1||window.navigator.userAgent.indexOf('MSIE')!=-1){jQuery('.pressthis-code').show().find('textarea').focus().select();return false;}" href="javascript:var d=document,w=window,e=w.getSelection,k=d.getSelection,x=d.selection,s=(e?e():(k)?k():(x?x.createRange().text:0)),f='http://localhost/wordpress/wp-admin/press-this.php',l=d.location,e=encodeURIComponent,u=f+'?u='+e(l.href)+'&amp;t='+e(d.title)+'&amp;s='+e(s)+'&amp;v=4';a=function(){if(!w.open(u,'t','toolbar=0,resizable=1,scrollbars=1,status=1,width=720,height=570'))l.href=u;};if (/Firefox/.test(navigator.userAgent)) setTimeout(a, 0); else a();void(0)"><span>快速发布</span></a></p>
+<div class="pressthis-code" style="display:none;">
+	<p class="description">若您隐藏了书签工具栏：请复制如下的代码、打开您的书签管理器、创建新书签，然后在“名称”一栏输入“快速发布”，同时将复制的代码粘贴至“URL”一栏。</p>
+	<p><textarea rows="5" cols="120" readonly="readonly">javascript:var d=document,w=window,e=w.getSelection,k=d.getSelection,x=d.selection,s=(e?e():(k)?k():(x?x.createRange().text:0)),f='http://localhost/wordpress/wp-admin/press-this.php',l=d.location,e=encodeURIComponent,u=f+'?u='+e(l.href)+'&amp;t='+e(d.title)+'&amp;s='+e(s)+'&amp;v=4';a=function(){if(!w.open(u,'t','toolbar=0,resizable=1,scrollbars=1,status=1,width=720,height=570'))l.href=u;};if (/Firefox/.test(navigator.userAgent)) setTimeout(a, 0); else a();void(0)</textarea></p>
+</div>
+
+<h3 class="title">通过电子邮件发布</h3>
+<p>要通过电子邮件发表文章，您必须设置一个有POP3访问权限的私密电子邮件账户。任何投递到这个电子邮件地址的信件将会被发表，所以您必须保证这个地址绝对的私密。这里是三个您可以使用的随机字符串：<kbd>mLP92RzG</kbd>、<kbd>QbIgFalD</kbd>、<kbd>pnG1m5Up</kbd>。</p>
+
+<table class="form-table">
+<tr>
+<th scope="row"><label for="mailserver_url">邮件服务器</label></th>
+<td><input name="mailserver_url" type="text" id="mailserver_url" value="mail.example.com" class="regular-text code" />
+<label for="mailserver_port">端口</label>
+<input name="mailserver_port" type="text" id="mailserver_port" value="110" class="small-text" />
+</td>
+</tr>
+<tr>
+<th scope="row"><label for="mailserver_login">登录名</label></th>
+<td><input name="mailserver_login" type="text" id="mailserver_login" value="login@example.com" class="regular-text ltr" /></td>
+</tr>
+<tr>
+<th scope="row"><label for="mailserver_pass">密码</label></th>
+<td>
+<input name="mailserver_pass" type="text" id="mailserver_pass" value="password" class="regular-text ltr" />
+</td>
+</tr>
+<tr>
+<th scope="row"><label for="default_email_category">默认邮件发表分类目录</label></th>
+<td>
+<select name='default_email_category' id='default_email_category' class='postform' >
+	<option class="level-0" value="1" selected="selected">未分类</option>
+</select>
+</td>
+</tr>
+</table>
+
+<h3 class="title">更新服务</h3>
+
+
+<p><label for="ping_sites">当您发表一篇新文章时，WordPress将会向下面的站点发出通告。更多关于“<a href="http://codex.wordpress.org/zh-cn:%E6%9B%B4%E6%96%B0%E6%9C%8D%E5%8A%A1">更新服务</a>”的信息，请查看Codex文档。一行一个通告服务的<abbr title="Universal Resource Locator">URL</abbr>。</label></p>
+
+<textarea name="ping_sites" id="ping_sites" class="large-text code" rows="3">http://rpc.pingomatic.com/</textarea>
+
+
+
+<p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="保存更改"  /></p></form>
+</div>
+
+
+<div class="clear"></div></div><!-- wpbody-content -->
+<div class="clear"></div>
+	
+<script type='text/javascript'>
+/* <![CDATA[ */
+var commonL10n = {"warnDelete":"\u60a8\u5c06\u6c38\u4e45\u5220\u9664\u6240\u9009\u9879\u76ee\u3002\n\u70b9\u51fb\u201c\u53d6\u6d88\u201d\u505c\u6b62\uff0c\u70b9\u51fb\u201c\u786e\u5b9a\u201d\u5220\u9664\u3002"};var heartbeatSettings = {"nonce":"c63b35be06"};var authcheckL10n = {"beforeunload":"\u60a8\u7684\u767b\u5f55\u4f1a\u8bdd\u5df2\u8fc7\u671f\uff0c\u8bf7\u91cd\u65b0\u767b\u5f55\u3002","interval":"180"};/* ]]> */
+</script>
+<script type='text/javascript' src='http://localhost/wordpress/wp-admin/load-scripts.php?c=1&amp;load%5B%5D=hoverIntent,common,admin-bar,svg-painter,heartbeat,wp-auth-check&amp;ver=4.0'></script>
+
+<div class="clear"></div></div><!-- wpwrap -->
+<script type="text/javascript">if(typeof wpOnload=='function')wpOnload();</script>
+</body>
+</html>

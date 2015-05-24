@@ -1,0 +1,118 @@
+<div id="wpbody">
+<div id="wpbody-content" aria-label="主内容" tabindex="0">
+		<div id="screen-meta" class="metabox-prefs">
+
+			<div id="contextual-help-wrap" class="hidden" tabindex="-1" aria-label="“上下文帮助”选项卡">
+				<div id="contextual-help-back"></div>
+				<div id="contextual-help-columns">
+					<div class="contextual-help-tabs">
+						<ul>
+						
+							<li id="tab-link-overview" class="active">
+								<a href="#tab-panel-overview" aria-controls="tab-panel-overview">
+									概述								</a>
+							</li>
+						
+							<li id="tab-link-site-visibility">
+								<a href="#tab-panel-site-visibility" aria-controls="tab-panel-site-visibility">
+									对搜索引擎的可见性								</a>
+							</li>
+												</ul>
+					</div>
+
+										<div class="contextual-help-sidebar">
+						<p><strong>更多信息：</strong></p><p><a href="http://codex.wordpress.org/zh-cn:%E8%AE%BE%E7%BD%AE_%E9%98%85%E8%AF%BB%E9%A1%B5%E9%9D%A2" target="_blank">关于阅读设置的中文文档</a></p><p><a href="http://cn.forums.wordpress.org" target="_blank">中文支持论坛</a></p>					</div>
+					
+					<div class="contextual-help-tabs-wrap">
+						
+							<div id="tab-panel-overview" class="help-tab-content active">
+								<p>本页面提供有关站点内容显示方式的选项。</p><p>您可以决定在站点首页上显示什么。可以以时间顺序列出文章；也可以显示一个静态页面。要使用静态页面作为首页，您需要<a href="post-new.php?post_type=page">创建两个页面</a>。一个用做首页，另一个用来显示文章。</p><p>您也可以控制RSS feed的显示方式 —— 最大输出文章数、全文输出或仅输出摘要。</p><p>调整完成后，记得点击页面下方“保存更改”按钮使设置生效。</p>							</div>
+						
+							<div id="tab-panel-site-visibility" class="help-tab-content">
+								<p>您可以决定是否让索引工具、搜索引擎爬虫、ping服务访问您的站点。如果您不希望它们访问您的站点，请选择“建议搜索引擎不索引本站点”，并点击下方的“保存更改”。请注意，您的站点将依然在互联网上公开。</p><p>当该项设置生效时，仪表盘中的“概况”模块将提醒您“自动建议搜索引擎不抓取”。您的站点在屏蔽搜索引擎期间无法被搜索引擎收录。</p>							</div>
+											</div>
+				</div>
+			</div>
+				</div>
+				<div id="screen-meta-links">
+					<div id="contextual-help-link-wrap" class="hide-if-no-js screen-meta-toggle">
+			<a href="#contextual-help-wrap" id="contextual-help-link" class="show-settings" aria-controls="contextual-help-wrap" aria-expanded="false">帮助</a>
+			</div>
+				</div>
+		
+<div class="wrap">
+<h2>阅读设置</h2>
+
+<form method="post" action="options.php">
+<input type='hidden' name='option_page' value='reading' /><input type="hidden" name="action" value="update" /><input type="hidden" id="_wpnonce" name="_wpnonce" value="f5a327643b" /><input type="hidden" name="_wp_http_referer" value="/wordpress/wp-admin/options-reading.php" />
+<table class="form-table">
+<tr>
+<th scope="row">首页显示</th>
+<td id="front-static-pages"><fieldset><legend class="screen-reader-text"><span>首页显示</span></legend>
+	<p><label>
+		<input name="show_on_front" type="radio" value="posts" class="tog"  checked='checked' />
+		您的最新文章	</label>
+	</p>
+	<p><label>
+		<input name="show_on_front" type="radio" value="page" class="tog"  />
+		一个<a href="edit.php?post_type=page">静态页面</a>（在下方选择）	</label>
+	</p>
+<ul>
+	<li><label for="page_on_front">主页：<select name='page_on_front' id='page_on_front'>
+	<option value="0">&mdash;选择&mdash;</option>
+	<option class="level-0" value="2">示例页面</option>
+</select>
+</label></li>
+	<li><label for="page_for_posts">文章页：<select name='page_for_posts' id='page_for_posts'>
+	<option value="0">&mdash;选择&mdash;</option>
+	<option class="level-0" value="2">示例页面</option>
+</select>
+</label></li>
+</ul>
+</fieldset></td>
+</tr>
+<tr>
+<th scope="row"><label for="posts_per_page">博客页面至多显示</label></th>
+<td>
+<input name="posts_per_page" type="number" step="1" min="1" id="posts_per_page" value="10" class="small-text" /> 篇文章</td>
+</tr>
+<tr>
+<th scope="row"><label for="posts_per_rss">Feed中显示最近</label></th>
+<td><input name="posts_per_rss" type="number" step="1" min="1" id="posts_per_rss" value="10" class="small-text" /> 个项目</td>
+</tr>
+<tr>
+<th scope="row">对于feed中的每篇文章，显示 </th>
+<td><fieldset><legend class="screen-reader-text"><span>对于feed中的每篇文章，显示 </span></legend>
+<p><label><input name="rss_use_excerpt" type="radio" value="0"  checked='checked'	/> 全文</label><br />
+<label><input name="rss_use_excerpt" type="radio" value="1"  /> 摘要</label></p>
+</fieldset></td>
+</tr>
+
+<tr class="option-site-visibility">
+<th scope="row">对搜索引擎的可见性 </th>
+<td><fieldset><legend class="screen-reader-text"><span>对搜索引擎的可见性 </span></legend>
+	<label for="blog_public"><input name="blog_public" type="checkbox" id="blog_public" value="0"  />
+	建议搜索引擎不索引本站点</label>
+	<p class="description">搜索引擎将本着自觉自愿的原则对待WordPress提出的请求。并不是所有搜索引擎都会遵守这类请求。</p>
+</fieldset></td>
+</tr>
+
+</table>
+
+
+<p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="保存更改"  /></p></form>
+</div>
+
+<div class="clear"></div></div><!-- wpbody-content -->
+<div class="clear"></div>
+	
+<script type='text/javascript'>
+/* <![CDATA[ */
+var commonL10n = {"warnDelete":"\u60a8\u5c06\u6c38\u4e45\u5220\u9664\u6240\u9009\u9879\u76ee\u3002\n\u70b9\u51fb\u201c\u53d6\u6d88\u201d\u505c\u6b62\uff0c\u70b9\u51fb\u201c\u786e\u5b9a\u201d\u5220\u9664\u3002"};var heartbeatSettings = {"nonce":"c63b35be06"};var authcheckL10n = {"beforeunload":"\u60a8\u7684\u767b\u5f55\u4f1a\u8bdd\u5df2\u8fc7\u671f\uff0c\u8bf7\u91cd\u65b0\u767b\u5f55\u3002","interval":"180"};/* ]]> */
+</script>
+<script type='text/javascript' src='http://localhost/wordpress/wp-admin/load-scripts.php?c=1&amp;load%5B%5D=hoverIntent,common,admin-bar,svg-painter,heartbeat,wp-auth-check&amp;ver=4.0'></script>
+
+<div class="clear"></div></div><!-- wpwrap -->
+<script type="text/javascript">if(typeof wpOnload=='function')wpOnload();</script>
+</body>
+</html>

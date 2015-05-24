@@ -1,0 +1,126 @@
+		
+<div id="wpbody">
+
+<div id="wpbody-content" aria-label="主内容" tabindex="0">
+		<div id="screen-meta" class="metabox-prefs">
+
+			<div id="contextual-help-wrap" class="hidden" tabindex="-1" aria-label="“上下文帮助”选项卡">
+				<div id="contextual-help-back"></div>
+				<div id="contextual-help-columns">
+					<div class="contextual-help-tabs">
+						<ul>
+						
+							<li id="tab-link-overview" class="active">
+								<a href="#tab-panel-overview" aria-controls="tab-panel-overview">
+									概述								</a>
+							</li>
+						
+							<li id="tab-link-common-settings">
+								<a href="#tab-panel-common-settings" aria-controls="tab-panel-common-settings">
+									常用设置								</a>
+							</li>
+						
+							<li id="tab-link-custom-structures">
+								<a href="#tab-panel-custom-structures" aria-controls="tab-panel-custom-structures">
+									自定义结构								</a>
+							</li>
+												</ul>
+					</div>
+
+										<div class="contextual-help-sidebar">
+						<p><strong>更多信息：</strong></p><p><a href="http://codex.wordpress.org/zh-cn:%E8%AE%BE%E7%BD%AE_%E5%9B%BA%E5%AE%9A%E9%93%BE%E6%8E%A5%E9%A1%B5%E9%9D%A2" target="_blank">关于固定链接的中文文档</a></p><p><a href="http://codex.wordpress.org/zh-cn:%E4%BD%BF%E7%94%A8%E5%9B%BA%E5%AE%9A%E9%93%BE%E6%8E%A5" target="_blank">关于使用固定链接的中文文档</a></p><p><a href="http://cn.forums.wordpress.org" target="_blank">中文支持论坛</a></p>					</div>
+					
+					<div class="contextual-help-tabs-wrap">
+						
+							<div id="tab-panel-overview" class="help-tab-content active">
+								<p>固定链接是指向您的文章、页面、分类目录归档和标签归档等网页的固定URL。之所以称之为“固定”，是因为链接到每篇文章的URL应该永远固定，不应修改。</p><p>您在本页面可以选择您默认的固定链接结构。“常用设置”是一般用户会选择的链接结构，如果无法满足您的要求，也可以进行自定义。</p><p>调整完成后，记得点击页面下方“保存更改”按钮使设置生效。</p>							</div>
+						
+							<div id="tab-panel-common-settings" class="help-tab-content">
+								<p>大多数用户喜欢“漂亮的固定链接”URL，比如包含文章标题等有用信息的URL，不喜欢常规的文章ID编号形式的URL。您可以从“常用设置”中选择，也可以在“自定义结构”中自行填写。</p><p>若您选择的不是“默认”，“自定义结构”栏会出现一些字符，您可对它进行进一步的修改。请注意，变量名的前后各有一个<code>%</code>。</p><p>若您某篇文章包含多个分类目录或标签，且自定义链接结构包含<code>%category%</code>或<code>%tag%</code>，则只有排序最靠前的分类目录或标签才会显示在固定链接中。</p><p>调整完成后，记得点击页面下方“保存更改”按钮使设置生效。</p>							</div>
+						
+							<div id="tab-panel-custom-structures" class="help-tab-content">
+								<p>“可选”栏允许您在文章归档的URL中加入分类名和标签名。比如，“未分类”目录的文章归档页面的地址可以是<code>/topics/uncategorized</code>（默认情况下是<code>/category/uncategorized</code>）。</p><p>调整完成后，记得点击页面下方“保存更改”按钮使设置生效。</p>							</div>
+											</div>
+				</div>
+			</div>
+				</div>
+				<div id="screen-meta-links">
+					<div id="contextual-help-link-wrap" class="hide-if-no-js screen-meta-toggle">
+			<a href="#contextual-help-wrap" id="contextual-help-link" class="show-settings" aria-controls="contextual-help-wrap" aria-expanded="false">帮助</a>
+			</div>
+				</div>
+		
+<div class="wrap">
+<h2>固定链接设置</h2>
+
+<form name="form" action="options-permalink.php" method="post">
+<input type="hidden" id="_wpnonce" name="_wpnonce" value="e858574f95" /><input type="hidden" name="_wp_http_referer" value="/wordpress/wp-admin/options-permalink.php" />
+  <p>WordPress默认使用带有问号和很多数字的<abbr title="Universal Resource Locator">URL</abbr>，但WordPress允许您自定义链接形式，以提高美感、可用性和向前兼容性。您可<a href="http://codex.wordpress.org/zh-cn:%E4%BD%BF%E7%94%A8%E5%9B%BA%E5%AE%9A%E9%93%BE%E6%8E%A5">阅读参考资料</a>以了解更多。</p>
+
+<h3 class="title">常用设置</h3>
+<table class="form-table permalink-structure">
+	<tr>
+		<th><label><input name="selection" type="radio" value=""  checked='checked' /> 默认</label></th>
+		<td><code>http://localhost/wordpress/?p=123</code></td>
+	</tr>
+	<tr>
+		<th><label><input name="selection" type="radio" value="/%year%/%monthnum%/%day%/%postname%/"  /> 日期和名称型</label></th>
+		<td><code>http://localhost/wordpress/2014/10/05/sample-post/</code></td>
+	</tr>
+	<tr>
+		<th><label><input name="selection" type="radio" value="/%year%/%monthnum%/%postname%/"  /> 月份和名称型</label></th>
+		<td><code>http://localhost/wordpress/2014/10/sample-post/</code></td>
+	</tr>
+	<tr>
+		<th><label><input name="selection" type="radio" value="/archives/%post_id%"  /> 数字型</label></th>
+		<td><code>http://localhost/wordpress/archives/123</code></td>
+	</tr>
+	<tr>
+		<th><label><input name="selection" type="radio" value="/%postname%/"  /> 文章名</label></th>
+		<td><code>http://localhost/wordpress/sample-post/</code></td>
+	</tr>
+	<tr>
+		<th>
+			<label><input name="selection" id="custom_selection" type="radio" value="custom"  />
+			自定义结构			</label>
+		</th>
+		<td>
+			<code>http://localhost/wordpress</code>
+			<input name="permalink_structure" id="permalink_structure" type="text" value="" class="regular-text code" />
+		</td>
+	</tr>
+</table>
+
+<h3 class="title">可选</h3>
+<p>如果您愿意，您可以自定义您的分类目录和标签<abbr title="Universal Resource Locator">URL</abbr>的前缀。例如，填写<code>topics</code>可以使您的分类目录地址变为类似于<code>http://example.org/topics/uncategorized/</code>的样子。留空则使用默认设置。</p>
+
+<table class="form-table">
+	<tr>
+		<th><label for="category_base">分类目录前缀</label></th>
+		<td> <input name="category_base" id="category_base" type="text" value="" class="regular-text code" /></td>
+	</tr>
+	<tr>
+		<th><label for="tag_base">标签前缀</label></th>
+		<td> <input name="tag_base" id="tag_base" type="text" value="" class="regular-text code" /></td>
+	</tr>
+	</table>
+
+
+<p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="保存更改"  /></p>  </form>
+
+</div>
+
+
+<div class="clear"></div></div><!-- wpbody-content -->
+<div class="clear"></div>
+	
+<script type='text/javascript'>
+/* <![CDATA[ */
+var commonL10n = {"warnDelete":"\u60a8\u5c06\u6c38\u4e45\u5220\u9664\u6240\u9009\u9879\u76ee\u3002\n\u70b9\u51fb\u201c\u53d6\u6d88\u201d\u505c\u6b62\uff0c\u70b9\u51fb\u201c\u786e\u5b9a\u201d\u5220\u9664\u3002"};var heartbeatSettings = {"nonce":"c63b35be06"};var authcheckL10n = {"beforeunload":"\u60a8\u7684\u767b\u5f55\u4f1a\u8bdd\u5df2\u8fc7\u671f\uff0c\u8bf7\u91cd\u65b0\u767b\u5f55\u3002","interval":"180"};/* ]]> */
+</script>
+<script type='text/javascript' src='http://localhost/wordpress/wp-admin/load-scripts.php?c=1&amp;load%5B%5D=hoverIntent,common,admin-bar,svg-painter,heartbeat,wp-auth-check&amp;ver=4.0'></script>
+
+<div class="clear"></div></div><!-- wpwrap -->
+<script type="text/javascript">if(typeof wpOnload=='function')wpOnload();</script>
+</body>
+</html>

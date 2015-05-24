@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html xmlns="http://www.w3.org/1999/xhtml" class="ie8 wp-toolbar"  lang="zh-CN">
+<![endif]-->
+<!--[if !(IE 8) ]><!-->
+<html xmlns="http://www.w3.org/1999/xhtml" class="wp-toolbar"  lang="zh-CN">
+<!--<![endif]-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>个人博客管理后台</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<link type="/image/x-icon" href="<?php echo Fate::app()->url->getWebDir()."themes/default/skin/image/favicon.ico";?>" rel="icon">
+<?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/admin/dashicons.css\">";?>
+<?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/admin/admin-bar.css\">";?>
+<?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/admin/common.css\">";?>
+<?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/admin/dashboard.css\">";?>
+<?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/admin/edit.css\">";?>
+<?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/admin/screens.css\">";?>
+<?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/admin/press-this.css\">";?>
+<?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/admin/wp-admin.css\">";?>
+<?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/admin/buttons.css\">";?>
+<?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/admin/list-tables.css\">";?>
+<?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/admin/nav-menus.css\">";?>
+<?php echo "<script src=\"/themes/default/skin/js/common/jquery-1.8.3.js\"></script>";?>
+<!--[if lte IE 7]>
+<link rel='stylesheet' id='ie-css'  href='http://localhost/wordpress/wp-admin/css/ie.min.css?ver=4.0' type='text/css' media='all' />
+<![endif]-->
+<style type="text/css" media="print">#wpadminbar { display:none; }</style>
+</head>
+<body class="wp-admin wp-core-ui no-js  index-php auto-fold admin-bar branch-4 version-4-0 admin-color-fresh locale-zh-cn no-customize-support no-svg">
+<div id="wpwrap">
+<!-- header start -->
+<div id="wpadminbar" class="nojq nojs" role="navigation">
+   <a class="screen-reader-shortcut" href="#wp-toolbar" tabindex="1">跳至工具栏</a>
+    <div class="quicklinks" id="wp-toolbar" role="navigation" aria-label="顶部导航工具栏。" tabindex="0">
+      <ul id="wp-admin-bar-root-default" class="ab-top-menu">
+        <li id="wp-admin-bar-menu-toggle">
+            <a class="ab-item"  href="#"><span class="ab-icon"></span><span class="screen-reader-text">菜单</span></a>
+        </li>
+        <li id="wp-admin-bar-site-name" class="menupop">
+            <a class="ab-item"  aria-haspopup="true" href="<?php echo Fate::app()->url->getWebDir()."";?>">站点</a>	
+        </li>
+        <li id="wp-admin-bar-comments">
+            <a class="ab-item"  href="<?php echo Fate::app()->url->getWebDir()."admin/comment";?>" title="0条评论待审">
+                <span class="ab-icon"></span><span id="ab-awaiting-mod" class="ab-label awaiting-mod pending-count count-0">0</span>
+            </a>		
+        </li>
+        <li id="wp-admin-bar-new-content" class="menupop">
+            <a class="ab-item"  aria-haspopup="true" href="http://localhost/wordpress/wp-admin/post-new.php" title="添加">
+                <span class="ab-icon"></span><span class="ab-label">新建</span>
+            </a>
+            <div class="ab-sub-wrapper">
+                <ul id="wp-admin-bar-new-content-default" class="ab-submenu">
+                    <li id="wp-admin-bar-new-post"><a class="ab-item"  href="<?php echo Fate::app()->url->getWebDir()."admin/article/create";?>">文章</a></li>
+                    <li id="wp-admin-bar-new-media"><a class="ab-item"  href="<?php echo Fate::app()->url->getWebDir()."admin/media/create";?>">媒体</a></li>
+                    <li id="wp-admin-bar-new-page"><a class="ab-item"  href="<?php echo Fate::app()->url->getWebDir()."admin/page/create";?>">页面</a></li>
+                    <!--<li id="wp-admin-bar-new-user"><a class="ab-item"  href="http://localhost/wordpress/wp-admin/user-new.php">用户</a></li>-->
+                </ul>
+            </div>		
+         </li>
+      </ul>
+      <ul id="wp-admin-bar-top-secondary" class="ab-top-secondary ab-top-menu">
+         <li id="wp-admin-bar-my-account" class="menupop with-avatar">
+             <a class="ab-item"  aria-haspopup="true" href="<?php echo Fate::app()->url->getWebDir()."admin/user/center";?>" title="我的帐户">您好，admin<img alt='' src='http://0.gravatar.com/avatar/487f87505f619bf9ea08f26bb34f8118?s=26&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D26&amp;r=G' class='avatar avatar-26 photo' height='26' width='26' />
+             </a>
+             <div class="ab-sub-wrapper">
+                <ul id="wp-admin-bar-user-actions" class="ab-submenu">
+                       <li id="wp-admin-bar-user-info">
+                           <a class="ab-item" tabindex="-1" href="<?php echo Fate::app()->url->getWebDir()."admin/user/center";?>">
+                               <img alt='' src='http://0.gravatar.com/avatar/487f87505f619bf9ea08f26bb34f8118?s=64&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D64&amp;r=G' class='avatar avatar-64 photo' height='64' width='64' />
+                               <span class='display-name'>admin</span>
+                           </a>
+                       </li>
+                    <li id="wp-admin-bar-edit-profile"><a class="ab-item"  href="<?php echo Fate::app()->url->getWebDir()."admin/user/center";?>">编辑我的个人资料</a></li>
+                       <li id="wp-admin-bar-logout">
+                           <a class="ab-item"  href="<?php echo Fate::app()->url->getWebDir()."admin/user/logout";?>">登出</a>
+                       </li>
+                 </ul>
+              </div>		
+           </li>
+       </ul>			
+    </div>
+   <a class="screen-reader-shortcut" href="<?php echo Fate::app()->url->getWebDir()."admin/user/logout";?>">登出</a>
+</div>
+<!-- header stop --->
+
+<!-- menu start -->
+<div id="adminmenuwrap">
+    <ul id="adminmenu" role="navigation">
+        
+	<li id="menu-admin" class="wp-first-item wp-has-submenu wp-not-current-submenu wp-menu-open menu-top menu-top-first menu-icon-dashboard menu-top-last" >
+            <a href='<?php echo Fate::app()->url->getWebDir()."admin/admin";?>' class="wp-first-item wp-has-submenu wp-not-current-submenu wp-menu-open menu-top menu-top-first menu-icon-dashboard menu-top-last" >
+                <div class="wp-menu-arrow"><div></div></div>
+                <div class='wp-menu-image dashicons-before dashicons-dashboard'><br /></div>
+                <div class='wp-menu-name'>概况</div>
+            </a>
+        </li>
+        
+	<li id="menu-article" class="wp-has-submenu wp-not-current-submenu open-if-no-js menu-top menu-icon-post menu-top-first" >
+            <a href='<?php echo Fate::app()->url->getWebDir()."admin/article";?>' class="wp-has-submenu wp-not-current-submenu open-if-no-js menu-top menu-icon-post menu-top-first" aria-haspopup="true">
+                <div class="wp-menu-arrow"><div></div></div>
+                <div class='wp-menu-image dashicons-before dashicons-admin-post'><br /></div>
+                <div class='wp-menu-name'>文章</div>
+            </a>
+            <ul class='wp-submenu wp-submenu-wrap'>
+                <li class='wp-submenu-head'>文章</li>
+                <li class="wp-first-item"><a href='<?php echo Fate::app()->url->getWebDir()."admin/article";?>' class="wp-first-item">所有文章</a></li>
+                <li><a href='<?php echo Fate::app()->url->getWebDir()."admin/article/add";?>'>写文章</a></li>
+                <li><a href='<?php echo Fate::app()->url->getWebDir()."admin/article/category";?>'>分类目录</a></li>
+                <li><a href='<?php echo Fate::app()->url->getWebDir()."admin/article/tag";?>'>标签</a></li>
+            </ul>
+        </li>
+        
+	<li id="menu-media" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-media" >
+            <a href='<?php echo Fate::app()->url->getWebDir()."admin/media";?>' class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-media" aria-haspopup="true">
+                <div class="wp-menu-arrow"><div></div></div>
+                <div class='wp-menu-image dashicons-before dashicons-admin-media'><br /></div>
+                <div class='wp-menu-name'>多媒体</div>
+            </a>
+            <ul class='wp-submenu wp-submenu-wrap'>
+                <li class='wp-submenu-head'>多媒体</li>
+                <li class="wp-first-item"><a href='<?php echo Fate::app()->url->getWebDir()."admin/media";?>' class="wp-first-item">媒体库</a></li>
+                <li><a href='<?php echo Fate::app()->url->getWebDir()."admin/media/add";?>'>添加</a></li>
+            </ul>
+        </li>
+        
+	<li id="menu-page" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-page" >
+            <a href='<?php echo Fate::app()->url->getWebDir()."admin/page";?>' class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-page" aria-haspopup="true">
+                <div class="wp-menu-arrow"><div></div></div>
+                <div class='wp-menu-image dashicons-before dashicons-admin-page'><br /></div>
+                <div class='wp-menu-name'>页面</div>
+            </a>
+            <ul class='wp-submenu wp-submenu-wrap'>
+                <li class='wp-submenu-head'>页面</li>
+                <li class="wp-first-item"><a href='<?php echo Fate::app()->url->getWebDir()."admin/page";?>' class="wp-first-item">所有页面</a></li>
+                <li><a href='<?php echo Fate::app()->url->getWebDir()."admin/page/create";?>'>新建页面</a></li>
+            </ul>
+        </li>
+        
+	<li id="menu-comment" class="wp-not-current-submenu menu-top menu-icon-comments menu-top-last" >
+            <a href='<?php echo Fate::app()->url->getWebDir()."admin/comment";?>' class="wp-not-current-submenu menu-top menu-icon-comments menu-top-last" >
+                <div class="wp-menu-arrow"><div></div></div>
+                <div class='wp-menu-image dashicons-before dashicons-admin-comments'><br /></div>
+                <div class='wp-menu-name'>评论<span class='awaiting-mod count-0'><span class='pending-count'>0</span></span></div>
+            </a>
+        </li>
+
+	<li id="menu-theme" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-appearance menu-top-first" >
+            <a href='<?php echo Fate::app()->url->getWebDir()."admin/theme";?>' class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-appearance menu-top-first" aria-haspopup="true">
+                <div class="wp-menu-arrow"><div></div></div>
+                <div class='wp-menu-image dashicons-before dashicons-admin-appearance'><br /></div>
+                <div class='wp-menu-name'>外观</div>
+            </a>
+            <ul class='wp-submenu wp-submenu-wrap'>
+                <li class='wp-submenu-head'>外观</li>
+                <li class="wp-first-item"><a href='themes.php' class="wp-first-item">主题</a></li>
+                <li class="hide-if-no-customize"><a href='customize.php?return=%2Fwordpress%2Fwp-admin%2Findex.php' class="hide-if-no-customize">自定义</a></li>
+                <li><a href='widgets.php'>小工具</a></li>
+                <li><a href='nav-menus.php'>菜单</a></li>
+                <li><a href='themes.php?page=custom-header'>顶部</a></li>
+                <li><a href='themes.php?page=custom-background'>背景</a></li>
+                <li><a href='theme-editor.php'>编辑</a></li>
+            </ul>
+        </li>
+        
+	<li id="menu-plugin" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-plugins" >
+            <a href='plugins.php' class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-plugins" aria-haspopup="true">
+                <div class="wp-menu-arrow"><div></div></div>
+                <div class='wp-menu-image dashicons-before dashicons-admin-plugins'><br /></div>
+                <div class='wp-menu-name'>插件<span class='update-plugins count-0'><span class='plugin-count'>0</span></span></div>
+            </a>
+            <ul class='wp-submenu wp-submenu-wrap'>
+                <li class='wp-submenu-head'>插件<span class='update-plugins count-0'><span class='plugin-count'>0</span></span></li>
+                <li class="wp-first-item"><a href='plugins.php' class="wp-first-item">已安装的插件</a></li>
+                <li><a href='plugin-install.php'>安装插件</a></li>
+                <li><a href='plugin-editor.php'>编辑</a></li>
+            </ul
+        </li>
+        
+	<li id="menu-user" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-users" >
+            <a href='users.php' class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-users" aria-haspopup="true">
+                <div class="wp-menu-arrow"><div></div></div>
+                <div class='wp-menu-image dashicons-before dashicons-admin-users'><br /></div>
+                <div class='wp-menu-name'>用户</div>
+            </a>
+            <ul class='wp-submenu wp-submenu-wrap'>
+                <li class='wp-submenu-head'>用户</li>
+                <li class="wp-first-item"><a href='users.php' class="wp-first-item">所有用户</a></li>
+                <li><a href='user-new.php'>添加用户</a></li>
+                <li><a href='profile.php'>我的个人资料</a></li>
+            </ul>
+        </li>
+        
+	<li id="menu-tool" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-tools" >
+            <a href='tools.php' class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-tools" aria-haspopup="true">
+                <div class="wp-menu-arrow"><div></div></div>
+                <div class='wp-menu-image dashicons-before dashicons-admin-tools'><br /></div>
+                <div class='wp-menu-name'>工具</div>
+            </a>
+            <ul class='wp-submenu wp-submenu-wrap'>
+                <li class='wp-submenu-head'>工具</li>
+                <li class="wp-first-item"><a href='tools.php' class="wp-first-item">可用工具</a></li>
+                <li><a href='import.php'>导入</a></li>
+                <li><a href='export.php'>导出</a></li>
+            </ul>
+        </li>
+        
+	<li id="menu-setting" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-settings menu-top-last" >
+            <a href='<?php echo Fate::app()->url->getWebDir()."admin/setting";?>' class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-settings menu-top-last" aria-haspopup="true">
+                <div class="wp-menu-arrow"><div></div></div>
+                <div class='wp-menu-image dashicons-before dashicons-admin-settings'><br /></div>
+                <div class='wp-menu-name'>设置</div>
+            </a>
+            <ul class='wp-submenu wp-submenu-wrap'>
+                <li class='wp-submenu-head'>设置</li>
+                <li class="wp-first-item"><a href='<?php echo Fate::app()->url->getWebDir()."admin/setting";?>' class="wp-first-item">常规</a></li>
+                <li><a href='<?php echo Fate::app()->url->getWebDir()."admin/setting/write";?>'>撰写</a></li>
+                <li><a href='<?php echo Fate::app()->url->getWebDir()."admin/setting/read";?>'>阅读</a></li>
+                <li><a href='<?php echo Fate::app()->url->getWebDir()."admin/setting/discussion";?>'>讨论</a></li>
+                <li><a href='<?php echo Fate::app()->url->getWebDir()."admin/setting/media";?>'>多媒体</a></li>
+                <li><a href='<?php echo Fate::app()->url->getWebDir()."admin/setting/url";?>'>固定链接</a></li>
+            </ul>
+        </li>
+        
+        <li id="collapse-menu" class="hide-if-no-js"><div id="collapse-button"><div></div></div><span>收起菜单</span></li>
+    </ul>
+</div>
+<!-- menu end -->
+
+<div id="wpcontent">	<div id="wpbody">
+
+<div id="wpbody-content" aria-label="主内容" tabindex="0">
+		<div id="screen-meta" class="metabox-prefs">
+
+			<div id="contextual-help-wrap" class="hidden" tabindex="-1" aria-label="“上下文帮助”选项卡">
+				<div id="contextual-help-back"></div>
+				<div id="contextual-help-columns">
+					<div class="contextual-help-tabs">
+						<ul>
+						
+							<li id="tab-link-overview" class="active">
+								<a href="#tab-panel-overview" aria-controls="tab-panel-overview">
+									概述								</a>
+							</li>
+												</ul>
+					</div>
+
+										<div class="contextual-help-sidebar">
+						<p><strong>更多信息：</strong></p><p><a href="http://codex.wordpress.org/zh-cn:%E5%AA%92%E4%BD%93_%E6%B7%BB%E5%8A%A0%E5%A4%9A%E5%AA%92%E4%BD%93%E6%96%87%E4%BB%B6%E9%A1%B5%E9%9D%A2" target="_blank">关于添加多媒体文件的中文文档</a></p><p><a href="http://cn.forums.wordpress.org" target="_blank">中文支持论坛</a></p>					</div>
+					
+					<div class="contextual-help-tabs-wrap">
+						
+							<div id="tab-panel-overview" class="help-tab-content active">
+								<p>您可以不创建文章，直接上传多媒体文件。这样，您就可以得到一个用于分享的网络链接，当然，也可以在日后将这写媒体文件用在文章中。有如下三种上传文件的选择：</p><ul><li>将文件<strong>拖放到下方的区域</strong>。可以拖放多个文件。</li><li>点击<strong>选择文件</strong>后将弹出您操作系统的“选择文件...”窗口。选择您需要上传的文件，单击<strong>打开</strong>，文件开始上传。进度条会自动出现，指示上传状态。</li><li>点击拖拽框下方的链接可恢复使用<strong>浏览器上传工具</strong>。</li></ul>							</div>
+											</div>
+				</div>
+			</div>
+				</div>
+				<div id="screen-meta-links">
+					<div id="contextual-help-link-wrap" class="hide-if-no-js screen-meta-toggle">
+			<a href="#contextual-help-wrap" id="contextual-help-link" class="show-settings" aria-controls="contextual-help-wrap" aria-expanded="false">帮助</a>
+			</div>
+				</div>
+		<div class="wrap">
+	<h2>上传新媒体文件</h2>
+
+	<form enctype="multipart/form-data" method="post" action="http://localhost/wordpress/wp-admin/media-new.php" class="media-upload-form type-form validate" id="file-form">
+
+	
+<div id="media-upload-notice"></div>
+<div id="media-upload-error"></div>
+
+<script type="text/javascript">
+var resize_height = 1024, resize_width = 1024,
+wpUploaderInit = {"runtimes":"html5,flash,silverlight,html4","browse_button":"plupload-browse-button","container":"plupload-upload-ui","drop_element":"drag-drop-area","file_data_name":"async-upload","url":"http:\/\/localhost\/wordpress\/wp-admin\/async-upload.php","flash_swf_url":"http:\/\/localhost\/wordpress\/wp-includes\/js\/plupload\/plupload.flash.swf","silverlight_xap_url":"http:\/\/localhost\/wordpress\/wp-includes\/js\/plupload\/plupload.silverlight.xap","filters":{"max_file_size":"2097152b"},"multipart_params":{"post_id":0,"_wpnonce":"becb427236","type":"","tab":"","short":"1"}};
+</script>
+
+<div id="plupload-upload-ui" class="hide-if-no-js">
+<div id="drag-drop-area">
+	<div class="drag-drop-inside">
+	<p class="drag-drop-info">将文件拖到这里</p>
+	<p>或</p>
+	<p class="drag-drop-buttons"><input id="plupload-browse-button" type="button" value="选择文件" class="button" /></p>
+	</div>
+</div>
+	<p class="upload-flash-bypass">
+	您正在使用多文件上传工具。遇到问题？请尝试使用<a href="#">标准浏览器上传工具</a> 。	</p>
+	</div>
+
+<div id="html-upload-ui" class="hide-if-js">
+		<p id="async-upload-wrap">
+		<label class="screen-reader-text" for="async-upload">上传</label>
+		<input type="file" name="async-upload" id="async-upload" />
+		<input type="submit" name="html-upload" id="html-upload" class="button" value="上传"  />		<a href="#" onclick="try{top.tb_remove();}catch(e){}; return false;">取消</a>
+	</p>
+	<div class="clear"></div>
+	<p class="upload-html-bypass hide-if-no-js">
+	   您正在使用浏览器内置的标准上传工具。WordPress提供了全新的上传工具，支持多选、拖放上传功能。<a href="#">改用新的上传工具</a>。	</p>
+	</div>
+
+<p class="max-upload-size">最大上传文件大小：2 MB。</p>
+
+	<script type="text/javascript">
+	var post_id = 0, shortform = 3;
+	</script>
+	<input type="hidden" name="post_id" id="post_id" value="0" />
+	<input type="hidden" id="_wpnonce" name="_wpnonce" value="becb427236" /><input type="hidden" name="_wp_http_referer" value="/wordpress/wp-admin/media-new.php" />	<div id="media-items" class="hide-if-no-js"></div>
+	</form>
+</div>
+
+
+<div class="clear"></div></div><!-- wpbody-content -->
+<div class="clear"></div>
+
+	
+<script type='text/javascript'>
+/* <![CDATA[ */
+var commonL10n = {"warnDelete":"\u60a8\u5c06\u6c38\u4e45\u5220\u9664\u6240\u9009\u9879\u76ee\u3002\n\u70b9\u51fb\u201c\u53d6\u6d88\u201d\u505c\u6b62\uff0c\u70b9\u51fb\u201c\u786e\u5b9a\u201d\u5220\u9664\u3002"};var heartbeatSettings = {"nonce":"c63b35be06"};var authcheckL10n = {"beforeunload":"\u60a8\u7684\u767b\u5f55\u4f1a\u8bdd\u5df2\u8fc7\u671f\uff0c\u8bf7\u91cd\u65b0\u767b\u5f55\u3002","interval":"180"};/* ]]> */
+</script>
+<script type='text/javascript' src='http://localhost/wordpress/wp-admin/load-scripts.php?c=1&amp;load%5B%5D=hoverIntent,common,admin-bar,svg-painter,heartbeat,wp-auth-check&amp;ver=4.0'></script>
+
+<div class="clear"></div></div><!-- wpwrap -->
+<script type="text/javascript">if(typeof wpOnload=='function')wpOnload();</script>
+</body>
+</html>
+</div>
+    
+</div>
+<script>
+    $(function(){
+
+        var uri = '<?php echo Fate::app()->url->getUri();?>'
+        var module = '<?php echo Fate::app()->control;?>'; 
+        var menu_bar = $('#adminmenu');
+        var current_menu = $("#menu-"+module);
+        var current_tag = current_menu.children('ul').children('li').children('a[href="'+uri+'"]');
+
+        current_menu.toggleClass('wp-not-current-submenu wp-has-current-submenu');
+        current_menu.children('a').toggleClass('wp-not-current-submenu wp-has-current-submenu');
+        current_tag.addClass('current');
+        current_tag.parent().addClass('current');
+
+        menu_bar.children('li').hover(function(){
+                $(this).addClass('opensub');
+                $(this).children('ul').css('top',-1);
+        },function(){
+                $(this).removeClass('opensub');
+                if(!$(this).hasClass('wp-has-current-submenu')){
+                    $(this).children('ul').css('top','-1000em'); 
+                }
+        })
+        
+        function initLayout(){
+            
+            var hight = document.documentElement.clientHeight - $("#nav").outerHeight(true);   
+
+            $('#adminmenuwrap').height(hight); 
+            $('#wpwrap').height(hight);
+            
+        }
+		
+        initLayout();
+
+        $(window).resize(function(){   
+                        initLayout();   
+        });
+
+})
+</script>
+</body>
+</html>

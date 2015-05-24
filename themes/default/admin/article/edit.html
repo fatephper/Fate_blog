@@ -1,0 +1,1635 @@
+<{js:common/bdeditor/umeditor.config.js}>
+<{js:common/bdeditor/umeditor.min.js}>
+<{js:common/bdeditor/lang/zh-cn/zh-cn.js}>
+<div id="wpbody">
+   <div id="wpbody-content" aria-label="主内容" tabindex="0">	
+    <div class="wrap">
+        <h2>撰写新文章</h2>
+        <form name="post" action="" method="post" >
+            <input type="hidden" name="post_type" value="post" />
+            <input type="hidden" name="doAdd" value="1">
+            <div id="poststuff">
+             <div id="post-body" class="metabox-holder columns-2">
+               <!-- 正文 start -->
+               <div id="post-body-content">
+                    <!-- 标题 start -->
+                    <div id="titlediv">
+                        <div id="titlewrap">
+                            <label class="screen-reader-text" id="title-prompt-text" for="title">在此输入标题</label>
+                            <input type="text" name="post_title" size="30" value="" id="title" autocomplete="off" />
+                        </div>
+                    </div>
+                    <!-- 标题 end -->
+                    <!-- 内容 start -->
+                    <{css:bdeditor/umeditor.css}>
+                    <div id="postdivrich" class="postarea wp-editor-expand">
+                        <textarea id="post_content" style="width:99.7%" name="post_content"></textarea>
+                    </div>
+                    <script type="text/javascript">
+                        //实例化编辑器
+                        var um = UM.getEditor('post_content');
+                    </script>
+                    <!-- 内容 end -->
+               </div>
+               <!-- 正文 end -->
+               <!-- 右侧 菜单 start -->
+               <div id="postbox-container-1" class="postbox-container">
+                <div id="side-sortables" class="meta-box-sortables">
+                  <div id="submitdiv" class="postbox " >
+                    <div class="handlediv" title="点击以切换"><br /></div>
+                      <h3 class='hndle'><span>发布</span></h3>
+                        <div class="inside">
+                          <div class="submitbox" id="submitpost">
+                           <div id="minor-publishing">
+                              <div style="display:none;">
+                                <p class="submit">
+                                  <input type="submit" name="save" id="save" class="button" value="保存"  />
+                                </p>
+                              </div>
+                              <!-- 保存草稿 预览 start -->
+                              <div id="minor-publishing-actions">
+                                <div id="save-action">
+                                <input  type="submit" name="save" id="save-post" value="保存草稿" class="button" />
+                                <span class="spinner"></span>
+                                </div>
+                                <div id="preview-action">
+                                    <a class="preview button" href="" target="wp-preview-6" id="post-preview">预览</a>
+                                    <input type="hidden" name="wp-preview" id="wp-preview" value="" />
+                                </div>
+                                <div class="clear"></div>
+                              </div>
+                              <!-- 保存草稿 预览 end -->
+
+                              <div id="misc-publishing-actions">
+                                <div class="misc-pub-section misc-pub-post-status">
+                                    <label for="post_status">状态：</label>
+                                    <span id="post-status-display">草稿</span>
+                                    <a href="#post_status" class="edit-post-status hide-if-no-js">
+                                        <span aria-hidden="true">编辑</span> 
+                                        <span class="screen-reader-text">编辑状态</span>
+                                    </a>
+                                    <div id="post-status-select" class="hide-if-js">
+                                        <input type="hidden" name="hidden_post_status" id="hidden_post_status" value="draft" />
+                                        <select name='post_status' id='post_status'>
+                                        <option value='pending'>等待复审</option>
+                                        <option selected='selected' value='draft'>草稿</option>
+                                        </select>
+                                         <a href="#post_status" class="save-post-status hide-if-no-js button">确定</a>
+                                         <a href="#post_status" class="cancel-post-status hide-if-no-js button-cancel">取消</a>
+                                    </div>
+                                 </div>
+
+                                <div class="misc-pub-section misc-pub-visibility" id="visibility">
+                                公开度： <span id="post-visibility-display">公开</span>
+                                <a href="#visibility" class="edit-visibility hide-if-no-js">
+                                    <span aria-hidden="true">编辑</span> 
+                                    <span class="screen-reader-text">编辑可见性</span>
+                                </a>
+                                <div id="post-visibility-select" class="hide-if-js">
+                                <input type="hidden" name="hidden_post_password" id="hidden-post-password" value="" />
+                                <input type="checkbox" style="display:none" name="hidden_post_sticky" id="hidden-post-sticky" value="sticky"  />
+                                <input type="hidden" name="hidden_post_visibility" id="hidden-post-visibility" value="public" />
+                                <input type="radio" name="visibility" id="visibility-radio-public" value="public"  checked='checked' /> <label for="visibility-radio-public" class="selectit">公开</label><br />
+                                <span id="sticky-span"><input id="sticky" name="sticky" type="checkbox" value="sticky"  /> <label for="sticky" class="selectit">将文章置于首页顶端</label><br /></span>
+                                <input type="radio" name="visibility" id="visibility-radio-password" value="password"  /> <label for="visibility-radio-password" class="selectit">密码保护</label><br />
+                                <span id="password-span"><label for="post_password">密码：</label> <input type="text" name="post_password" id="post_password" value=""  maxlength="20" /><br /></span>
+                                <input type="radio" name="visibility" id="visibility-radio-private" value="private"  /> <label for="visibility-radio-private" class="selectit">私密</label><br />
+
+                                <p>
+                                 <a href="#visibility" class="save-post-visibility hide-if-no-js button">确定</a>
+                                 <a href="#visibility" class="cancel-post-visibility hide-if-no-js button-cancel">取消</a>
+                                </p>
+                                </div>
+                                </div>
+
+            <div class="misc-pub-section curtime misc-pub-curtime">
+                    <span id="timestamp">
+                    <b>立即</b>发布</span>
+                    <a href="#edit_timestamp" class="edit-timestamp hide-if-no-js"><span aria-hidden="true">编辑</span> <span class="screen-reader-text">编辑日期、时间</span></a>
+                    <div id="timestampdiv" class="hide-if-js"><div class="timestamp-wrap"><label for="aa" class="screen-reader-text">年</label><input type="text" id="aa" name="aa" value="2014" size="4" maxlength="4" autocomplete="off" />年<label for="mm" class="screen-reader-text">月份</label><select id="mm" name="mm">
+                                    <option value="01" >一</option>
+                                    <option value="02" >二</option>
+                                    <option value="03" >三</option>
+                                    <option value="04" >四</option>
+                                    <option value="05" >五</option>
+                                    <option value="06" >六</option>
+                                    <option value="07" >七</option>
+                                    <option value="08" >八</option>
+                                    <option value="09" >九</option>
+                                    <option value="10"  selected='selected'>十</option>
+                                    <option value="11" >十一</option>
+                                    <option value="12" >十二</option>
+            </select>月<label for="jj" class="screen-reader-text">日期</label><input type="text" id="jj" name="jj" value="05" size="2" maxlength="2" autocomplete="off" />日@<label for="hh" class="screen-reader-text">小时</label><input type="text" id="hh" name="hh" value="15" size="2" maxlength="2" autocomplete="off" />:<label for="mn" class="screen-reader-text">分钟</label><input type="text" id="mn" name="mn" value="33" size="2" maxlength="2" autocomplete="off" /></div><input type="hidden" id="ss" name="ss" value="46" />
+
+            <input type="hidden" id="hidden_mm" name="hidden_mm" value="10" />
+            <input type="hidden" id="cur_mm" name="cur_mm" value="10" />
+            <input type="hidden" id="hidden_jj" name="hidden_jj" value="05" />
+            <input type="hidden" id="cur_jj" name="cur_jj" value="05" />
+            <input type="hidden" id="hidden_aa" name="hidden_aa" value="2014" />
+            <input type="hidden" id="cur_aa" name="cur_aa" value="2014" />
+            <input type="hidden" id="hidden_hh" name="hidden_hh" value="15" />
+            <input type="hidden" id="cur_hh" name="cur_hh" value="15" />
+            <input type="hidden" id="hidden_mn" name="hidden_mn" value="33" />
+            <input type="hidden" id="cur_mn" name="cur_mn" value="33" />
+
+            <p>
+            <a href="#edit_timestamp" class="save-timestamp hide-if-no-js button">确定</a>
+            <a href="#edit_timestamp" class="cancel-timestamp hide-if-no-js button-cancel">取消</a>
+            </p>
+            </div>
+            </div>
+            </div>
+            <div class="clear"></div>
+            </div>
+
+            <div id="major-publishing-actions">
+            <div id="delete-action">
+            <a class="submitdelete deletion" href="http://localhost/wordpress/wp-admin/post.php?post=6&amp;action=trash&amp;_wpnonce=7d7210fd6c">移至回收站</a></div>
+
+            <div id="publishing-action">
+            <span class="spinner"></span>
+                            <input name="original_publish" type="hidden" id="original_publish" value="发布" />
+                            <input type="submit" name="publish" id="publish" class="button button-primary button-large" value="发布" accesskey="p"  /></div>
+            <div class="clear"></div>
+            </div>
+            </div>
+
+            </div>
+            </div>
+            <div id="formatdiv" class="postbox " >
+            <div class="handlediv" title="点击以切换"><br /></div><h3 class='hndle'><span>形式</span></h3>
+            <div class="inside">
+                    <div id="post-formats-select">
+                            <input type="radio" name="post_format" class="post-format" id="post-format-0" value="0"  checked='checked' /> <label for="post-format-0" class="post-format-icon post-format-standard">标准</label>
+                                            <br /><input type="radio" name="post_format" class="post-format" id="post-format-aside" value="aside"  /> <label for="post-format-aside" class="post-format-icon post-format-aside">日志</label>
+                                            <br /><input type="radio" name="post_format" class="post-format" id="post-format-image" value="image"  /> <label for="post-format-image" class="post-format-icon post-format-image">图像</label>
+                                            <br /><input type="radio" name="post_format" class="post-format" id="post-format-video" value="video"  /> <label for="post-format-video" class="post-format-icon post-format-video">视频</label>
+                                            <br /><input type="radio" name="post_format" class="post-format" id="post-format-audio" value="audio"  /> <label for="post-format-audio" class="post-format-icon post-format-audio">音频</label>
+                                            <br /><input type="radio" name="post_format" class="post-format" id="post-format-quote" value="quote"  /> <label for="post-format-quote" class="post-format-icon post-format-quote">引语</label>
+                                            <br /><input type="radio" name="post_format" class="post-format" id="post-format-link" value="link"  /> <label for="post-format-link" class="post-format-icon post-format-link">链接</label>
+                                            <br /><input type="radio" name="post_format" class="post-format" id="post-format-gallery" value="gallery"  /> <label for="post-format-gallery" class="post-format-icon post-format-gallery">相册</label>
+                            <br />
+                    </div>
+                    </div>
+            </div>
+            <div id="categorydiv" class="postbox " >
+            <div class="handlediv" title="点击以切换"><br /></div><h3 class='hndle'><span>分类目录</span></h3>
+            <div class="inside">
+                    <div id="taxonomy-category" class="categorydiv">
+                            <ul id="category-tabs" class="category-tabs">
+                                    <li class="tabs"><a href="#category-all">所有分类目录</a></li>
+                                    <li class="hide-if-no-js"><a href="#category-pop">最常用</a></li>
+                            </ul>
+
+                            <div id="category-pop" class="tabs-panel" style="display: none;">
+                                    <ul id="categorychecklist-pop" class="categorychecklist form-no-clear" >
+
+                            <li id="popular-category-1" class="popular-category">
+                                    <label class="selectit">
+                                            <input id="in-popular-category-1" type="checkbox"  value="1"  />
+                                            未分类			</label>
+                            </li>
+
+                                                    </ul>
+                            </div>
+
+                            <div id="category-all" class="tabs-panel">
+                                    <input type='hidden' name='post_category[]' value='0' />			<ul id="categorychecklist" data-wp-lists="list:category" class="categorychecklist form-no-clear">
+
+            <li id='category-1' class="popular-category"><label class="selectit"><input value="1" type="checkbox" name="post_category[]" id="in-category-1" /> 未分类</label></li>
+                                    </ul>
+                            </div>
+                                            <div id="category-adder" class="wp-hidden-children">
+                                            <h4>
+                                                    <a id="category-add-toggle" href="#category-add" class="hide-if-no-js">
+                                                            + 添加新分类目录					</a>
+                                            </h4>
+                                            <p id="category-add" class="category-add wp-hidden-child">
+                                                    <label class="screen-reader-text" for="newcategory">添加新分类目录</label>
+                                                    <input type="text" name="newcategory" id="newcategory" class="form-required form-input-tip" value="新分类目录名" aria-required="true"/>
+                                                    <label class="screen-reader-text" for="newcategory_parent">
+                                                            父级分类目录：					</label>
+                                                    <select name='newcategory_parent' id='newcategory_parent' class='postform' >
+                    <option value='-1'>&mdash; 父级分类目录 &mdash;</option>
+                    <option class="level-0" value="1">未分类</option>
+            </select>
+                                                    <input type="button" id="category-add-submit" data-wp-lists="add:categorychecklist:category-add" class="button category-add-submit" value="添加新分类目录" />
+                                                    <input type="hidden" id="_ajax_nonce-add-category" name="_ajax_nonce-add-category" value="eb2092e856" />					<span id="category-ajax-response"></span>
+                                            </p>
+                                    </div>
+                                    </div>
+                    </div>
+            </div>
+            <div id="tagsdiv-post_tag" class="postbox " >
+            <div class="handlediv" title="点击以切换"><br /></div><h3 class='hndle'><span>标签</span></h3>
+            <div class="inside">
+            <div class="tagsdiv" id="post_tag">
+                    <div class="jaxtag">
+                    <div class="nojs-tags hide-if-js">
+                    <p>添加或删除标签</p>
+                    <textarea name="tax_input[post_tag]" rows="3" cols="20" class="the-tags" id="tax-input-post_tag" ></textarea></div>
+                            <div class="ajaxtag hide-if-no-js">
+                            <label class="screen-reader-text" for="new-tag-post_tag">标签</label>
+                            <div class="taghint">添加新标签</div>
+                            <p><input type="text" id="new-tag-post_tag" name="newtag[post_tag]" class="newtag form-input-tip" size="16" autocomplete="off" value="" />
+                            <input type="button" class="button tagadd" value="添加" /></p>
+                    </div>
+                    <p class="howto">多个标签请用英文逗号（,）分开</p>
+                            </div>
+                    <div class="tagchecklist"></div>
+            </div>
+            <p class="hide-if-no-js"><a href="#titlediv" class="tagcloud-link" id="link-post_tag">从常用标签中选择</a></p>
+            </div>
+            </div>
+            <div id="postimagediv" class="postbox " >
+            <div class="handlediv" title="点击以切换"><br /></div><h3 class='hndle'><span>特色图像</span></h3>
+            <div class="inside">
+            <p class="hide-if-no-js"><a title="设为特色图像" href="http://localhost/wordpress/wp-admin/media-upload.php?post_id=6&#038;type=image&#038;TB_iframe=1" id="set-post-thumbnail" class="thickbox">设为特色图像</a></p></div>
+            </div>
+            </div>
+            </div>
+            <!-- 左侧摘要 start -->
+            <div id="postbox-container-2" class="postbox-container">
+                <div id="normal-sortables" class="meta-box-sortables">
+                   <div id="postexcerpt" class="postbox  hide-if-js" >
+                    <div class="handlediv" title="点击以切换"><br /></div>
+                    <h3 class='hndle'><span>摘要</span></h3>
+                    <div class="inside">
+                    <label class="screen-reader-text" for="excerpt">摘要</label>
+                    <textarea rows="1" cols="40" name="excerpt" id="excerpt"></textarea>
+                    <p>摘要是您可以手动添加的内容概要，一些主题会用到这些文字。 </p>
+                    </div>
+                   </div>
+                </div>
+                <div id="advanced-sortables" class="meta-box-sortables"></div>
+            </div>
+            <!-- 左侧摘要 end -->
+            </div>
+            <br class="clear" />
+            </div>
+</form>
+</div>
+
+<form method="get" action="">
+<table style="display:none;"><tbody id="com-reply"><tr id="replyrow" style="display:none;"><td colspan="2" class="colspanchange">
+	<div id="replyhead" style="display:none;"><h5>回复评论</h5></div>
+	<div id="addhead" style="display:none;"><h5>添加新评论</h5></div>
+	<div id="edithead" style="display:none;">
+		<div class="inside">
+		<label for="author">姓名</label>
+		<input type="text" name="newcomment_author" size="50" value="" id="author" />
+		</div>
+
+		<div class="inside">
+		<label for="author-email">电子邮件</label>
+		<input type="text" name="newcomment_author_email" size="50" value="" id="author-email" />
+		</div>
+
+		<div class="inside">
+		<label for="author-url">URL</label>
+		<input type="text" id="author-url" name="newcomment_author_url" class="code" size="103" value="" />
+		</div>
+		<div style="clear:both;"></div>
+	</div>
+
+	<div id="replycontainer">
+	<div id="wp-replycontent-wrap" class="wp-core-ui wp-editor-wrap html-active"><div id="wp-replycontent-editor-container" class="wp-editor-container"><textarea class="wp-editor-area" rows="20" cols="40" name="replycontent" id="replycontent"></textarea></div>
+</div>
+
+	</div>
+
+	<p id="replysubmit" class="submit">
+	<a href="#comments-form" class="save button-primary alignright">
+	<span id="addbtn" style="display:none;">添加评论</span>
+	<span id="savebtn" style="display:none;">更新评论</span>
+	<span id="replybtn" style="display:none;">提交回复</span></a>
+	<a href="#comments-form" class="cancel button-secondary alignleft">取消</a>
+	<span class="waiting spinner"></span>
+	<span class="error" style="display:none;"></span>
+	<br class="clear" />
+	</p>
+
+	<input type="hidden" name="user_ID" id="user_ID" value="1" />
+	<input type="hidden" name="action" id="action" value="" />
+	<input type="hidden" name="comment_ID" id="comment_ID" value="" />
+	<input type="hidden" name="comment_post_ID" id="comment_post_ID" value="" />
+	<input type="hidden" name="status" id="status" value="" />
+	<input type="hidden" name="position" id="position" value="1" />
+	<input type="hidden" name="checkbox" id="checkbox" value="0" />
+	<input type="hidden" name="mode" id="mode" value="single" />
+	<input type="hidden" id="_ajax_nonce-replyto-comment" name="_ajax_nonce-replyto-comment" value="72f7c3da7b" /><input type="hidden" id="_wp_unfiltered_html_comment" name="_wp_unfiltered_html_comment" value="f88296372d" /></td></tr></tbody></table>
+</form>
+
+
+
+<div class="clear"></div></div><!-- wpbody-content -->
+<div class="clear"></div></div><<!-- wpbody -->
+<div class="clear"></div>
+
+
+	<!--[if lte IE 8]>
+	<style>
+		.attachment:focus {
+			outline: #1e8cbe solid;
+		}
+		.selected.attachment {
+			outline: #1e8cbe solid;
+		}
+	</style>
+	<![endif]-->
+	<script type="text/html" id="tmpl-media-frame">
+		<div class="media-frame-menu"></div>
+		<div class="media-frame-title"></div>
+		<div class="media-frame-router"></div>
+		<div class="media-frame-content"></div>
+		<div class="media-frame-toolbar"></div>
+		<div class="media-frame-uploader"></div>
+	</script>
+
+	<script type="text/html" id="tmpl-media-modal">
+		<div class="media-modal wp-core-ui">
+			<a class="media-modal-close" href="#"><span class="media-modal-icon"><span class="screen-reader-text">关闭媒体面板</span></span></a>
+			<div class="media-modal-content"></div>
+		</div>
+		<div class="media-modal-backdrop"></div>
+	</script>
+
+	<script type="text/html" id="tmpl-uploader-window">
+		<div class="uploader-window-content">
+			<h3>拖文件至此可上传</h3>
+		</div>
+	</script>
+
+	<script type="text/html" id="tmpl-uploader-editor">
+		<div class="uploader-editor-content">
+			<div class="uploader-editor-title">拖文件至此可上传</div>
+		</div>
+	</script>
+
+	<script type="text/html" id="tmpl-uploader-inline">
+		<# var messageClass = data.message ? 'has-upload-message' : 'no-upload-message'; #>
+		<# if ( data.canClose ) { #>
+		<button class="close dashicons dashicons-no"><span class="screen-reader-text">关闭上传器</span></button>
+		<# } #>
+		<div class="uploader-inline-content {{ messageClass }}">
+		<# if ( data.message ) { #>
+			<h3 class="upload-message">{{ data.message }}</h3>
+		<# } #>
+					<div class="upload-ui">
+				<h3 class="upload-instructions drop-instructions">拖文件到任何地方来上传</h3>
+				<p class="upload-instructions drop-instructions">或</p>
+				<a href="#" class="browser button button-hero">选择文件</a>
+			</div>
+
+			<div class="upload-inline-status"></div>
+
+			<div class="post-upload-ui">
+				
+				<p class="max-upload-size">最大上传文件大小：2 MB。</p>
+
+				<# if ( data.suggestedWidth && data.suggestedHeight ) { #>
+					<p class="suggested-dimensions">
+						推荐的图像尺寸： {{data.suggestedWidth}} &times; {{data.suggestedHeight}}
+					</p>
+				<# } #>
+
+							</div>
+				</div>
+	</script>
+
+	<script type="text/html" id="tmpl-media-library-view-switcher">
+		<a href="/wordpress/wp-admin/post-new.php?mode=list" class="view-list">
+			<span class="screen-reader-text">列表视图</span>
+		</a>
+		<a href="/wordpress/wp-admin/post-new.php?mode=grid" class="view-grid current">
+			<span class="screen-reader-text">网格视图</span>
+		</a>
+	</script>
+
+	<script type="text/html" id="tmpl-uploader-status">
+		<h3>正上传</h3>
+		<a class="upload-dismiss-errors" href="#">忽略错误</a>
+
+		<div class="media-progress-bar"><div></div></div>
+		<div class="upload-details">
+			<span class="upload-count">
+				<span class="upload-index"></span> / <span class="upload-total"></span>
+			</span>
+			<span class="upload-detail-separator">&ndash;</span>
+			<span class="upload-filename"></span>
+		</div>
+		<div class="upload-errors"></div>
+	</script>
+
+	<script type="text/html" id="tmpl-uploader-status-error">
+		<span class="upload-error-label">错误</span>
+		<span class="upload-error-filename">{{{ data.filename }}}</span>
+		<span class="upload-error-message">{{ data.message }}</span>
+	</script>
+
+	<script type="text/html" id="tmpl-edit-attachment-frame">
+		<div class="edit-media-header">
+			<button class="left dashicons <# if ( ! data.hasPrevious ) { #> disabled <# } #>"><span class="screen-reader-text">编辑上一媒体项目</span></button>
+			<button class="right dashicons <# if ( ! data.hasNext ) { #> disabled <# } #>"><span class="screen-reader-text">编辑下一媒体项目</span></button>
+		</div>
+		<div class="media-frame-title"></div>
+		<div class="media-frame-content"></div>
+	</script>
+
+	<script type="text/html" id="tmpl-attachment-details-two-column">
+		<div class="attachment-media-view {{ data.orientation }}">
+			<div class="thumbnail thumbnail-{{ data.type }}">
+				<# if ( data.uploading ) { #>
+					<div class="media-progress-bar"><div></div></div>
+				<# } else if ( 'image' === data.type && data.sizes && data.sizes.large ) { #>
+					<img class="details-image" src="{{ data.sizes.large.url }}" draggable="false" />
+				<# } else if ( 'image' === data.type && data.sizes && data.sizes.full ) { #>
+					<img class="details-image" src="{{ data.sizes.full.url }}" draggable="false" />
+				<# } else if ( -1 === jQuery.inArray( data.type, [ 'audio', 'video' ] ) ) { #>
+					<img class="details-image" src="{{ data.icon }}" class="icon" draggable="false" />
+				<# } #>
+
+				<# if ( 'audio' === data.type ) { #>
+				<div class="wp-media-wrapper">
+					<audio style="visibility: hidden" controls class="wp-audio-shortcode" width="100%" preload="none">
+						<source type="{{ data.mime }}" src="{{ data.url }}"/>
+					</audio>
+				</div>
+				<# } else if ( 'video' === data.type ) {
+					var w_rule = h_rule = '';
+					if ( data.width ) {
+						w_rule = 'width: ' + data.width + 'px;';
+					} else if ( wp.media.view.settings.contentWidth ) {
+						w_rule = 'width: ' + wp.media.view.settings.contentWidth + 'px;';
+					}
+					if ( data.height ) {
+						h_rule = 'height: ' + data.height + 'px;';
+					}
+				#>
+				<div style="{{ w_rule }}{{ h_rule }}" class="wp-media-wrapper wp-video">
+					<video controls="controls" class="wp-video-shortcode" preload="metadata"
+						<# if ( data.width ) { #>width="{{ data.width }}"<# } #>
+						<# if ( data.height ) { #>height="{{ data.height }}"<# } #>
+						<# if ( data.image && data.image.src !== data.icon ) { #>poster="{{ data.image.src }}"<# } #>>
+						<source type="{{ data.mime }}" src="{{ data.url }}"/>
+					</video>
+				</div>
+				<# } #>
+
+				<div class="attachment-actions">
+					<# if ( 'image' === data.type && ! data.uploading && data.sizes ) { #>
+						<a class="button edit-attachment" href="#">编辑图像</a>
+					<# } #>
+				</div>
+			</div>
+		</div>
+		<div class="attachment-info">
+			<span class="settings-save-status">
+				<span class="spinner"></span>
+				<span class="saved">已保存。</span>
+			</span>
+			<div class="details">
+				<div class="filename"><strong>文件名：</strong> {{ data.filename }}</div>
+				<div class="filename"><strong>文件类型：</strong> {{ data.mime }}</div>
+				<div class="uploaded"><strong>上传于：</strong> {{ data.dateFormatted }}</div>
+
+				<div class="file-size"><strong>文件大小：</strong> {{ data.filesizeHumanReadable }}</div>
+				<# if ( 'image' === data.type && ! data.uploading ) { #>
+					<# if ( data.width && data.height ) { #>
+						<div class="dimensions"><strong>分辨率：</strong> {{ data.width }} &times; {{ data.height }}</div>
+					<# } #>
+				<# } #>
+
+				<# if ( data.fileLength ) { #>
+					<div class="file-length"><strong>长度：</strong> {{ data.fileLength }}</div>
+				<# } #>
+
+				<# if ( 'audio' === data.type && data.meta.bitrate ) { #>
+					<div class="bitrate">
+						<strong>比特率：</strong> {{ Math.round( data.meta.bitrate / 1000 ) }}kb/s
+						<# if ( data.meta.bitrate_mode ) { #>
+						{{ ' ' + data.meta.bitrate_mode.toUpperCase() }}
+						<# } #>
+					</div>
+				<# } #>
+
+				<div class="compat-meta">
+					<# if ( data.compat && data.compat.meta ) { #>
+						{{{ data.compat.meta }}}
+					<# } #>
+				</div>
+			</div>
+
+			<div class="settings">
+				<label class="setting" data-setting="url">
+					<span class="name">URL</span>
+					<input type="text" value="{{ data.url }}" readonly />
+				</label>
+				<# var maybeReadOnly = data.can.save || data.allowLocalEdits ? '' : 'readonly'; #>
+				<label class="setting" data-setting="title">
+					<span class="name">标题</span>
+					<input type="text" value="{{ data.title }}" {{ maybeReadOnly }} />
+				</label>
+				<# if ( 'audio' === data.type ) { #>
+								<label class="setting" data-setting="artist">
+					<span class="name">艺术家</span>
+					<input type="text" value="{{ data.artist || data.meta.artist || '' }}" />
+				</label>
+								<label class="setting" data-setting="album">
+					<span class="name">相册</span>
+					<input type="text" value="{{ data.album || data.meta.album || '' }}" />
+				</label>
+								<# } #>
+				<label class="setting" data-setting="caption">
+					<span class="name">说明</span>
+					<textarea {{ maybeReadOnly }}>{{ data.caption }}</textarea>
+				</label>
+				<# if ( 'image' === data.type ) { #>
+					<label class="setting" data-setting="alt">
+						<span class="name">替代文本</span>
+						<input type="text" value="{{ data.alt }}" {{ maybeReadOnly }} />
+					</label>
+				<# } #>
+				<label class="setting" data-setting="description">
+					<span class="name">图像描述</span>
+					<textarea {{ maybeReadOnly }}>{{ data.description }}</textarea>
+				</label>
+				<label class="setting">
+					<span class="name">上传者为</span>
+					<span class="value">{{ data.authorName }}</span>
+				</label>
+				<# if ( data.uploadedTo ) { #>
+					<label class="setting">
+						<span class="name">上传至</span>
+						<# if ( data.uploadedToLink ) { #>
+							<span class="value"><a href="{{ data.uploadedToLink }}">{{ data.uploadedToTitle }}</a></span>
+						<# } else { #>
+							<span class="value">{{ data.uploadedToTitle }}</span>
+						<# } #>
+					</label>
+				<# } #>
+				<div class="attachment-compat"></div>
+			</div>
+
+			<div class="actions">
+				<a class="view-attachment" href="{{ data.link }}">查看附件页面</a> |
+				<a href="post.php?post={{ data.id }}&action=edit">编辑详细信息</a>
+				<# if ( ! data.uploading && data.can.remove ) { #> |
+													<a class="delete-attachment" href="#">永久删除</a>
+											<# } #>
+			</div>
+
+		</div>
+	</script>
+
+	<script type="text/html" id="tmpl-attachment">
+		<div class="attachment-preview js--select-attachment type-{{ data.type }} subtype-{{ data.subtype }} {{ data.orientation }}">
+			<div class="thumbnail">
+				<# if ( data.uploading ) { #>
+					<div class="media-progress-bar"><div style="width: {{ data.percent }}%"></div></div>
+				<# } else if ( 'image' === data.type && data.sizes ) { #>
+					<div class="centered">
+						<img src="{{ data.size.url }}" draggable="false" alt="" />
+					</div>
+				<# } else { #>
+					<div class="centered">
+						<# if ( data.image && data.image.src && data.image.src !== data.icon ) { #>
+							<img src="{{ data.image.src }}" class="thumbnail" draggable="false" />
+						<# } else { #>
+							<img src="{{ data.icon }}" class="icon" draggable="false" />
+						<# } #>
+					</div>
+					<div class="filename">
+						<div>{{ data.filename }}</div>
+					</div>
+				<# } #>
+			</div>
+			<# if ( data.buttons.close ) { #>
+				<a class="close media-modal-icon" href="#" title="移除"></a>
+			<# } #>
+		</div>
+		<# if ( data.buttons.check ) { #>
+			<a class="check" href="#" title="取消选择" tabindex="-1"><div class="media-modal-icon"></div></a>
+		<# } #>
+		<#
+		var maybeReadOnly = data.can.save || data.allowLocalEdits ? '' : 'readonly';
+		if ( data.describe ) {
+			if ( 'image' === data.type ) { #>
+				<input type="text" value="{{ data.caption }}" class="describe" data-setting="caption"
+					placeholder="描述此图&hellip;" {{ maybeReadOnly }} />
+			<# } else { #>
+				<input type="text" value="{{ data.title }}" class="describe" data-setting="title"
+					<# if ( 'video' === data.type ) { #>
+						placeholder="描述此视频&hellip;"
+					<# } else if ( 'audio' === data.type ) { #>
+						placeholder="描述此音频&hellip;"
+					<# } else { #>
+						placeholder="描述此文件&hellip;"
+					<# } #> {{ maybeReadOnly }} />
+			<# }
+		} #>
+	</script>
+
+	<script type="text/html" id="tmpl-attachment-details">
+		<h3>
+			附件详情
+			<span class="settings-save-status">
+				<span class="spinner"></span>
+				<span class="saved">已保存。</span>
+			</span>
+		</h3>
+		<div class="attachment-info">
+			<div class="thumbnail thumbnail-{{ data.type }}">
+				<# if ( data.uploading ) { #>
+					<div class="media-progress-bar"><div></div></div>
+				<# } else if ( 'image' === data.type && data.sizes ) { #>
+					<img src="{{ data.size.url }}" draggable="false" />
+				<# } else { #>
+					<img src="{{ data.icon }}" class="icon" draggable="false" />
+				<# } #>
+			</div>
+			<div class="details">
+				<div class="filename">{{ data.filename }}</div>
+				<div class="uploaded">{{ data.dateFormatted }}</div>
+
+				<div class="file-size">{{ data.filesizeHumanReadable }}</div>
+				<# if ( 'image' === data.type && ! data.uploading ) { #>
+					<# if ( data.width && data.height ) { #>
+						<div class="dimensions">{{ data.width }} &times; {{ data.height }}</div>
+					<# } #>
+
+					<# if ( data.can.save && data.sizes ) { #>
+						<a class="edit-attachment" href="{{ data.editLink }}&amp;image-editor" target="_blank">编辑图像</a>
+						<a class="refresh-attachment" href="#">刷新</a>
+					<# } #>
+				<# } #>
+
+				<# if ( data.fileLength ) { #>
+					<div class="file-length">长度： {{ data.fileLength }}</div>
+				<# } #>
+
+				<# if ( ! data.uploading && data.can.remove ) { #>
+											<a class="delete-attachment" href="#">永久删除</a>
+									<# } #>
+
+				<div class="compat-meta">
+					<# if ( data.compat && data.compat.meta ) { #>
+						{{{ data.compat.meta }}}
+					<# } #>
+				</div>
+			</div>
+		</div>
+
+		<label class="setting" data-setting="url">
+			<span class="name">URL</span>
+			<input type="text" value="{{ data.url }}" readonly />
+		</label>
+		<# var maybeReadOnly = data.can.save || data.allowLocalEdits ? '' : 'readonly'; #>
+		<label class="setting" data-setting="title">
+			<span class="name">标题</span>
+			<input type="text" value="{{ data.title }}" {{ maybeReadOnly }} />
+		</label>
+		<# if ( 'audio' === data.type ) { #>
+				<label class="setting" data-setting="artist">
+			<span class="name">艺术家</span>
+			<input type="text" value="{{ data.artist || data.meta.artist || '' }}" />
+		</label>
+				<label class="setting" data-setting="album">
+			<span class="name">相册</span>
+			<input type="text" value="{{ data.album || data.meta.album || '' }}" />
+		</label>
+				<# } #>
+		<label class="setting" data-setting="caption">
+			<span class="name">说明</span>
+			<textarea {{ maybeReadOnly }}>{{ data.caption }}</textarea>
+		</label>
+		<# if ( 'image' === data.type ) { #>
+			<label class="setting" data-setting="alt">
+				<span class="name">替代文本</span>
+				<input type="text" value="{{ data.alt }}" {{ maybeReadOnly }} />
+			</label>
+		<# } #>
+		<label class="setting" data-setting="description">
+			<span class="name">图像描述</span>
+			<textarea {{ maybeReadOnly }}>{{ data.description }}</textarea>
+		</label>
+	</script>
+
+	<script type="text/html" id="tmpl-media-selection">
+		<div class="selection-info">
+			<span class="count"></span>
+			<# if ( data.editable ) { #>
+				<a class="edit-selection" href="#">编辑</a>
+			<# } #>
+			<# if ( data.clearable ) { #>
+				<a class="clear-selection" href="#">清空</a>
+			<# } #>
+		</div>
+		<div class="selection-view"></div>
+	</script>
+
+	<script type="text/html" id="tmpl-attachment-display-settings">
+		<h3>附件显示设置</h3>
+
+		<# if ( 'image' === data.type ) { #>
+			<label class="setting">
+				<span>对齐方式</span>
+				<select class="alignment"
+					data-setting="align"
+					<# if ( data.userSettings ) { #>
+						data-user-setting="align"
+					<# } #>>
+
+					<option value="left">
+						左					</option>
+					<option value="center">
+						中					</option>
+					<option value="right">
+						右					</option>
+					<option value="none" selected>
+						无					</option>
+				</select>
+			</label>
+		<# } #>
+
+		<div class="setting">
+			<label>
+				<# if ( data.model.canEmbed ) { #>
+					<span>嵌入或链接</span>
+				<# } else { #>
+					<span>链接到</span>
+				<# } #>
+
+				<select class="link-to"
+					data-setting="link"
+					<# if ( data.userSettings && ! data.model.canEmbed ) { #>
+						data-user-setting="urlbutton"
+					<# } #>>
+
+				<# if ( data.model.canEmbed ) { #>
+					<option value="embed" selected>
+						内嵌媒体播放器					</option>
+					<option value="file">
+				<# } else { #>
+					<option value="file" selected>
+				<# } #>
+					<# if ( data.model.canEmbed ) { #>
+						链接到媒体文件					<# } else { #>
+						媒体文件					<# } #>
+					</option>
+					<option value="post">
+					<# if ( data.model.canEmbed ) { #>
+						链接到附件页面					<# } else { #>
+						附件页面					<# } #>
+					</option>
+				<# if ( 'image' === data.type ) { #>
+					<option value="custom">
+						自定义URL					</option>
+					<option value="none">
+						无					</option>
+				<# } #>
+				</select>
+			</label>
+			<input type="text" class="link-to-custom" data-setting="linkUrl" />
+		</div>
+
+		<# if ( 'undefined' !== typeof data.sizes ) { #>
+			<label class="setting">
+				<span>尺寸</span>
+				<select class="size" name="size"
+					data-setting="size"
+					<# if ( data.userSettings ) { #>
+						data-user-setting="imgsize"
+					<# } #>>
+											<#
+						var size = data.sizes['thumbnail'];
+						if ( size ) { #>
+							<option value="thumbnail" >
+								缩略图 &ndash; {{ size.width }} &times; {{ size.height }}
+							</option>
+						<# } #>
+											<#
+						var size = data.sizes['medium'];
+						if ( size ) { #>
+							<option value="medium" >
+								中等 &ndash; {{ size.width }} &times; {{ size.height }}
+							</option>
+						<# } #>
+											<#
+						var size = data.sizes['large'];
+						if ( size ) { #>
+							<option value="large" >
+								大 &ndash; {{ size.width }} &times; {{ size.height }}
+							</option>
+						<# } #>
+											<#
+						var size = data.sizes['full'];
+						if ( size ) { #>
+							<option value="full"  selected='selected'>
+								完整尺寸 &ndash; {{ size.width }} &times; {{ size.height }}
+							</option>
+						<# } #>
+									</select>
+			</label>
+		<# } #>
+	</script>
+
+	<script type="text/html" id="tmpl-gallery-settings">
+		<h3>相册设置</h3>
+
+		<label class="setting">
+			<span>链接到</span>
+			<select class="link-to"
+				data-setting="link"
+				<# if ( data.userSettings ) { #>
+					data-user-setting="urlbutton"
+				<# } #>>
+
+				<option value="post" <# if ( ! wp.media.galleryDefaults.link || 'post' == wp.media.galleryDefaults.link ) {
+					#>selected="selected"<# }
+				#>>
+					附件页面				</option>
+				<option value="file" <# if ( 'file' == wp.media.galleryDefaults.link ) { #>selected="selected"<# } #>>
+					媒体文件				</option>
+				<option value="none" <# if ( 'none' == wp.media.galleryDefaults.link ) { #>selected="selected"<# } #>>
+					无				</option>
+			</select>
+		</label>
+
+		<label class="setting">
+			<span>栏目</span>
+			<select class="columns" name="columns"
+				data-setting="columns">
+									<option value="1" <#
+						if ( 1 == wp.media.galleryDefaults.columns ) { #>selected="selected"<# }
+					#>>
+						1					</option>
+									<option value="2" <#
+						if ( 2 == wp.media.galleryDefaults.columns ) { #>selected="selected"<# }
+					#>>
+						2					</option>
+									<option value="3" <#
+						if ( 3 == wp.media.galleryDefaults.columns ) { #>selected="selected"<# }
+					#>>
+						3					</option>
+									<option value="4" <#
+						if ( 4 == wp.media.galleryDefaults.columns ) { #>selected="selected"<# }
+					#>>
+						4					</option>
+									<option value="5" <#
+						if ( 5 == wp.media.galleryDefaults.columns ) { #>selected="selected"<# }
+					#>>
+						5					</option>
+									<option value="6" <#
+						if ( 6 == wp.media.galleryDefaults.columns ) { #>selected="selected"<# }
+					#>>
+						6					</option>
+									<option value="7" <#
+						if ( 7 == wp.media.galleryDefaults.columns ) { #>selected="selected"<# }
+					#>>
+						7					</option>
+									<option value="8" <#
+						if ( 8 == wp.media.galleryDefaults.columns ) { #>selected="selected"<# }
+					#>>
+						8					</option>
+									<option value="9" <#
+						if ( 9 == wp.media.galleryDefaults.columns ) { #>selected="selected"<# }
+					#>>
+						9					</option>
+							</select>
+		</label>
+
+		<label class="setting">
+			<span>随机顺序</span>
+			<input type="checkbox" data-setting="_orderbyRandom" />
+		</label>
+	</script>
+
+	<script type="text/html" id="tmpl-playlist-settings">
+		<h3>播放列表设置</h3>
+
+		<# var emptyModel = _.isEmpty( data.model ),
+			isVideo = 'video' === data.controller.get('library').props.get('type'); #>
+
+		<label class="setting">
+			<input type="checkbox" data-setting="tracklist" <# if ( emptyModel ) { #>
+				checked="checked"
+			<# } #> />
+			<# if ( isVideo ) { #>
+			<span>显示视频列表</span>
+			<# } else { #>
+			<span>显示曲目列表</span>
+			<# } #>
+		</label>
+
+		<# if ( ! isVideo ) { #>
+		<label class="setting">
+			<input type="checkbox" data-setting="artists" <# if ( emptyModel ) { #>
+				checked="checked"
+			<# } #> />
+			<span>在曲目列表中显示艺术家名</span>
+		</label>
+		<# } #>
+
+		<label class="setting">
+			<input type="checkbox" data-setting="images" <# if ( emptyModel ) { #>
+				checked="checked"
+			<# } #> />
+			<span>显示图像</span>
+		</label>
+	</script>
+
+	<script type="text/html" id="tmpl-embed-link-settings">
+		<label class="setting title">
+			<span>标题</span>
+			<input type="text" class="alignment" data-setting="title" />
+		</label>
+		<div class="embed-container" style="display: none;">
+			<div class="embed-preview"></div>
+		</div>
+	</script>
+
+	<script type="text/html" id="tmpl-embed-image-settings">
+		<div class="thumbnail">
+			<img src="{{ data.model.url }}" draggable="false" />
+		</div>
+
+					<label class="setting caption">
+				<span>说明</span>
+				<textarea data-setting="caption" />
+			</label>
+		
+		<label class="setting alt-text">
+			<span>替代文本</span>
+			<input type="text" data-setting="alt" />
+		</label>
+
+		<div class="setting align">
+			<span>对齐</span>
+			<div class="button-group button-large" data-setting="align">
+				<button class="button" value="left">
+					左				</button>
+				<button class="button" value="center">
+					中				</button>
+				<button class="button" value="right">
+					右				</button>
+				<button class="button active" value="none">
+					无				</button>
+			</div>
+		</div>
+
+		<div class="setting link-to">
+			<span>链接到</span>
+			<div class="button-group button-large" data-setting="link">
+				<button class="button" value="file">
+					图像URL				</button>
+				<button class="button" value="custom">
+					自定义URL				</button>
+				<button class="button active" value="none">
+					无				</button>
+			</div>
+			<input type="text" class="link-to-custom" data-setting="linkUrl" />
+		</div>
+	</script>
+
+	<script type="text/html" id="tmpl-image-details">
+		<div class="media-embed">
+			<div class="embed-media-settings">
+				<div class="column-image">
+					<div class="image">
+						<img src="{{ data.model.url }}" draggable="false" />
+
+						<# if ( data.attachment && window.imageEdit ) { #>
+							<div class="actions">
+								<input type="button" class="edit-attachment button" value="编辑原始文件" />
+								<input type="button" class="replace-attachment button" value="替换" />
+							</div>
+						<# } #>
+					</div>
+				</div>
+				<div class="column-settings">
+											<label class="setting caption">
+							<span>说明</span>
+							<textarea data-setting="caption">{{ data.model.caption }}</textarea>
+						</label>
+					
+					<label class="setting alt-text">
+						<span>替代文本</span>
+						<input type="text" data-setting="alt" value="{{ data.model.alt }}" />
+					</label>
+
+					<h3>显示设置</h3>
+					<div class="setting align">
+						<span>对齐</span>
+						<div class="button-group button-large" data-setting="align">
+							<button class="button" value="left">
+								左							</button>
+							<button class="button" value="center">
+								中							</button>
+							<button class="button" value="right">
+								右							</button>
+							<button class="button active" value="none">
+								无							</button>
+						</div>
+					</div>
+
+					<# if ( data.attachment ) { #>
+						<# if ( 'undefined' !== typeof data.attachment.sizes ) { #>
+							<label class="setting size">
+								<span>尺寸</span>
+								<select class="size" name="size"
+									data-setting="size"
+									<# if ( data.userSettings ) { #>
+										data-user-setting="imgsize"
+									<# } #>>
+																			<#
+										var size = data.sizes['thumbnail'];
+										if ( size ) { #>
+											<option value="thumbnail">
+												缩略图 &ndash; {{ size.width }} &times; {{ size.height }}
+											</option>
+										<# } #>
+																			<#
+										var size = data.sizes['medium'];
+										if ( size ) { #>
+											<option value="medium">
+												中等 &ndash; {{ size.width }} &times; {{ size.height }}
+											</option>
+										<# } #>
+																			<#
+										var size = data.sizes['large'];
+										if ( size ) { #>
+											<option value="large">
+												大 &ndash; {{ size.width }} &times; {{ size.height }}
+											</option>
+										<# } #>
+																			<#
+										var size = data.sizes['full'];
+										if ( size ) { #>
+											<option value="full">
+												完整尺寸 &ndash; {{ size.width }} &times; {{ size.height }}
+											</option>
+										<# } #>
+																		<option value="custom">
+										自定义尺寸									</option>
+								</select>
+							</label>
+						<# } #>
+							<div class="custom-size<# if ( data.model.size !== 'custom' ) { #> hidden<# } #>">
+								<label><span>宽度 <small>(px)</small></span> <input data-setting="customWidth" type="number" step="1" value="{{ data.model.customWidth }}" /></label><span class="sep">&times;</span><label><span>高度 <small>(px)</small></span><input data-setting="customHeight" type="number" step="1" value="{{ data.model.customHeight }}" /></label>
+							</div>
+					<# } #>
+
+					<div class="setting link-to">
+						<span>链接到</span>
+						<select data-setting="link">
+						<# if ( data.attachment ) { #>
+							<option value="file">
+								媒体文件							</option>
+							<option value="post">
+								附件页面							</option>
+						<# } else { #>
+							<option value="file">
+								图像URL							</option>
+						<# } #>
+							<option value="custom">
+								自定义URL							</option>
+							<option value="none">
+								无							</option>
+						</select>
+						<input type="text" class="link-to-custom" data-setting="linkUrl" />
+					</div>
+					<div class="advanced-section">
+						<h3><a class="advanced-toggle" href="#">高级选项</a></h3>
+						<div class="advanced-settings hidden">
+							<div class="advanced-image">
+								<label class="setting title-text">
+									<span>图像标题属性</span>
+									<input type="text" data-setting="title" value="{{ data.model.title }}" />
+								</label>
+								<label class="setting extra-classes">
+									<span>图像CSS类</span>
+									<input type="text" data-setting="extraClasses" value="{{ data.model.extraClasses }}" />
+								</label>
+							</div>
+							<div class="advanced-link">
+								<div class="setting link-target">
+									<label><input type="checkbox" data-setting="linkTargetBlank" value="_blank" <# if ( data.model.linkTargetBlank ) { #>checked="checked"<# } #>>在新窗口或标签页打开链接</label>
+								</div>
+								<label class="setting link-rel">
+									<span>链接Rel</span>
+									<input type="text" data-setting="linkRel" value="{{ data.model.linkClassName }}" />
+								</label>
+								<label class="setting link-class-name">
+									<span>链接CSS类</span>
+									<input type="text" data-setting="linkClassName" value="{{ data.model.linkClassName }}" />
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</script>
+
+	<script type="text/html" id="tmpl-image-editor">
+		<div id="media-head-{{ data.id }}"></div>
+		<div id="image-editor-{{ data.id }}"></div>
+	</script>
+
+	<script type="text/html" id="tmpl-audio-details">
+		<# var ext, html5types = {
+			mp3: wp.media.view.settings.embedMimes.mp3,
+			ogg: wp.media.view.settings.embedMimes.ogg
+		}; #>
+
+				<div class="media-embed media-embed-details">
+			<div class="embed-media-settings embed-audio-settings">
+				<audio style="visibility: hidden"
+	controls
+	class="wp-audio-shortcode"
+	width="{{ _.isUndefined( data.model.width ) ? 400 : data.model.width }}"
+	preload="{{ _.isUndefined( data.model.preload ) ? 'none' : data.model.preload }}"
+	<#
+	if ( ! _.isUndefined( data.model.autoplay ) && data.model.autoplay ) {
+		#> autoplay<#
+	}
+	if ( ! _.isUndefined( data.model.loop ) && data.model.loop ) {
+		#> loop<#
+	}
+	#>
+>
+	<# if ( ! _.isEmpty( data.model.src ) ) { #>
+	<source src="{{ data.model.src }}" type="{{ wp.media.view.settings.embedMimes[ data.model.src.split('.').pop() ] }}" />
+	<# } #>
+
+	<# if ( ! _.isEmpty( data.model.mp3 ) ) { #>
+	<source src="{{ data.model.mp3 }}" type="{{ wp.media.view.settings.embedMimes[ 'mp3' ] }}" />
+	<# } #>
+	<# if ( ! _.isEmpty( data.model.ogg ) ) { #>
+	<source src="{{ data.model.ogg }}" type="{{ wp.media.view.settings.embedMimes[ 'ogg' ] }}" />
+	<# } #>
+	<# if ( ! _.isEmpty( data.model.wma ) ) { #>
+	<source src="{{ data.model.wma }}" type="{{ wp.media.view.settings.embedMimes[ 'wma' ] }}" />
+	<# } #>
+	<# if ( ! _.isEmpty( data.model.m4a ) ) { #>
+	<source src="{{ data.model.m4a }}" type="{{ wp.media.view.settings.embedMimes[ 'm4a' ] }}" />
+	<# } #>
+	<# if ( ! _.isEmpty( data.model.wav ) ) { #>
+	<source src="{{ data.model.wav }}" type="{{ wp.media.view.settings.embedMimes[ 'wav' ] }}" />
+	<# } #>
+	</audio>
+
+				<# if ( ! _.isEmpty( data.model.src ) ) {
+					ext = data.model.src.split('.').pop();
+					if ( html5types[ ext ] ) {
+						delete html5types[ ext ];
+					}
+				#>
+				<label class="setting">
+					<span>SRC</span>
+					<input type="text" disabled="disabled" data-setting="src" value="{{ data.model.src }}" />
+					<a class="remove-setting">移除</a>
+				</label>
+				<# } #>
+				<# if ( ! _.isEmpty( data.model.mp3 ) ) {
+					if ( ! _.isUndefined( html5types.mp3 ) ) {
+						delete html5types.mp3;
+					}
+				#>
+				<label class="setting">
+					<span>MP3</span>
+					<input type="text" disabled="disabled" data-setting="mp3" value="{{ data.model.mp3 }}" />
+					<a class="remove-setting">移除</a>
+				</label>
+				<# } #>
+				<# if ( ! _.isEmpty( data.model.ogg ) ) {
+					if ( ! _.isUndefined( html5types.ogg ) ) {
+						delete html5types.ogg;
+					}
+				#>
+				<label class="setting">
+					<span>OGG</span>
+					<input type="text" disabled="disabled" data-setting="ogg" value="{{ data.model.ogg }}" />
+					<a class="remove-setting">移除</a>
+				</label>
+				<# } #>
+				<# if ( ! _.isEmpty( data.model.wma ) ) {
+					if ( ! _.isUndefined( html5types.wma ) ) {
+						delete html5types.wma;
+					}
+				#>
+				<label class="setting">
+					<span>WMA</span>
+					<input type="text" disabled="disabled" data-setting="wma" value="{{ data.model.wma }}" />
+					<a class="remove-setting">移除</a>
+				</label>
+				<# } #>
+				<# if ( ! _.isEmpty( data.model.m4a ) ) {
+					if ( ! _.isUndefined( html5types.m4a ) ) {
+						delete html5types.m4a;
+					}
+				#>
+				<label class="setting">
+					<span>M4A</span>
+					<input type="text" disabled="disabled" data-setting="m4a" value="{{ data.model.m4a }}" />
+					<a class="remove-setting">移除</a>
+				</label>
+				<# } #>
+				<# if ( ! _.isEmpty( data.model.wav ) ) {
+					if ( ! _.isUndefined( html5types.wav ) ) {
+						delete html5types.wav;
+					}
+				#>
+				<label class="setting">
+					<span>WAV</span>
+					<input type="text" disabled="disabled" data-setting="wav" value="{{ data.model.wav }}" />
+					<a class="remove-setting">移除</a>
+				</label>
+				<# } #>
+				
+				<# if ( ! _.isEmpty( html5types ) ) { #>
+				<div class="setting">
+					<span>为了增强HTML5播放体验，请添加备用源：</span>
+					<div class="button-large">
+					<# _.each( html5types, function (mime, type) { #>
+					<button class="button add-media-source" data-mime="{{ mime }}">{{ type }}</button>
+					<# } ) #>
+					</div>
+				</div>
+				<# } #>
+
+				<div class="setting preload">
+					<span>预加载</span>
+					<div class="button-group button-large" data-setting="preload">
+						<button class="button" value="auto">自动</button>
+						<button class="button" value="metadata">元数据</button>
+						<button class="button active" value="none">无</button>
+					</div>
+				</div>
+
+				<label class="setting checkbox-setting">
+					<input type="checkbox" data-setting="autoplay" />
+					<span>自动播放</span>
+				</label>
+
+				<label class="setting checkbox-setting">
+					<input type="checkbox" data-setting="loop" />
+					<span>循环</span>
+				</label>
+			</div>
+		</div>
+	</script>
+
+	<script type="text/html" id="tmpl-video-details">
+		<# var ext, html5types = {
+			mp4: wp.media.view.settings.embedMimes.mp4,
+			ogv: wp.media.view.settings.embedMimes.ogv,
+			webm: wp.media.view.settings.embedMimes.webm
+		}; #>
+
+				<div class="media-embed media-embed-details">
+			<div class="embed-media-settings embed-video-settings">
+				<div class="wp-video-holder">
+				<#
+				var isYouTube = ! _.isEmpty( data.model.src ) && data.model.src.match(/youtube|youtu\.be/);
+					w = ! data.model.width || data.model.width > 640 ? 640 : data.model.width,
+					h = ! data.model.height ? 360 : data.model.height;
+
+				if ( data.model.width && w !== data.model.width ) {
+					h = Math.ceil( ( h * w ) / data.model.width );
+				}
+				#>
+
+				<#  var w_rule = h_rule = '',
+		w, h, settings = wp.media.view.settings,
+		isYouTube = ! _.isEmpty( data.model.src ) && data.model.src.match(/youtube|youtu\.be/);
+
+	if ( settings.contentWidth && data.model.width >= settings.contentWidth ) {
+		w = settings.contentWidth;
+	} else {
+		w = data.model.width;
+	}
+
+	if ( w !== data.model.width ) {
+		h = Math.ceil( ( data.model.height * w ) / data.model.width );
+	} else {
+		h = data.model.height;
+	}
+
+	if ( w ) {
+		w_rule = 'width: ' + w + 'px; ';
+	}
+	if ( h ) {
+		h_rule = 'height: ' + h + 'px;';
+	}
+#>
+<div style="{{ w_rule }}{{ h_rule }}" class="wp-video">
+<video controls
+	class="wp-video-shortcode{{ isYouTube ? ' youtube-video' : '' }}"
+	<# if ( w ) { #>width="{{ w }}"<# } #>
+	<# if ( h ) { #>height="{{ h }}"<# } #>
+	<#
+		if ( ! _.isUndefined( data.model.poster ) && data.model.poster ) {
+			#> poster="{{ data.model.poster }}"<#
+		} #>
+		preload="{{ _.isUndefined( data.model.preload ) ? 'metadata' : data.model.preload }}"<#
+	 if ( ! _.isUndefined( data.model.autoplay ) && data.model.autoplay ) {
+		#> autoplay<#
+	}
+	 if ( ! _.isUndefined( data.model.loop ) && data.model.loop ) {
+		#> loop<#
+	}
+	#>
+>
+	<# if ( ! _.isEmpty( data.model.src ) ) {
+		if ( isYouTube ) { #>
+		<source src="{{ data.model.src }}" type="video/youtube" />
+		<# } else { #>
+		<source src="{{ data.model.src }}" type="{{ settings.embedMimes[ data.model.src.split('.').pop() ] }}" />
+		<# }
+	} #>
+
+	<# if ( data.model.mp4 ) { #>
+	<source src="{{ data.model.mp4 }}" type="{{ settings.embedMimes[ 'mp4' ] }}" />
+	<# } #>
+	<# if ( data.model.m4v ) { #>
+	<source src="{{ data.model.m4v }}" type="{{ settings.embedMimes[ 'm4v' ] }}" />
+	<# } #>
+	<# if ( data.model.webm ) { #>
+	<source src="{{ data.model.webm }}" type="{{ settings.embedMimes[ 'webm' ] }}" />
+	<# } #>
+	<# if ( data.model.ogv ) { #>
+	<source src="{{ data.model.ogv }}" type="{{ settings.embedMimes[ 'ogv' ] }}" />
+	<# } #>
+	<# if ( data.model.wmv ) { #>
+	<source src="{{ data.model.wmv }}" type="{{ settings.embedMimes[ 'wmv' ] }}" />
+	<# } #>
+	<# if ( data.model.flv ) { #>
+	<source src="{{ data.model.flv }}" type="{{ settings.embedMimes[ 'flv' ] }}" />
+	<# } #>
+		{{{ data.model.content }}}
+</video>
+</div>
+
+				<# if ( ! _.isEmpty( data.model.src ) ) {
+					ext = data.model.src.split('.').pop();
+					if ( html5types[ ext ] ) {
+						delete html5types[ ext ];
+					}
+				#>
+				<label class="setting">
+					<span>SRC</span>
+					<input type="text" disabled="disabled" data-setting="src" value="{{ data.model.src }}" />
+					<a class="remove-setting">移除</a>
+				</label>
+				<# } #>
+				<# if ( ! _.isEmpty( data.model.mp4 ) ) {
+					if ( ! _.isUndefined( html5types.mp4 ) ) {
+						delete html5types.mp4;
+					}
+				#>
+				<label class="setting">
+					<span>MP4</span>
+					<input type="text" disabled="disabled" data-setting="mp4" value="{{ data.model.mp4 }}" />
+					<a class="remove-setting">移除</a>
+				</label>
+				<# } #>
+				<# if ( ! _.isEmpty( data.model.m4v ) ) {
+					if ( ! _.isUndefined( html5types.m4v ) ) {
+						delete html5types.m4v;
+					}
+				#>
+				<label class="setting">
+					<span>M4V</span>
+					<input type="text" disabled="disabled" data-setting="m4v" value="{{ data.model.m4v }}" />
+					<a class="remove-setting">移除</a>
+				</label>
+				<# } #>
+				<# if ( ! _.isEmpty( data.model.webm ) ) {
+					if ( ! _.isUndefined( html5types.webm ) ) {
+						delete html5types.webm;
+					}
+				#>
+				<label class="setting">
+					<span>WEBM</span>
+					<input type="text" disabled="disabled" data-setting="webm" value="{{ data.model.webm }}" />
+					<a class="remove-setting">移除</a>
+				</label>
+				<# } #>
+				<# if ( ! _.isEmpty( data.model.ogv ) ) {
+					if ( ! _.isUndefined( html5types.ogv ) ) {
+						delete html5types.ogv;
+					}
+				#>
+				<label class="setting">
+					<span>OGV</span>
+					<input type="text" disabled="disabled" data-setting="ogv" value="{{ data.model.ogv }}" />
+					<a class="remove-setting">移除</a>
+				</label>
+				<# } #>
+				<# if ( ! _.isEmpty( data.model.wmv ) ) {
+					if ( ! _.isUndefined( html5types.wmv ) ) {
+						delete html5types.wmv;
+					}
+				#>
+				<label class="setting">
+					<span>WMV</span>
+					<input type="text" disabled="disabled" data-setting="wmv" value="{{ data.model.wmv }}" />
+					<a class="remove-setting">移除</a>
+				</label>
+				<# } #>
+				<# if ( ! _.isEmpty( data.model.flv ) ) {
+					if ( ! _.isUndefined( html5types.flv ) ) {
+						delete html5types.flv;
+					}
+				#>
+				<label class="setting">
+					<span>FLV</span>
+					<input type="text" disabled="disabled" data-setting="flv" value="{{ data.model.flv }}" />
+					<a class="remove-setting">移除</a>
+				</label>
+				<# } #>
+								</div>
+
+				<# if ( ! _.isEmpty( html5types ) ) { #>
+				<div class="setting">
+					<span>为了增强HTML5播放体验，请添加备用源：</span>
+					<div class="button-large">
+					<# _.each( html5types, function (mime, type) { #>
+					<button class="button add-media-source" data-mime="{{ mime }}">{{ type }}</button>
+					<# } ) #>
+					</div>
+				</div>
+				<# } #>
+
+				<# if ( ! _.isEmpty( data.model.poster ) ) { #>
+				<label class="setting">
+					<span>海报图像</span>
+					<input type="text" disabled="disabled" data-setting="poster" value="{{ data.model.poster }}" />
+					<a class="remove-setting">移除</a>
+				</label>
+				<# } #>
+				<div class="setting preload">
+					<span>预加载</span>
+					<div class="button-group button-large" data-setting="preload">
+						<button class="button" value="auto">自动</button>
+						<button class="button" value="metadata">元数据</button>
+						<button class="button active" value="none">无</button>
+					</div>
+				</div>
+
+				<label class="setting checkbox-setting">
+					<input type="checkbox" data-setting="autoplay" />
+					<span>自动播放</span>
+				</label>
+
+				<label class="setting checkbox-setting">
+					<input type="checkbox" data-setting="loop" />
+					<span>循环</span>
+				</label>
+
+				<label class="setting" data-setting="content">
+					<span>曲目（字幕、说明、描述、章节或元数据）</span>
+					<#
+					var content = '';
+					if ( ! _.isEmpty( data.model.content ) ) {
+						var tracks = jQuery( data.model.content ).filter( 'track' );
+						_.each( tracks.toArray(), function (track) {
+							content += track.outerHTML; #>
+						<p>
+							<input class="content-track" type="text" value="{{ track.outerHTML }}" />
+							<a class="remove-setting remove-track">移除</a>
+						</p>
+						<# } ); #>
+					<# } else { #>
+					<em>没有关联的字幕。</em>
+					<# } #>
+					<textarea class="hidden content-setting">{{ content }}</textarea>
+				</label>
+			</div>
+		</div>
+	</script>
+
+	<script type="text/html" id="tmpl-editor-gallery">
+		<# if ( data.attachments ) { #>
+			<div class="gallery gallery-columns-{{ data.columns }}">
+				<# _.each( data.attachments, function( attachment, index ) { #>
+					<dl class="gallery-item">
+						<dt class="gallery-icon">
+							<# if ( attachment.thumbnail ) { #>
+								<img src="{{ attachment.thumbnail.url }}" width="{{ attachment.thumbnail.width }}" height="{{ attachment.thumbnail.height }}" />
+							<# } else { #>
+								<img src="{{ attachment.url }}" />
+							<# } #>
+						</dt>
+						<# if ( attachment.caption ) { #>
+							<dd class="wp-caption-text gallery-caption">
+								{{ attachment.caption }}
+							</dd>
+						<# } #>
+					</dl>
+					<# if ( index % data.columns === data.columns - 1 ) { #>
+						<br style="clear: both;">
+					<# } #>
+				<# } ); #>
+			</div>
+		<# } else { #>
+			<div class="wpview-error">
+				<div class="dashicons dashicons-format-gallery"></div><p>找不到条目。</p>
+			</div>
+		<# } #>
+	</script>
+
+	<script type="text/html" id="tmpl-crop-content">
+		<img class="crop-image" src="{{ data.url }}">
+		<div class="upload-errors"></div>
+	</script>
+
+		<div id="local-storage-notice" class="hidden">
+	<p class="local-restore">
+		您浏览器中此文章的备份与以下版本不同。		<a class="restore-backup" href="#">恢复备份。</a>
+	</p>
+	<p class="undo-restore hidden">
+		文章还原成功。		<a class="undo-restore-backup" href="#">撤销。</a>
+	</p>
+	</div>
+	<script type='text/javascript'>list_args = {"class":"WP_Post_Comments_List_Table","screen":{"id":"post","base":"post"}};</script>
+	<div id="wp-auth-check-wrap" class="hidden">
+	<div id="wp-auth-check-bg"></div>
+	<div id="wp-auth-check">
+	<div class="wp-auth-check-close" tabindex="0" title="关闭"></div>
+			<div id="wp-auth-check-form" data-src="http://localhost/wordpress/wp-login.php?interim-login=1"></div>
+			<div class="wp-auth-fallback">
+		<p><b class="wp-auth-fallback-expired" tabindex="0">会话已过期</b></p>
+		<p><a href="http://localhost/wordpress/wp-login.php" target="_blank">请重新登录。</a>
+		登录页会在新窗口中打开，在登录后您可关闭该窗口并返回本页。</p>
+	</div>
+	</div>
+	</div>
+	
+            <div id="wp-link-backdrop" style="display: none"></div>
+		<div id="wp-link-wrap" class="wp-core-ui" style="display: none">
+		<form id="wp-link" tabindex="-1">
+		<input type="hidden" id="_ajax_linking_nonce" name="_ajax_linking_nonce" value="e831f8160d" />		<div id="link-modal-title">
+			插入或编辑链接			<button type="button" id="wp-link-close"><span class="screen-reader-text">关闭</span></button>
+	 	</div>
+		<div id="link-selector">
+			<div id="link-options">
+				<p class="howto">输入目标URL</p>
+				<div>
+					<label><span>URL</span><input id="url-field" type="text" name="href" /></label>
+				</div>
+				<div>
+					<label><span>标题</span><input id="link-title-field" type="text" name="linktitle" /></label>
+				</div>
+				<div class="link-target">
+					<label><span>&nbsp;</span><input type="checkbox" id="link-target-checkbox" /> 在新窗口或标签页打开链接</label>
+				</div>
+			</div>
+			<p class="howto"><a href="#" id="wp-link-search-toggle">或链接到站点中的内容</a></p>
+			<div id="search-panel">
+				<div class="link-search-wrapper">
+					<label>
+						<span class="search-label">搜索</span>
+						<input type="search" id="search-field" class="link-search-field" autocomplete="off" />
+						<span class="spinner"></span>
+					</label>
+				</div>
+				<div id="search-results" class="query-results" tabindex="0">
+					<ul></ul>
+					<div class="river-waiting">
+						<span class="spinner"></span>
+					</div>
+				</div>
+				<div id="most-recent-results" class="query-results" tabindex="0">
+					<div class="query-notice" id="query-notice-message">
+						<em class="query-notice-default">未指定搜索条件。自动显示近期条目。</em>
+						<em class="query-notice-hint screen-reader-text">搜索或使用上下方向键来选择一项。</em>
+					</div>
+					<ul></ul>
+					<div class="river-waiting">
+						<span class="spinner"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="submitbox">
+			<div id="wp-link-cancel">
+				<a class="submitdelete deletion" href="#">取消</a>
+			</div>
+			<div id="wp-link-update">
+				<input type="submit" value="添加链接" class="button button-primary" id="wp-link-submit" name="wp-link-submit">
+			</div>
+		</div>
+		</form>
+		</div>
+				
+
+	<div class="fullscreen-overlay" id="fullscreen-overlay"></div>
+	<div class="fullscreen-overlay fullscreen-fader fade-300" id="fullscreen-fader"></div>
+	
+<div class="clear"></div></div><!-- wpwrap -->
+<script type="text/javascript">if(typeof wpOnload=='function')wpOnload();</script>
+</body>
+</html>

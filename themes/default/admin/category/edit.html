@@ -1,0 +1,56 @@
+<div id="wpbody">
+  <div id="wpbody-content" aria-label="主内容" tabindex="0">	
+    <div class="wrap">
+    <h2>编辑分类目录</h2>
+    <div id="ajax-response"></div>
+    <form name="edittag" id="edittag" method="post" action="<{root:admin/category/edit/}><{echo:$category['term_id']}>" class="validate">
+        <input type="hidden" name="_wp_original_http_referer" value="" />
+        <input type="hidden" id="_wpnonce" name="_wpnonce" value="1fa7426ccb" />
+        <table class="form-table">
+            <tr class="form-field form-required">
+                <th scope="row"><label for="name">名称</label></th>
+                <td>
+                    <input name="name" id="name" type="text" value="<{echo:$category['name']}>" size="40" aria-required="true" />
+                    <p class="description">这将是它在站点上显示的名字。</p>
+                </td>
+            </tr>
+            <tr class="form-field">
+                <th scope="row"><label for="slug">别名</label></th>
+                <td>
+                    <input name="slug" id="slug" type="text" value="<{echo:$category['slug']}>" size="40" />
+                    <p class="description">“别名”是在URL中使用的别称，它可以令URL更美观。通常使用小写，只能包含字母，数字和连字符（-）。</p>
+                </td>
+            </tr>
+            <tr class="form-field">
+                 <th scope="row"><label for="parent">父级</label></th>
+                 <td>
+                      <select name='parent' id='parent' class='postform' >
+                         <option value='-1'>无</option>
+                         <{foreach:items=$tree item=$one}>
+                                <option class='level-<{echo:$one["level"]}>' 
+                                  <{if:$category['parent']==$one['term_id']}> selected <{/if}>value='<{echo:$one["term_id"]}>'>
+                                  <{echo:$one['name']}>
+                                </option>
+                         <{/foreach}>
+                      </select>
+                      <p class="description">分类目录和标签不同，它可以有层级关系。您可以有一个“音乐”分类目录，在这个目录下可以有叫做“流行”和“古典”的子目录。</p>
+                </td>
+             </tr>
+             <tr class="form-field">
+                <th scope="row"><label for="description">描述</label></th>
+                <td>
+                    <textarea name="description" id="description" rows="5" cols="50" class="large-text"><{echo:$category['description']}></textarea><br />
+                    <span class="description">描述只会在一部分主题中显示。</span>
+                </td>
+             </tr>
+        </table>
+        <p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="更新"  /></p>
+        </form>
+    </div>
+    <script type="text/javascript">
+    try{document.forms.edittag.name.focus();}catch(e){}
+    </script>
+    <div class="clear"></div>
+  </div><!-- wpbody-content -->
+  <div class="clear"></div>
+</div>

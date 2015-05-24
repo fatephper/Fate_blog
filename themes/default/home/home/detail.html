@@ -1,0 +1,34 @@
+<main  class="content" id="content" role="main" itemprop="mainContentOfPage" itemscope="itemscope" itemtype="http://schema.org/Blog">   
+<article id="post-1178" class="entry post publish author-hwijaya post-1178 format-standard has-post-thumbnail category-markup post_tag-content-2 post_tag-css post_tag-formatting-2 post_tag-html post_tag-markup-2" itemscope="itemscope" itemtype="http://schema.org/BlogPosting" itemprop="blogPost">	
+     <div class="entry-wrap">
+        <header class="entry-header">	
+            <h2 class="entry-title" itemprop="headline">
+               <a href="<{root:}><{echo:$article['year'].'/'.$article['month'].'/'.$article['day'].'/'.$article['ID']}>.html">
+                    <{echo:$article['post_title']}>
+               </a>
+            </h2>
+            <div class="entry-meta">
+                 <span class="entry-terms post_tag" itemprop="keywords">标签: 
+                     <a href="" rel="tag">content</a>
+                 </span>	
+            </div>
+        </header>
+        <div class="entry-content">		
+		<{echo:$article['post_content']}>
+        </div>
+        <!-- 文章标签相关信息 start-->
+	<footer class="entry-footer">
+            <div class="entry-meta">
+                Posted by 
+                <span class="entry-author" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person">
+                    <a href="" class="entry-author-link">
+                        <span class="entry-author-name">Fate</span>
+                    </a>
+                </span> on 
+                <time class="entry-time"  itemprop="datePublished" ><{echo:$article['post_date']}></time>  		
+            </div>
+        </footer>
+        <!-- 文章标签相关信息 end -->
+     </div>
+   </article>
+</main>

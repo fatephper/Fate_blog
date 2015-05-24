@@ -1,0 +1,110 @@
+<div id="wpbody">
+<div id="wpbody-content" aria-label="主内容" tabindex="0">
+		<div id="screen-meta" class="metabox-prefs">
+
+			<div id="contextual-help-wrap" class="hidden" tabindex="-1" aria-label="“上下文帮助”选项卡">
+				<div id="contextual-help-back"></div>
+				<div id="contextual-help-columns">
+					<div class="contextual-help-tabs">
+						<ul>
+						
+							<li id="tab-link-overview" class="active">
+								<a href="#tab-panel-overview" aria-controls="tab-panel-overview">
+									概述								</a>
+							</li>
+												</ul>
+					</div>
+
+										<div class="contextual-help-sidebar">
+						<p><strong>更多信息：</strong></p><p><a href="http://codex.wordpress.org/zh-cn:%E8%AE%BE%E7%BD%AE_%E5%AA%92%E4%BD%93%E9%A1%B5%E9%9D%A2" target="_blank">关于媒体设置的中文文档</a></p><p><a href="http://cn.forums.wordpress.org" target="_blank">中文支持论坛</a></p>					</div>
+					
+					<div class="contextual-help-tabs-wrap">
+						
+							<div id="tab-panel-overview" class="help-tab-content active">
+								<p>您可以为插入文中的图片设置最大尺寸。亦可以“全尺寸”插入图片。</p><p>调整完成后，记得点击页面下方“保存更改”按钮使设置生效。</p>							</div>
+											</div>
+				</div>
+			</div>
+				</div>
+				<div id="screen-meta-links">
+					<div id="contextual-help-link-wrap" class="hide-if-no-js screen-meta-toggle">
+			<a href="#contextual-help-wrap" id="contextual-help-link" class="show-settings" aria-controls="contextual-help-wrap" aria-expanded="false">帮助</a>
+			</div>
+				</div>
+		
+<div class="wrap">
+<h2>媒体选项</h2>
+
+<form action="options.php" method="post">
+<input type='hidden' name='option_page' value='media' /><input type="hidden" name="action" value="update" /><input type="hidden" id="_wpnonce" name="_wpnonce" value="82010d8704" /><input type="hidden" name="_wp_http_referer" value="/wordpress/wp-admin/options-media.php" />
+<h3 class="title">图像大小</h3>
+<p>下面列出来的尺寸决定插入媒体库内的图像之最大尺寸。以像素为单位。</p>
+
+<table class="form-table">
+<tr>
+<th scope="row">缩略图大小</th>
+<td>
+<label for="thumbnail_size_w">宽度</label>
+<input name="thumbnail_size_w" type="number" step="1" min="0" id="thumbnail_size_w" value="150" class="small-text" />
+<label for="thumbnail_size_h">高度</label>
+<input name="thumbnail_size_h" type="number" step="1" min="0" id="thumbnail_size_h" value="150" class="small-text" /><br />
+<input name="thumbnail_crop" type="checkbox" id="thumbnail_crop" value="1"  checked='checked'/>
+<label for="thumbnail_crop">总是裁剪缩略图到这个尺寸（一般情况下，缩略图应保持原始比例）</label>
+</td>
+</tr>
+
+<tr>
+<th scope="row">中等大小</th>
+<td><fieldset><legend class="screen-reader-text"><span>中等大小</span></legend>
+<label for="medium_size_w">最大宽度</label>
+<input name="medium_size_w" type="number" step="1" min="0" id="medium_size_w" value="300" class="small-text" />
+<label for="medium_size_h">最大高度</label>
+<input name="medium_size_h" type="number" step="1" min="0" id="medium_size_h" value="300" class="small-text" />
+</fieldset></td>
+</tr>
+
+<tr>
+<th scope="row">大尺寸</th>
+<td><fieldset><legend class="screen-reader-text"><span>大尺寸</span></legend>
+<label for="large_size_w">最大宽度</label>
+<input name="large_size_w" type="number" step="1" min="0" id="large_size_w" value="1024" class="small-text" />
+<label for="large_size_h">最大高度</label>
+<input name="large_size_h" type="number" step="1" min="0" id="large_size_h" value="1024" class="small-text" />
+</fieldset></td>
+</tr>
+
+</table>
+
+
+<h3 class="title">文件上传</h3>
+<table class="form-table">
+<tr>
+<th scope="row" colspan="2" class="th-full">
+<label for="uploads_use_yearmonth_folders">
+<input name="uploads_use_yearmonth_folders" type="checkbox" id="uploads_use_yearmonth_folders" value="1" checked='checked' />
+以年—月目录形式组织上传内容</label>
+</th>
+</tr>
+
+</table>
+
+
+<p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="保存更改"  /></p>
+</form>
+
+</div>
+
+
+<div class="clear"></div></div><!-- wpbody-content -->
+<div class="clear"></div>
+	
+<script type='text/javascript'>
+/* <![CDATA[ */
+var commonL10n = {"warnDelete":"\u60a8\u5c06\u6c38\u4e45\u5220\u9664\u6240\u9009\u9879\u76ee\u3002\n\u70b9\u51fb\u201c\u53d6\u6d88\u201d\u505c\u6b62\uff0c\u70b9\u51fb\u201c\u786e\u5b9a\u201d\u5220\u9664\u3002"};var heartbeatSettings = {"nonce":"c63b35be06"};var authcheckL10n = {"beforeunload":"\u60a8\u7684\u767b\u5f55\u4f1a\u8bdd\u5df2\u8fc7\u671f\uff0c\u8bf7\u91cd\u65b0\u767b\u5f55\u3002","interval":"180"};/* ]]> */
+</script>
+<script type='text/javascript' src='http://localhost/wordpress/wp-admin/load-scripts.php?c=1&amp;load%5B%5D=hoverIntent,common,admin-bar,svg-painter,heartbeat,wp-auth-check&amp;ver=4.0'></script>
+
+<div class="clear"></div></div><!-- wpwrap -->
+<script type="text/javascript">if(typeof wpOnload=='function')wpOnload();</script>
+</body>
+</html>

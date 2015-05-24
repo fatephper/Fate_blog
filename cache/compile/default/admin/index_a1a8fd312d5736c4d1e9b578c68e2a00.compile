@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html xmlns="http://www.w3.org/1999/xhtml" class="ie8 wp-toolbar"  lang="zh-CN">
+<![endif]-->
+<!--[if !(IE 8) ]><!-->
+<html xmlns="http://www.w3.org/1999/xhtml" class="wp-toolbar"  lang="zh-CN">
+<!--<![endif]-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>博客管理后台</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<link type="/image/x-icon" href="<?php echo Fate::app()->url->getWebDir()."themes/default/skin/image/favicon.ico";?>" rel="icon">
+<?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/admin/dashicons.css\">";?>
+<?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/admin/admin-bar.css\">";?>
+<?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/admin/common.css\">";?>
+<?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/admin/dashboard.css\">";?>
+<?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/admin/edit.css\">";?>
+<?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/admin/screens.css\">";?>
+<?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/admin/press-this.css\">";?>
+<?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/admin/wp-admin.css\">";?>
+<?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/admin/buttons.css\">";?>
+<?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/admin/list-tables.css\">";?>
+<?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/admin/nav-menus.css\">";?>
+<?php echo "<script src=\"/themes/default/skin/js/common/jquery-1.8.3.js\"></script>";?>
+<!--[if lte IE 7]>
+<link rel='stylesheet' id='ie-css'  href='http://localhost/wordpress/wp-admin/css/ie.min.css?ver=4.0' type='text/css' media='all' />
+<![endif]-->
+<style type="text/css" media="print">#wpadminbar { display:none; }</style>
+</head>
+<body class="wp-admin wp-core-ui no-js  index-php auto-fold admin-bar branch-4 version-4-0 admin-color-fresh locale-zh-cn no-customize-support no-svg">
+<div id="wpwrap">
+<!-- header start -->
+<div id="wpadminbar" class="nojq nojs" role="navigation">
+   <a class="screen-reader-shortcut" href="#wp-toolbar" tabindex="1">跳至工具栏</a>
+    <div class="quicklinks" id="wp-toolbar" role="navigation" aria-label="顶部导航工具栏。" tabindex="0">
+      <ul id="wp-admin-bar-root-default" class="ab-top-menu">
+        <li id="wp-admin-bar-menu-toggle">
+            <a class="ab-item"  href="#"><span class="ab-icon"></span><span class="screen-reader-text">菜单</span></a>
+        </li>
+        <li id="wp-admin-bar-site-name" class="menupop">
+            <a class="ab-item"  aria-haspopup="true" href="<?php echo Fate::app()->url->getWebDir()."";?>">站点</a>	
+        </li>
+        <li id="wp-admin-bar-comments">
+            <a class="ab-item"  href="<?php echo Fate::app()->url->getWebDir()."admin/comment";?>" title="0条评论待审">
+                <span class="ab-icon"></span><span id="ab-awaiting-mod" class="ab-label awaiting-mod pending-count count-0">0</span>
+            </a>		
+        </li>
+        <li id="wp-admin-bar-new-content" class="menupop">
+            <a class="ab-item"  aria-haspopup="true" href="http://localhost/wordpress/wp-admin/post-new.php" title="添加">
+                <span class="ab-icon"></span><span class="ab-label">新建</span>
+            </a>
+            <div class="ab-sub-wrapper">
+                <ul id="wp-admin-bar-new-content-default" class="ab-submenu">
+                    <li id="wp-admin-bar-new-post"><a class="ab-item"  href="<?php echo Fate::app()->url->getWebDir()."admin/article/create";?>">文章</a></li>
+                    <li id="wp-admin-bar-new-media"><a class="ab-item"  href="<?php echo Fate::app()->url->getWebDir()."admin/media/create";?>">媒体</a></li>
+                    <li id="wp-admin-bar-new-page"><a class="ab-item"  href="<?php echo Fate::app()->url->getWebDir()."admin/page/create";?>">页面</a></li>
+                    <!--<li id="wp-admin-bar-new-user"><a class="ab-item"  href="http://localhost/wordpress/wp-admin/user-new.php">用户</a></li>-->
+                </ul>
+            </div>		
+         </li>
+      </ul>
+      <ul id="wp-admin-bar-top-secondary" class="ab-top-secondary ab-top-menu">
+         <li id="wp-admin-bar-my-account" class="menupop with-avatar">
+             <a class="ab-item"  aria-haspopup="true" href="<?php echo Fate::app()->url->getWebDir()."admin/user/center";?>" title="我的帐户">您好，admin<img alt='' src='http://0.gravatar.com/avatar/487f87505f619bf9ea08f26bb34f8118?s=26&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D26&amp;r=G' class='avatar avatar-26 photo' height='26' width='26' />
+             </a>
+             <div class="ab-sub-wrapper">
+                <ul id="wp-admin-bar-user-actions" class="ab-submenu">
+                       <li id="wp-admin-bar-user-info">
+                           <a class="ab-item" tabindex="-1" href="<?php echo Fate::app()->url->getWebDir()."admin/user/center";?>">
+                               <img alt='' src='http://0.gravatar.com/avatar/487f87505f619bf9ea08f26bb34f8118?s=64&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D64&amp;r=G' class='avatar avatar-64 photo' height='64' width='64' />
+                               <span class='display-name'>admin</span>
+                           </a>
+                       </li>
+                    <li id="wp-admin-bar-edit-profile"><a class="ab-item"  href="<?php echo Fate::app()->url->getWebDir()."admin/user/center";?>">编辑我的个人资料</a></li>
+                       <li id="wp-admin-bar-logout">
+                           <a class="ab-item"  href="<?php echo Fate::app()->url->getWebDir()."admin/user/logout";?>">登出</a>
+                       </li>
+                 </ul>
+              </div>		
+           </li>
+       </ul>			
+    </div>
+   <a class="screen-reader-shortcut" href="<?php echo Fate::app()->url->getWebDir()."admin/user/logout";?>">登出</a>
+</div>
+<!-- header stop --->
+
+<!-- menu start -->
+<div id="adminmenuwrap">
+    <ul id="adminmenu" role="navigation">
+        
+	<li id="menu-admin" class="wp-first-item wp-has-submenu wp-not-current-submenu wp-menu-open menu-top menu-top-first menu-icon-dashboard menu-top-last" >
+            <a href='<?php echo Fate::app()->url->getWebDir()."admin/admin";?>' class="wp-first-item wp-has-submenu wp-not-current-submenu wp-menu-open menu-top menu-top-first menu-icon-dashboard menu-top-last" >
+                <div class="wp-menu-arrow"><div></div></div>
+                <div class='wp-menu-image dashicons-before dashicons-dashboard'><br /></div>
+                <div class='wp-menu-name'>概况</div>
+            </a>
+        </li>
+        
+	<li id="menu-article" class="wp-has-submenu wp-not-current-submenu open-if-no-js menu-top menu-icon-post menu-top-first" >
+            <a href='<?php echo Fate::app()->url->getWebDir()."admin/article";?>' class="wp-has-submenu wp-not-current-submenu open-if-no-js menu-top menu-icon-post menu-top-first" aria-haspopup="true">
+                <div class="wp-menu-arrow"><div></div></div>
+                <div class='wp-menu-image dashicons-before dashicons-admin-post'><br /></div>
+                <div class='wp-menu-name'>文章</div>
+            </a>
+            <ul class='wp-submenu wp-submenu-wrap'>
+                <li class='wp-submenu-head'>文章</li>
+                <li class="wp-first-item"><a href='<?php echo Fate::app()->url->getWebDir()."admin/article";?>' class="wp-first-item">所有文章</a></li>
+                <li><a href='<?php echo Fate::app()->url->getWebDir()."admin/article/add";?>'>写文章</a></li>
+                <li><a href='<?php echo Fate::app()->url->getWebDir()."admin/category";?>'>分类目录</a></li>
+                <li><a href='<?php echo Fate::app()->url->getWebDir()."admin/tag";?>'>标签</a></li>
+            </ul>
+        </li>
+        
+	<li id="menu-media" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-media" >
+            <a href='<?php echo Fate::app()->url->getWebDir()."admin/media";?>' class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-media" aria-haspopup="true">
+                <div class="wp-menu-arrow"><div></div></div>
+                <div class='wp-menu-image dashicons-before dashicons-admin-media'><br /></div>
+                <div class='wp-menu-name'>多媒体</div>
+            </a>
+            <ul class='wp-submenu wp-submenu-wrap'>
+                <li class='wp-submenu-head'>多媒体</li>
+                <li class="wp-first-item"><a href='<?php echo Fate::app()->url->getWebDir()."admin/media";?>' class="wp-first-item">媒体库</a></li>
+                <li><a href='<?php echo Fate::app()->url->getWebDir()."admin/media/add";?>'>添加</a></li>
+            </ul>
+        </li>
+        
+	<li id="menu-page" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-page" >
+            <a href='<?php echo Fate::app()->url->getWebDir()."admin/page";?>' class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-page" aria-haspopup="true">
+                <div class="wp-menu-arrow"><div></div></div>
+                <div class='wp-menu-image dashicons-before dashicons-admin-page'><br /></div>
+                <div class='wp-menu-name'>页面</div>
+            </a>
+            <ul class='wp-submenu wp-submenu-wrap'>
+                <li class='wp-submenu-head'>页面</li>
+                <li class="wp-first-item"><a href='<?php echo Fate::app()->url->getWebDir()."admin/page";?>' class="wp-first-item">所有页面</a></li>
+                <li><a href='<?php echo Fate::app()->url->getWebDir()."admin/page/create";?>'>新建页面</a></li>
+            </ul>
+        </li>
+        
+	<li id="menu-comment" class="wp-not-current-submenu menu-top menu-icon-comments menu-top-last" >
+            <a href='<?php echo Fate::app()->url->getWebDir()."admin/comment";?>' class="wp-not-current-submenu menu-top menu-icon-comments menu-top-last" >
+                <div class="wp-menu-arrow"><div></div></div>
+                <div class='wp-menu-image dashicons-before dashicons-admin-comments'><br /></div>
+                <div class='wp-menu-name'>评论<span class='awaiting-mod count-0'><span class='pending-count'>0</span></span></div>
+            </a>
+        </li>
+
+	<li id="menu-theme" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-appearance menu-top-first" >
+            <a href='<?php echo Fate::app()->url->getWebDir()."admin/theme";?>' class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-appearance menu-top-first" aria-haspopup="true">
+                <div class="wp-menu-arrow"><div></div></div>
+                <div class='wp-menu-image dashicons-before dashicons-admin-appearance'><br /></div>
+                <div class='wp-menu-name'>外观</div>
+            </a>
+            <ul class='wp-submenu wp-submenu-wrap'>
+                <li class='wp-submenu-head'>外观</li>
+                <li class="wp-first-item"><a href='themes.php' class="wp-first-item">主题</a></li>
+                <li class="hide-if-no-customize"><a href='customize.php?return=%2Fwordpress%2Fwp-admin%2Findex.php' class="hide-if-no-customize">自定义</a></li>
+                <li><a href='widgets.php'>小工具</a></li>
+                <li><a href='nav-menus.php'>菜单</a></li>
+                <li><a href='themes.php?page=custom-header'>顶部</a></li>
+                <li><a href='themes.php?page=custom-background'>背景</a></li>
+                <li><a href='theme-editor.php'>编辑</a></li>
+            </ul>
+        </li>
+        
+	<li id="menu-plugin" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-plugins" >
+            <a href='plugins.php' class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-plugins" aria-haspopup="true">
+                <div class="wp-menu-arrow"><div></div></div>
+                <div class='wp-menu-image dashicons-before dashicons-admin-plugins'><br /></div>
+                <div class='wp-menu-name'>插件<span class='update-plugins count-0'><span class='plugin-count'>0</span></span></div>
+            </a>
+            <ul class='wp-submenu wp-submenu-wrap'>
+                <li class='wp-submenu-head'>插件<span class='update-plugins count-0'><span class='plugin-count'>0</span></span></li>
+                <li class="wp-first-item"><a href='plugins.php' class="wp-first-item">已安装的插件</a></li>
+                <li><a href='plugin-install.php'>安装插件</a></li>
+                <li><a href='plugin-editor.php'>编辑</a></li>
+            </ul
+        </li>
+        
+	<li id="menu-user" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-users" >
+            <a href='users.php' class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-users" aria-haspopup="true">
+                <div class="wp-menu-arrow"><div></div></div>
+                <div class='wp-menu-image dashicons-before dashicons-admin-users'><br /></div>
+                <div class='wp-menu-name'>用户</div>
+            </a>
+            <ul class='wp-submenu wp-submenu-wrap'>
+                <li class='wp-submenu-head'>用户</li>
+                <li class="wp-first-item"><a href='users.php' class="wp-first-item">所有用户</a></li>
+                <li><a href='user-new.php'>添加用户</a></li>
+                <li><a href='profile.php'>我的个人资料</a></li>
+            </ul>
+        </li>
+        
+	<li id="menu-tool" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-tools" >
+            <a href='tools.php' class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-tools" aria-haspopup="true">
+                <div class="wp-menu-arrow"><div></div></div>
+                <div class='wp-menu-image dashicons-before dashicons-admin-tools'><br /></div>
+                <div class='wp-menu-name'>工具</div>
+            </a>
+            <ul class='wp-submenu wp-submenu-wrap'>
+                <li class='wp-submenu-head'>工具</li>
+                <li class="wp-first-item"><a href='tools.php' class="wp-first-item">可用工具</a></li>
+                <li><a href='import.php'>导入</a></li>
+                <li><a href='export.php'>导出</a></li>
+            </ul>
+        </li>
+        
+	<li id="menu-setting" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-settings menu-top-last" >
+            <a href='<?php echo Fate::app()->url->getWebDir()."admin/setting";?>' class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-settings menu-top-last" aria-haspopup="true">
+                <div class="wp-menu-arrow"><div></div></div>
+                <div class='wp-menu-image dashicons-before dashicons-admin-settings'><br /></div>
+                <div class='wp-menu-name'>设置</div>
+            </a>
+            <ul class='wp-submenu wp-submenu-wrap'>
+                <li class='wp-submenu-head'>设置</li>
+                <li class="wp-first-item"><a href='<?php echo Fate::app()->url->getWebDir()."admin/setting";?>' class="wp-first-item">常规</a></li>
+                <li><a href='<?php echo Fate::app()->url->getWebDir()."admin/setting/write";?>'>撰写</a></li>
+                <li><a href='<?php echo Fate::app()->url->getWebDir()."admin/setting/read";?>'>阅读</a></li>
+                <li><a href='<?php echo Fate::app()->url->getWebDir()."admin/setting/discussion";?>'>讨论</a></li>
+                <li><a href='<?php echo Fate::app()->url->getWebDir()."admin/setting/media";?>'>多媒体</a></li>
+                <li><a href='<?php echo Fate::app()->url->getWebDir()."admin/setting/url";?>'>固定链接</a></li>
+            </ul>
+        </li>
+        
+        <li id="collapse-menu" class="hide-if-no-js"><div id="collapse-button"><div></div></div><span>收起菜单</span></li>
+    </ul>
+</div>
+<!-- menu end -->
+
+<div id="wpcontent"><div id="wpbody">
+  <div id="wpbody-content" aria-label="主内容" tabindex="0">
+    <div id="screen-meta" class="metabox-prefs">
+      <div id="contextual-help-wrap" class="hidden" tabindex="-1" aria-label="“上下文帮助”选项卡">
+        <div id="contextual-help-back"></div>
+	  <div id="contextual-help-columns">
+            <div class="contextual-help-tabs">
+                <ul>
+                    <li id="tab-link-overview" class="active">
+                         <a href="#tab-panel-overview" aria-controls="tab-panel-overview">概述</a>
+                    </li>
+                    <li id="tab-link-help-navigation">
+                         <a href="#tab-panel-help-navigation" aria-controls="tab-panel-help-navigation">导航菜单</a>
+                    </li>
+                    <li id="tab-link-help-layout">
+                         <a href="#tab-panel-help-layout" aria-controls="tab-panel-help-layout">布局</a>
+                    </li>
+                    <li id="tab-link-help-content">
+                         <a href="#tab-panel-help-content" aria-controls="tab-panel-help-content">内容</a>
+                    </li>                                            
+                </ul>
+             </div>
+             <div class="contextual-help-sidebar">
+                     <p><strong>更多信息：</strong></p>
+                     <p><a href="" target="_blank">关于仪表盘的中文文档</a></p>
+                     <p><a href="http://cn.forums.wordpress.org" target="_blank">中文支持论坛</a></p>					
+             </div>
+					
+	     <div class="contextual-help-tabs-wrap">
+		<div id="tab-panel-overview" class="help-tab-content active">
+		 <p>欢迎访问WordPress仪表盘！在您每次登录站点后，您都会看到本页面。您可以在这里访问WordPress的各种管理页面。点击任何页面右上角的“帮助”选项卡可阅读相应帮助信息。</p>							
+                </div>
+		<div id="tab-panel-help-navigation" class="help-tab-content">
+		  <p>左侧的导航菜单提供了所有WordPress管理页面的链接。将鼠标移至菜单项目上，子菜单将显示出来。您可以使用最下方的“收起菜单”箭头来收起菜单，菜单项将以小图标的形式显示。</p>
+                  <p>上方“工具栏”上的链接将仪表盘和站点前台连接起来，默认在站点的所有页面显示，提供您的个人资料信息以及相关的WordPress信息。</p>                   </div>
+		<div id="tab-panel-help-layout" class="help-tab-content">
+		  <p>您可以依您的喜好和工作方式来安排仪表盘页面的布局。大部分其它管理页面也支持重新排列功能。</p>
+                  <p><strong>显示选项</strong> - 使用“显示选项”选项卡来选择要显示的仪表模块。</p>
+                  <p><strong>拖放自如</strong> - 要重新排列模块，按住模块的标题栏，将其拖到您希望的位置，在灰色虚线框出现后松开鼠标即可调整模块的位置。</p>
+                  <p><strong>管理模块</strong> - 点击模块的标题栏即可展开或收起它。另外，有些模块提供额外的配置选项，在您将鼠标移动到这些模块的标题栏上方时，会出现“配置”链接。</p>							
+                </div>				
+		<div id="tab-panel-help-content" class="help-tab-content">
+		  <p>概况的模块有：</p>
+                  <p><strong>概况</strong> - 显示您站点上的内容概况，以及主题与WordPress程序的版本信息。</p>
+                  <p><strong>活动</strong> - 显示即将发布和最近发布的文章，近期的若干条评论，并进行审核。</p>
+                  <p><strong>快速草稿</strong> - 让您创建新文章并保存为草稿，并显示5个指向最近草稿的链接。</p>
+                  <p><strong>WordPress新闻</strong> - 显示来自WordPress项目与<a href="http://planet.wordpress.org" target="_blank">WordPress Planet</a>的最新动态，以及热门与最新插件。</p>
+                  <p><strong>欢迎</strong> - 显示配置新站点的实用功能。</p>							
+                </div>									
+             </div>
+          </div>
+         </div>
+	<div id="screen-options-wrap" class="hidden" tabindex="-1" aria-label="“显示选项”选项卡">
+            <form id="adv-settings" action="" method="post">
+                <h5>显示下列项目</h5>
+                <div class="metabox-prefs">
+		<label for="dashboard_right_now-hide"><input class="hide-postbox-tog" name="dashboard_right_now-hide" type="checkbox" id="dashboard_right_now-hide" value="dashboard_right_now" checked="checked" />概览</label>
+                <label for="dashboard_activity-hide"><input class="hide-postbox-tog" name="dashboard_activity-hide" type="checkbox" id="dashboard_activity-hide" value="dashboard_activity" checked="checked" />活动</label>
+                <label for="dashboard_quick_press-hide"><input class="hide-postbox-tog" name="dashboard_quick_press-hide" type="checkbox" id="dashboard_quick_press-hide" value="dashboard_quick_press" checked="checked" /><span class="hide-if-no-js">快速草稿</span> <span class="hide-if-js">草稿</span></label>
+                <label for="dashboard_primary-hide"><input class="hide-postbox-tog" name="dashboard_primary-hide" type="checkbox" id="dashboard_primary-hide" value="dashboard_primary" checked="checked" />WordPress新闻</label>
+                <label for="wp_welcome_panel-hide"><input type="checkbox" id="wp_welcome_panel-hide" checked='checked' />Welcome</label>
+		<br class="clear" />
+		</div>
+		<div><input type="hidden" id="screenoptionnonce" name="screenoptionnonce" value="4c659eba14" /></div>
+            </form>
+	 </div>
+        </div>
+	<div id="screen-meta-links">
+            <div id="contextual-help-link-wrap" class="hide-if-no-js screen-meta-toggle">
+		<a href="#contextual-help-wrap" id="contextual-help-link" class="show-settings" aria-controls="contextual-help-wrap" aria-expanded="false">帮助</a>
+            </div>
+            <div id="screen-options-link-wrap" class="hide-if-no-js screen-meta-toggle">
+		<a href="#screen-options-wrap" id="show-settings-link" class="show-settings" aria-controls="screen-options-wrap" aria-expanded="false">显示选项</a>
+            </div>
+	</div>
+		
+<div class="wrap">
+	<h2>概况</h2>
+	<div id="welcome-panel" class="welcome-panel">
+	<input type="hidden" id="welcomepanelnonce" name="welcomepanelnonce" value="b15c4269f9" />		
+        <a class="welcome-panel-close" href="http://localhost/wordpress/wp-admin/?welcome=0">不再显示</a>
+	<div class="welcome-panel-content">
+	<h3>欢迎使用WordPress！</h3>
+	<p class="about-description">我们准备了几个链接供您开始：</p>
+	<div class="welcome-panel-column-container">
+	<div class="welcome-panel-column">
+	<h4>开始使用</h4>
+	<a class="button button-primary button-hero load-customize hide-if-no-customize" href="http://localhost/wordpress/wp-admin/customize.php">自定义您的站点</a>
+	<a class="button button-primary button-hero hide-if-customize" href="http://localhost/wordpress/wp-admin/themes.php">自定义您的站点</a>
+	<p class="hide-if-no-customize">或<a href="http://localhost/wordpress/wp-admin/themes.php">更换主题</a></p>
+	</div>
+	<div class="welcome-panel-column">
+		<h4>接下来</h4>
+		<ul>
+					<li><a href="http://localhost/wordpress/wp-admin/post-new.php" class="welcome-icon welcome-write-blog">撰写您的第一篇博文</a></li>
+			<li><a href="http://localhost/wordpress/wp-admin/post-new.php?post_type=page" class="welcome-icon welcome-add-page">添加“关于”页面</a></li>
+					<li><a href="http://localhost/wordpress/" class="welcome-icon welcome-view-site">查看站点</a></li>
+		</ul>
+	</div>
+	<div class="welcome-panel-column welcome-panel-last">
+		<h4>更多操作</h4>
+		<ul>
+					<li><div class="welcome-icon welcome-widgets-menus">管理<a href="http://localhost/wordpress/wp-admin/widgets.php">边栏小工具</a>和<a href="http://localhost/wordpress/wp-admin/nav-menus.php">菜单</a></div></li>
+							<li><a href="http://localhost/wordpress/wp-admin/options-discussion.php" class="welcome-icon welcome-comments">打开/关闭评论功能</a></li>
+					<li><a href="http://codex.wordpress.org/zh-cn:%E5%87%86%E5%A4%87%E4%BD%BF%E7%94%A8_WordPress" class="welcome-icon welcome-learn-more">了解更多新手上路知识</a></li>
+		</ul>
+	</div>
+	</div>
+	</div>
+		</div>
+
+	<div id="dashboard-widgets-wrap">
+	<div id="dashboard-widgets" class="metabox-holder">
+	<div id="postbox-container-1" class="postbox-container">
+	<div id="normal-sortables" class="meta-box-sortables"><div id="dashboard_right_now" class="postbox " >
+<div class="handlediv" title="点击以切换"><br /></div><h3 class='hndle'><span>概览</span></h3>
+<div class="inside">
+	<div class="main">
+	<ul>
+	<li class="post-count"><a href="edit.php?post_type=post">1篇文章</a></li><li class="page-count"><a href="edit.php?post_type=page">1个页面</a></li>		<li class="comment-count"><a href="edit-comments.php">1条评论</a></li>
+			</ul>
+	<p id='wp-version-message'>WordPress 4.0，使用<a href="themes.php">Twenty Fourteen</a>主题。</p>	</div>
+	</div>
+</div>
+<div id="dashboard_activity" class="postbox " >
+<div class="handlediv" title="点击以切换"><br /></div><h3 class='hndle'><span>活动</span></h3>
+<div class="inside">
+<div id="activity-widget"><div id="published-posts" class="activity-block"><h4>最近发布</h4><ul><li><span>上午1:07 今天</span> <a href="http://localhost/wordpress/wp-admin/post.php?post=1&amp;action=edit">世界，你好！</a></li></ul></div><div id="latest-comments" class="activity-block"><h4>评论</h4><div id="the-comment-list" data-wp-lists="list:comment">
+		<div id="comment-1" class="comment even thread-even depth-1 comment-item approved">
+
+			<img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=50' class='avatar avatar-50 photo avatar-default' height='50' width='50' />
+			
+			<div class="dashboard-comment-wrap">
+			<h4 class="comment-meta">
+				由<cite class="comment-author"><a href='https://wordpress.org/' rel='external nofollow' class='url'>WordPress先生</a></cite>发表在《<a href='http://localhost/wordpress/wp-admin/post.php?post=1&amp;action=edit'>世界，你好！</a> <a class="comment-link" href="http://localhost/wordpress/?p=1#comment-1">#</a>》 <span class="approve">[待审]</span>			</h4>
+
+						<blockquote><p>您好，这是一条评论。
+要删除评论，请先登录，然后再查看这篇文章的评论。登录后您可以看到编辑或者删除评论的选项。 </p></blockquote>
+			<p class="row-actions"><span class='approve'><a href='comment.php?action=approvecomment&#038;p=1&#038;c=1&#038;_wpnonce=a00e0aa1fd' data-wp-lists='dim:the-comment-list:comment-1:unapproved:e7e7d3:e7e7d3:new=approved' class='vim-a' title='批准这条评论'>批准</a></span><span class='unapprove'><a href='comment.php?action=unapprovecomment&#038;p=1&#038;c=1&#038;_wpnonce=a00e0aa1fd' data-wp-lists='dim:the-comment-list:comment-1:unapproved:e7e7d3:e7e7d3:new=unapproved' class='vim-u' title='驳回这条评论'>驳回</a></span><span class='reply hide-if-no-js'> | <a onclick="window.commentReply && commentReply.open('1','1');return false;" class="vim-r hide-if-no-js" title="回复这条评论" href="#">回复</a></span><span class='edit'> | <a href='comment.php?action=editcomment&amp;c=1' title='编辑评论'>编辑</a></span><span class='spam'> | <a href='comment.php?action=spamcomment&#038;p=1&#038;c=1&#038;_wpnonce=28c0b63173' data-wp-lists='delete:the-comment-list:comment-1::spam=1' class='vim-s vim-destructive' title='将这条评论标记为垃圾评论'>垃圾评论</a></span><span class='trash'> | <a href='comment.php?action=trashcomment&#038;p=1&#038;c=1&#038;_wpnonce=28c0b63173' data-wp-lists='delete:the-comment-list:comment-1::trash=1' class='delete vim-d vim-destructive' title='将这条评论移动到回收站'>移至回收站</a></span></p>
+			</div>
+		</div>
+</div><ul class='subsubsub'>
+	<li class='all'><a href='edit-comments.php?comment_status=all'>全部</a> |</li>
+	<li class='moderated'><a href='edit-comments.php?comment_status=moderated'>待审<span class="count">（<span class="pending-count">0</span>）</span></a> |</li>
+	<li class='approved'><a href='edit-comments.php?comment_status=approved'>获准</a> |</li>
+	<li class='spam'><a href='edit-comments.php?comment_status=spam'>垃圾评论<span class="count">（<span class="spam-count">0</span>）</span></a> |</li>
+	<li class='trash'><a href='edit-comments.php?comment_status=trash'>回收站<span class="count">（<span class="trash-count">0</span>）</span></a></li>
+</ul><form method="get" action="">
+<div id="com-reply" style="display:none;"><div id="replyrow" style="display:none;">
+	<div id="replyhead" style="display:none;"><h5>回复评论</h5></div>
+	<div id="addhead" style="display:none;"><h5>添加新评论</h5></div>
+	<div id="edithead" style="display:none;">
+		<div class="inside">
+		<label for="author">姓名</label>
+		<input type="text" name="newcomment_author" size="50" value="" id="author" />
+		</div>
+
+		<div class="inside">
+		<label for="author-email">电子邮件</label>
+		<input type="text" name="newcomment_author_email" size="50" value="" id="author-email" />
+		</div>
+
+		<div class="inside">
+		<label for="author-url">URL</label>
+		<input type="text" id="author-url" name="newcomment_author_url" class="code" size="103" value="" />
+		</div>
+		<div style="clear:both;"></div>
+	</div>
+
+	<div id="replycontainer">
+	<div id="wp-replycontent-wrap" class="wp-core-ui wp-editor-wrap html-active"><link rel='stylesheet' id='editor-buttons-css'  href='http://localhost/wordpress/wp-includes/css/editor.min.css?ver=4.0' type='text/css' media='all' />
+<div id="wp-replycontent-editor-container" class="wp-editor-container"><textarea class="wp-editor-area" rows="20" cols="40" name="replycontent" id="replycontent"></textarea></div>
+</div>
+
+	</div>
+
+	<p id="replysubmit" class="submit">
+	<a href="#comments-form" class="save button-primary alignright">
+	<span id="addbtn" style="display:none;">添加评论</span>
+	<span id="savebtn" style="display:none;">更新评论</span>
+	<span id="replybtn" style="display:none;">提交回复</span></a>
+	<a href="#comments-form" class="cancel button-secondary alignleft">取消</a>
+	<span class="waiting spinner"></span>
+	<span class="error" style="display:none;"></span>
+	<br class="clear" />
+	</p>
+
+	<input type="hidden" name="user_ID" id="user_ID" value="1" />
+	<input type="hidden" name="action" id="action" value="" />
+	<input type="hidden" name="comment_ID" id="comment_ID" value="" />
+	<input type="hidden" name="comment_post_ID" id="comment_post_ID" value="" />
+	<input type="hidden" name="status" id="status" value="" />
+	<input type="hidden" name="position" id="position" value="-1" />
+	<input type="hidden" name="checkbox" id="checkbox" value="0" />
+	<input type="hidden" name="mode" id="mode" value="dashboard" />
+	<input type="hidden" id="_ajax_nonce-replyto-comment" name="_ajax_nonce-replyto-comment" value="3b7411615b" /><input type="hidden" id="_wp_unfiltered_html_comment" name="_wp_unfiltered_html_comment" value="6f84a55ba7" /></div></div>
+</form>
+<div class="hidden" id="trash-undo-holder">
+	<div class="trash-undo-inside"><strong></strong>的评论已被移动到回收站。 <span class="undo untrash"><a href="#">撤销</a></span></div>
+</div>
+<div class="hidden" id="spam-undo-holder">
+	<div class="spam-undo-inside"><strong></strong>的评论已被标记为垃圾评论。 <span class="undo unspam"><a href="#">撤销</a></span></div>
+</div>
+</div></div></div>
+</div>
+</div>	</div>
+	<div id="postbox-container-2" class="postbox-container">
+	<div id="side-sortables" class="meta-box-sortables"><div id="dashboard_quick_press" class="postbox " >
+<div class="handlediv" title="点击以切换"><br /></div><h3 class='hndle'><span><span class="hide-if-no-js">快速草稿</span> <span class="hide-if-js">草稿</span></span></h3>
+<div class="inside">
+
+	<form name="post" action="http://localhost/wordpress/wp-admin/post.php" method="post" id="quick-press" class="initial-form hide-if-no-js">
+
+		
+		<div class="input-text-wrap" id="title-wrap">
+			<label class="screen-reader-text prompt" for="title" id="title-prompt-text">
+
+				标题			</label>
+			<input type="text" name="post_title" id="title" autocomplete="off" />
+		</div>
+
+		<div class="textarea-wrap" id="description-wrap">
+			<label class="screen-reader-text prompt" for="content" id="content-prompt-text">在想些什么？</label>
+			<textarea name="content" id="content" class="mceEditor" rows="3" cols="15" autocomplete="off"></textarea>
+		</div>
+
+		<p class="submit">
+			<input type="hidden" name="action" id="quickpost-action" value="post-quickdraft-save" />
+			<input type="hidden" name="post_ID" value="3" />
+			<input type="hidden" name="post_type" value="post" />
+			<input type="hidden" id="_wpnonce" name="_wpnonce" value="185a34e1ad" /><input type="hidden" name="_wp_http_referer" value="/wordpress/wp-admin/index.php" />			<input type="submit" name="save" id="save-post" class="button button-primary" value="保存草稿"  />			<br class="clear" />
+		</p>
+
+	</form>
+	</div>
+</div>
+<div id="dashboard_primary" class="postbox " >
+<div class="handlediv" title="点击以切换"><br /></div><h3 class='hndle'><span>WordPress新闻</span></h3>
+<div class="inside">
+<div class="rss-widget"><p><strong>RSS错误</strong>：WP HTTP Error: 没有可以完成请求的HTTP传输器。</p></div><div class="rss-widget"><ul><li><a class='rsswidget' href='http://ma.tt/2014/10/streak/'>Matt: Streak</a></li><li><a class='rsswidget' href='http://wptavern.com/contributing-back-to-wordpress'>WPTavern: Contributing Back to WordPress</a></li><li><a class='rsswidget' href='http://blog.wordpress.tv/2014/10/03/build-your-audience-recent-wordcamp-videos-from-experienced-content-creators/'>WordPress.tv Blog: Build your audience:  Recent WordCamp videos from experienced content creators</a></li></ul></div><div class="rss-widget"><ul></ul></div></div>
+</div>
+</div>	</div>
+	<div id="postbox-container-3" class="postbox-container">
+	<div id="column3-sortables" class="meta-box-sortables"></div>	</div>
+	<div id="postbox-container-4" class="postbox-container">
+	<div id="column4-sortables" class="meta-box-sortables"></div>	</div>
+</div>
+
+<input type="hidden" id="closedpostboxesnonce" name="closedpostboxesnonce" value="3d6a23225f" /><input type="hidden" id="meta-box-order-nonce" name="meta-box-order-nonce" value="1add66e709" />	</div><!-- dashboard-widgets-wrap -->
+
+</div><!-- wrap -->
+
+
+<div class="clear"></div></div><!-- wpbody-content -->
+<div class="clear"></div></div><!-- wpbody -->
+<div class="clear"></div>
+
+<script type='text/javascript'>list_args = {"class":"WP_Comments_List_Table","screen":{"id":"dashboard","base":"dashboard"}};</script>
+<script type='text/javascript'>list_args = {"class":"WP_Comments_List_Table","screen":{"id":"dashboard","base":"dashboard"}};</script>
+	<div id="wp-auth-check-wrap" class="hidden">
+	<div id="wp-auth-check-bg"></div>
+	<div id="wp-auth-check">
+	<div class="wp-auth-check-close" tabindex="0" title="关闭"></div>
+			<div id="wp-auth-check-form" data-src="http://localhost/wordpress/wp-login.php?interim-login=1"></div>
+			<div class="wp-auth-fallback">
+		<p><b class="wp-auth-fallback-expired" tabindex="0">会话已过期</b></p>
+		<p><a href="http://localhost/wordpress/wp-login.php" target="_blank">请重新登录。</a>
+		登录页会在新窗口中打开，在登录后您可关闭该窗口并返回本页。</p>
+	</div>
+	</div>
+	</div>
+	
+
+				<div id="wp-link-backdrop" style="display: none"></div>
+		<div id="wp-link-wrap" class="wp-core-ui" style="display: none">
+		<form id="wp-link" tabindex="-1">
+		<input type="hidden" id="_ajax_linking_nonce" name="_ajax_linking_nonce" value="848188bf6e" />		<div id="link-modal-title">
+			插入或编辑链接			<button type="button" id="wp-link-close"><span class="screen-reader-text">关闭</span></button>
+	 	</div>
+		<div id="link-selector">
+			<div id="link-options">
+				<p class="howto">输入目标URL</p>
+				<div>
+					<label><span>URL</span><input id="url-field" type="text" name="href" /></label>
+				</div>
+				<div>
+					<label><span>标题</span><input id="link-title-field" type="text" name="linktitle" /></label>
+				</div>
+				<div class="link-target">
+					<label><span>&nbsp;</span><input type="checkbox" id="link-target-checkbox" /> 在新窗口或标签页打开链接</label>
+				</div>
+			</div>
+			<p class="howto"><a href="#" id="wp-link-search-toggle">或链接到站点中的内容</a></p>
+			<div id="search-panel">
+				<div class="link-search-wrapper">
+					<label>
+						<span class="search-label">搜索</span>
+						<input type="search" id="search-field" class="link-search-field" autocomplete="off" />
+						<span class="spinner"></span>
+					</label>
+				</div>
+				<div id="search-results" class="query-results" tabindex="0">
+					<ul></ul>
+					<div class="river-waiting">
+						<span class="spinner"></span>
+					</div>
+				</div>
+				<div id="most-recent-results" class="query-results" tabindex="0">
+					<div class="query-notice" id="query-notice-message">
+						<em class="query-notice-default">未指定搜索条件。自动显示近期条目。</em>
+						<em class="query-notice-hint screen-reader-text">搜索或使用上下方向键来选择一项。</em>
+					</div>
+					<ul></ul>
+					<div class="river-waiting">
+						<span class="spinner"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="submitbox">
+			<div id="wp-link-cancel">
+				<a class="submitdelete deletion" href="#">取消</a>
+			</div>
+			<div id="wp-link-update">
+				<input type="submit" value="添加链接" class="button button-primary" id="wp-link-submit" name="wp-link-submit">
+			</div>
+		</div>
+		</form>
+		</div>
+		
+<div class="clear"></div></div>
+    
+</div>
+<script>
+    $(function(){
+        
+        var menu = eval(<?php echo $menu;?>);
+        var module =  '<?php echo Fate::app()->module;?>';
+        var control = '<?php echo Fate::app()->control;?>';
+        var action = '<?php echo Fate::app()->action;?>';
+        var menu_bar = $('#adminmenu');
+        var current_menu ;
+        
+        $.each(menu,function(i){
+            if($.inArray(control,menu[i])!=-1){
+                current_menu = $('#'+i);;
+                return ;
+            }
+        })
+        
+        var href_parttern = control
+        if(action!='index'){
+            href_parttern = control+'/'+action;
+        }
+        var current_tag = current_menu.children('ul').children('li').children('a[href$="'+href_parttern+'"]');
+
+        if(current_tag.length==0){
+            current_tag = current_menu.children('ul').children('li').children('a[href$="'+control+'"]');   
+        }
+        current_menu.toggleClass('wp-not-current-submenu wp-has-current-submenu');
+        current_menu.children('a').toggleClass('wp-not-current-submenu wp-has-current-submenu');
+        current_tag.addClass('current');
+        current_tag.parent().addClass('current');
+
+        menu_bar.children('li').hover(function(){
+                $(this).addClass('opensub');
+                $(this).children('ul').css('top',-1);
+        },function(){
+                $(this).removeClass('opensub');
+                if(!$(this).hasClass('wp-has-current-submenu')){
+                    $(this).children('ul').css('top','-1000em'); 
+                }
+        })
+        
+        function initLayout(){
+            
+            var hight = document.documentElement.clientHeight - $("#nav").outerHeight(true);   
+
+            $('#adminmenuwrap').height(hight); 
+            $('#wpwrap').height(hight);
+            
+        }
+		
+        initLayout();
+
+        $(window).resize(function(){   
+               initLayout();   
+        });
+
+})
+</script>
+</body>
+</html>
