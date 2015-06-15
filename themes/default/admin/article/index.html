@@ -2,62 +2,78 @@
 <div id="wpbody">
   <div id="wpbody-content" aria-label="主内容" tabindex="0">
     <div class="wrap">
+        
           <!--  统计 文章个数 start -->
           <h2>文章 <a href="<{root:admin/article/add}>" class="add-new-h2">写文章</a></h2>
           <ul class='subsubsub'>
               <li class='all'>
-                  <a href='' class="current">全部<span class="count">（<{echo:count($articleData)}>）</span></a> |
+                  <a href='<{root:admin/article}>' <{if:empty($_GET['status'])}> class="current" <{/if}> >
+                      全部<span class="count">（<{echo:$countData['all']}>）</span>
+                  </a> |
               </li>
               <li class='publish'>
-                  <a href=''>已发布<span class="count">（<{echo:count($articleData)}>）</span></a>
+                  <a href='<{root:admin/article/status/publish}>' <{if:$_GET['status'] == 'publish'}> class="current" <{/if}> >
+                      已发布<span class="count">（<{echo:$countData['publish']}>）</span>
+                  </a> |
+              </li>
+              <li class='trash'>
+                  <a href='<{root:admin/article/status/trash}>' <{if:$_GET['status'] == 'trash'}> class="current" <{/if}> >
+                     回收站<span class="count">（<{echo:$countData['trash']}>）</span>
+                  </a>
               </li>
           </ul>
+          <!--  统计 文章个数 end  -->
+          
           <!-- 文章列表 start -->
-          <form id="posts-filter" action="" method="get">
+          <form id="posts-filter" action="" method="post">
               
                 <!-- 文章搜索框 start-->
                 <p class="search-box">
                     <label class="screen-reader-text" for="post-search-input">搜索文章:</label>
                     <input type="search" id="post-search-input" name="s" value="" />
-                    <input type="submit" name="" id="search-submit" class="button" value="搜索文章"  />
+                    <input type="button" name="search-button"  id="search-submit" class="button" value="搜索文章"  />
                 </p>
-                <!-- 文章搜索框 end-->
-                <input type="hidden" name="post_status" class="post_status_page" value="all" />
-                <input type="hidden" name="post_type" class="post_type_page" value="post" />
-                <input type="hidden" id="_wpnonce" name="_wpnonce" value="4e484eee32" />
-                <input type="hidden" name="_wp_http_referer" value="/wordpress/wp-admin/edit.php" />
-                
+                <!-- 文章搜索框 end-->                
                 <div class="tablenav top">
+                    
                     <div class="alignleft actions bulkactions">
-                        <!-- 操作框 start -->
+                        <!-- 批量操作框 start -->
                         <label for='bulk-action-selector-top' class='screen-reader-text'>选择批量操作</label>
-                        <select name='action' id='bulk-action-selector-top'>
+                        <select name='operation' id='operation'>
                            <option value='-1' selected='selected'>批量操作</option>
                            <!--<option value='edit' class="hide-if-no-js">编辑</option>-->
-                           <option value='trash'>移至回收站</option>
+                           <{if:$_GET['status']!='trash'}>
+                           <option value='recycle'>移至回收站</option>
+                           <{/if}>
+                           <{if:$_GET['status']=='trash'}>
+                           <option value='reduction'>还原文章</option>
+                           <option value='delete'>永久删除</option>
+                           <{/if}>
                         </select>
-                        <input type="submit" name="" id="doaction" class="button action" value="应用"  />
+                        <input type="button" name="doaction" id="doaction" class="button action" value="应用"  />
                     </div>
                     
                     <div class="alignleft actions">
                         <!-- 日期 筛选 start -->
                         <label for="filter-by-date" class="screen-reader-text">按日期筛选</label>
-                        <select name="m" id="filter-by-date">
-                                <option selected='selected' value="0">全部日期</option>
+                        <select name="post_date" id="filter-by-date">
+                                <option  value="0">全部日期</option>
                                 <{foreach:items=$timeData item=$name key=$key}>
-                                <option  value='<{echo:$key}>'><{echo:$name}></option>
+                                    <option  <{if:$key==$_POST['post_date']}>selected='selected'<{/if}> value='<{echo:$key}>' >
+                                        <{echo:$name}>
+                                    </option>
                                 <{/foreach}>
                         </select>
                         <!-- 分类 筛选 start -->
-                        <select name='parent' id='parent' class='postform' >
-                            <option value='-1'>无</option>
+                        <select name='term_id' id='parent' class='postform' >
+                            <option value=''>无</option>
                             <{foreach:items=$treeData item=$category key=$k}>
-                                 <option class='level-<{echo:$category["level"]}>' value='<{echo:$category["term_id"]}>'>
+                                 <option  <{if:$category["term_id"]==$_POST['term_id']}>selected='selected'<{/if}> class='level-<{echo:$category["level"]}>' value='<{echo:$category["term_id"]}>'>
                                      <{echo:$category['name']}>
                                  </option>
                             <{/foreach}>
                         </select>
-                        <input type="submit" name="filter_action" id="post-query-submit" class="button" value="筛选"  />		
+                        <input type="button" name="filter_action" id="post-query-submit" class="button" value="筛选"  />		
                     </div>
                     
                     <!-- 分页 start -->
@@ -75,7 +91,6 @@
                         </span>
                     </div>
                     <!-- 分页 end-->
-                    <input type="hidden" name="mode" value="list" />
                     <!-- 视图类别 start-->
                     <div class="view-switch">
                         <a href='javascript:void(0);' class='view-list current' id='view-switch-list'>
@@ -166,19 +181,35 @@
                                 <div class="locked-info"><span class="locked-avatar"></span> <span class="locked-text"></span></div>
                                 <div class="row-actions">
                                     <span class='edit'>
-                                        <a href="<{root:admin/article/edit/id/}><{echo:$ID}>" title="编辑此项目">编辑</a> | 
+                                        <a href="<{root:admin/article/edit/id/}><{echo:$ID}>" title="编辑此项目">编辑</a>  
                                     </span>
+                                    <span class='view'>
+                                       | <a href="<{root:admin/article/}><{echo:$ID}>" rel="permalink">查看</a> 
+                                    </span>
+                                    <!--
                                     <span class='inline hide-if-no-js'>
                                         <a href="#" class="editinline" title="实时编辑此项目">快速编辑</a> | 
                                     </span>
+                                    -->
+                                    <{if:$listData['post']['post_status']!='trash'}>
                                     <span class='trash'>
-                                        <a class='submitdelete' href='<{root:admin/article/recycle/id/}><{echo:$ID}>'>回收站</a> | 
+                                       | <a class='submitdelete' href='<{root:admin/article/recycle/}><{echo:$ID}>'>回收站</a> 
                                     </span>
-                                    <span class='view'><a href="<{root:admin/article/id/}><{echo:$ID}>" rel="permalink">查看</a></span>
+                                    <{/if}>
+                                    <{if:$listData['post']['post_status']=='trash'}>
+                                    <span class='reduction'>
+                                       | <a href="<{root:admin/article/reduction/}><{echo:$ID}>" rel="permalink">还原</a> 
+                                    </span>
+                                    <span class='delete'>
+                                       | <a href="<{root:admin/article/delete/}><{echo:$ID}>" rel="permalink">永久删除</a> 
+                                    </span>
+                                    <{/if}>          
                                 </div>
                             </td>
                             <!-- 作者 -->
-                            <td class="author column-author"><a href=""></a></td>
+                            <td class="author column-author">
+                                <a href=""><{echo:$listData['post']['post_author']}></a>
+                            </td>
                             <!-- 分类 目录 -->
                             <td class="categories column-categories"><a href=""><{echo:$listData['cat']['name']}></a></td>
                             <!-- 标签 -->
@@ -200,7 +231,7 @@
                                 </div>
                             </td>
                             <!-- 日期 -->
-                            <td class="date column-date"><abbr title="<{echo:$listData['post']['post_date']}>"><{echo:$listData['post']['post_date']}></abbr><br />已发布</td>
+                            <td class="date column-date"><abbr title="<{echo:$listData['post']['post_date']}>"><{echo:$listData['post']['post_date']}></abbr><br /><{echo:$articleStatus[$listData['post']['post_status']]}></td>
                         </tr>
                     <{code:$i++}>
                     <{/foreach}>
@@ -210,9 +241,8 @@
              <div class="tablenav bottom">
                     <div class="alignleft actions bulkactions">
                         <label for='bulk-action-selector-bottom' class='screen-reader-text'>选择批量操作</label>
-                        <select name='action2' id='bulk-action-selector-bottom'>
+                        <select name='operation2' id='bulk-action-selector-bottom'>
                             <option value='-1' selected='selected'>批量操作</option>
-                            <option value='edit' class="hide-if-no-js">编辑</option>
                             <option value='trash'>移至回收站</option>
                         </select>
                         <input type="submit" name="" id="doaction2" class="button action" value="应用"  />
@@ -236,4 +266,23 @@
 </div>
 <div class="clear"></div></div>
 <div class="clear"></div>
+<script>
+        $(function(){
+            
+            //批量操作
+            $('#doaction').click(function(){
+                    var operation = $('#operation').val();
+                    $('#posts-filter').attr('action',"<{root:admin/article/}>"+operation);
+                    $('#posts-filter').submit();
+            })
+            
+            //条件查询
+            $('#post-query-submit').click(function(){
+                   $('#posts-filter').attr('action',"<{root:admin/article/}>");
+                   $('#posts-filter').submit();
+            })
+            
+            //文章搜索
+        })
+</script>
 

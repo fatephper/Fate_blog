@@ -1,6 +1,6 @@
 <?php
 
-     class commentControl extends adminLayoutControl {
+     class commentControl extends adminBaseControl {
             
             public function index(){
                 

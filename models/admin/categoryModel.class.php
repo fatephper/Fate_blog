@@ -8,19 +8,18 @@
         public  $categoryTree = array();
         
         public function init(){
-                $this->table = 'term_taxonomy';
+                $this->table = 'categories';
         }
         
         public function getInfoById($id){
             
-            $sql  = $this->fields('*')->join(' as tt INNER JOIN blog_terms  as t ON tt.term_id=t.term_id')->where('tt.term_id='.$id)->sql();
-            $data = $this->fetchOne($sql);
-            return $data;
+            $sql  = $this->fields('*')->where('id='.$id)->sql();
+            return  $this->fetchOne($sql);
         }
                 
         public function getAll($where='1=1'){
             
-            $sql = $this->fields('tt.*,t.*')->join(' as tt INNER JOIN blog_terms  as t ON tt.term_id=t.term_id')->where($where)->order('tt.term_id DESC')->sql();
+            $sql = $this->fields('*')->where($where)->order('id DESC')->sql();
             
             $data = $this->fetchAll($sql);
                         
@@ -28,12 +27,12 @@
             $tagFinalData = array();
             
             foreach($data as $category){
-                     if($category['taxonomy']=='category'){
-                         $categoryFinalData[$category['term_taxonomy_id']] = $category;
-                     }
-                     if($category['taxonomy']=='post_tag'){
-                         $tagFinalData[$category['term_taxonomy_id']] = $category;
-                     }
+                if($category['category_type']==1){
+                    $categoryFinalData[$category['id']] = $category;
+                }
+                if($category['category_type']==2){
+                    $tagFinalData[$category['id']] = $category;
+                }
             }
             
             return array('all'=>$data,'tag'=>$tagFinalData,'category'=>$categoryFinalData);
@@ -41,55 +40,45 @@
                
         public function getTree($data=array(),$level=0){
             
-                if(empty($data))
-                    $data = $this->getAll();
-                
-                $temp = array();
-                
-                if(empty($this->categoryTree)){
-                    foreach($data as $k=>$category){
-                        if($category['parent'] == 0){
-                            $category ['level'] = $level;
-                            $this->categoryTree[] = $category;
-                        unset($data[$k]);
-                        }
-                    }
-                    $this->getTree($data,1);
-                }else{
-                    
-                    foreach($this->categoryTree as $v){
-                        
-                        $temp[] = $v;
-                        foreach($data as $k =>$vv){
-                            if($v['term_id']==$vv['parent']){
-                                $vv['level'] = $level;
-                                $temp[] = $vv;
+                $data = empty($data)?$this->getAll():$data;
+
+                if(!empty($data['all'])){
+
+                    $temp = array();
+
+                    if(empty($this->categoryTree)){
+                        foreach($data as $k=>$category){
+                            if($category['parent_id'] == 0){
+                                $category ['level'] = $level;
+                                $this->categoryTree[] = $category;
                                 unset($data[$k]);
                             }
                         }
+                        $this->getTree($data,1);
+                    }else{
+
+                        foreach($this->categoryTree as $v){
+
+                            $temp[] = $v;
+                            foreach($data as $k =>$vv){
+                                if($v['id']==$vv['parent_id']){
+                                    $vv['level'] = $level;
+                                    $temp[] = $vv;
+                                    unset($data[$k]);
+                                }
+                            }
+                        }
+
+                        $this->categoryTree = $temp;
+
+                        if(!empty($data))
+                            $this->getTree($data,$level+1);
                     }
-                    
-                    $this->categoryTree = $temp;
-                    
-                    if(!empty($data))
-                        $this->getTree($data,$level+1);
                 }
                 
                 return $this->categoryTree;
         }
-                
-        public function add($data){
-
-                $termsData = $data['term'];
-                $term_id = $this->insert('blog_terms',$termsData);
-                $termTaxonomyData = $data['termTaxonomy'];
-                $termTaxonomyData['term_id'] = $term_id;
-                $flag = $this->insert('blog_term_taxonomy',$termTaxonomyData);
-                
-                return $flag;
-            
-        }
-        
+                        
         public function edit($condition,$data){
 
                 $term = $data['term'];
@@ -110,6 +99,23 @@
             $this->delete('blog_terms','term_id='.$id);
             $this->delete('blog_term_taxonomy','term_id='.$id);
             $this->delete('blog_term_relationships','term_taxonomy_id='.$term_taxonomy_id);
+        }
+        
+        public function getChildren($term_id,&$result_arr){
+            
+            if(empty($result_arr)){
+                $term_taxonomy = $this->fields('term_taxonomy_id')->where('term_id='.$term_id)->fetchOne();
+                $result_arr[] = $term_taxonomy['term_taxonomy_id'];
+            }
+            
+            $temp = $this->fields("term_id,term_taxonomy_id")->where("parent=".$term_id)->fetchAll();
+            
+            if(!empty($temp)){
+                foreach($temp as $v){
+                    $result_arr[] = $v['term_taxonomy_id'];
+                    $this->getChildren($v['term_id'],$result_arr);
+                }
+            }
         }
         
     }

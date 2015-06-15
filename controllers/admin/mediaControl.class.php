@@ -1,6 +1,6 @@
 <?php
 
-    class mediaControl extends adminLayoutControl{
+    class mediaControl extends adminBaseControl{
         
             public function index(){
                 

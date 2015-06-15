@@ -2,15 +2,15 @@
     /*
      * @brief 分类控制器
      */
-    class categoryControl extends adminLayoutControl {
+    class categoryControl extends adminBaseControl {
         
         /**
          * @brief 首页-分类
          */
         public function index(){
             
-            $all = $this->model()->getAll('tt.taxonomy="category"');
-            $treeData = $this->model()->getTree($all);
+            $all = $this->model()->getAll('category_type=1');
+            $treeData = $this->model()->getTree($all['category']);
             $data = array(
                   'treeData'=>$treeData,
                   'total'=>count($all)
@@ -47,23 +47,11 @@
          * @brief 添加-分类
          */
         public function add(){
-              
-            $termData = array(
-                 'name'=>$_POST['tag-name'],
-                 'slug'=>$_POST['slug']
-            );
-            
-            $termTaxonomy = array(
-                 'parent'=>$_POST['parent'],
-                 'description' => $_POST['description'],
-                 'taxonomy'=>$_POST['taxonomy']
-            );
-            
-            $flag = $this->model()->add(array('term'=>$termData,'termTaxonomy'=>$termTaxonomy));
+
+            $flag = $this->model()->insert();
             if(!$flag)
                 die('插入失败');
-            header('Location:/admin/category');
-            
+            $this->redirect('/admin/category');
         }
         
         /*

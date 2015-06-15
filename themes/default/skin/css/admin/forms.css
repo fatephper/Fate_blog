@@ -56,9 +56,9 @@ input[type="checkbox"]:focus,
 input[type="radio"]:focus,
 select:focus,
 textarea:focus {
-	border-color: #5b9dd9;
-	-webkit-box-shadow: 0 0 2px rgba( 30, 140, 190, 0.8 );
-	box-shadow: 0 0 2px rgba( 30, 140, 190, 0.8 );
+	border-color: #aaa;
+	/*-webkit-box-shadow: 0 0 2px rgba( 30, 140, 190, 0.8 );
+	box-shadow: 0 0 2px rgba( 30, 140, 190, 0.8 );*/
 }
 
 /* @noflip */

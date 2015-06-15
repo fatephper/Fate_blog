@@ -1,6 +1,6 @@
 <?php
 
-    class settingControl extends adminLayoutControl {
+    class settingControl extends adminBaseControl {
                                         
                 public function index(){
                     

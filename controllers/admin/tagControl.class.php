@@ -2,7 +2,7 @@
     /*
      * @brief 分类控制器
      */
-    class tagControl extends adminLayoutControl {
+    class tagControl extends adminBaseControl {
         
         /**
          * @brief 首页-标签
@@ -12,8 +12,8 @@
             $categoryModel = $this->model('category','admin');
             $tagData = $categoryModel->getAll('tt.taxonomy="post_tag"');
             $data = array(
-                  'tagData'=>$tagData,
-                  'total'=>count($tagData)
+                  'tagData'=>$tagData['tag'],
+                  'total'=>count($tagData['tag'])
             );
             
             $this->render($data);

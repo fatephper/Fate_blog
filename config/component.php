@@ -5,10 +5,10 @@
         
         'db'=>array(
 		  'mysql'=>array(          
-                            'host'   =>'localhost',  //数据库地址
-                            'name'   =>'blog_fatephper',      //数据库名字
+                            'host'   =>'localhost',       //数据库地址
+                            'name'   =>'blog',            //数据库名字
                             'user'   =>'root',           //数据库账号
-                            'pwd'    =>'root',   //数据库密码
+                            'pwd'    =>'',               //数据库密码
                             'prefix' =>'blog_',          //数据库表前缀
                             'showError'=>true,          //是否输出显示数据库错误
                             'pconnect'=>false,          //是否使用持久链接 
@@ -39,11 +39,12 @@
           'url'=>array(
                           'format'=>'pathinfo',
                           'rules'=>array(
-                                '<year:\d+>/<month:\d+>/<day:\d+>/<id:\d+>'=>'/home/home/detail/<id>',
-                                '<controller:\w+>/<action:\w+>(/)?' => '<controller>/<action>',
-                                '<controller:\w+>/<action:\w+><id:\d+>' => '<controller>/<action>/<id>',
-                                '<module:\w+>/<controller:\w+>/<action:\w+>'=>'<module>/<controller>/<action>',
-                                '<module:\w+>/<controller:\w+>/<action:\w+>/<id:\d+>'=>'<module>/<controller>/<action>/<id>',
+                                '<year:\d+>/<month:\d+>/<day:\d+>/<id:\d+>'=>'/module/home/control/home/action/detail/id/<id>',
+                                '<module:admin>/<control:article>/status/<status:\w+>'=>'/<module>/<control>/status/<status>',
+                                '<module:\w+>/<control:\w+>/<action:\w+>'=>'<module>/<control>/<action>',
+                                '<module:\w+>/<control:\w+>/<action:\w+>/<id:\d+>'=>'<module>/<control>/<action>/<id>',
+                                '<control:\w+>/<action:\w+>(/)?' => '<control>/<action>',
+                                '<control:\w+>/<action:\w+><id:\d+>' => '<control>/<action>/<id>',
                                 '<category:\w+>'=>'/',
                           ),
                           'ruleMetas'=>array(
